@@ -3,44 +3,48 @@ html {
 }
 
 #navlist {
-    list-style: none;
+  list-style: none;
 }
 
 #navlist a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 #ally {
-    max-width: 70%;
-  }
+  max-width: 70%;
+}
 
 .tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
 }
+
 .tabs input {
   display: none;
 }
+
 .tabs label {
-  padding: 10px 20px;
-  margin: 0 20px;
+  padding: 5px;
+  text-align: center;
   border-radius: 50px;
 }
-.tabs input:checked + label {
+
+.tabs input:checked+label {
   background: #686868;
   color: white;
 }
-  
-  @media (min-width: 768px) {
-#ally {
+
+@media (min-width: 768px) {
+  #ally {
     max-width: 10%;
+  }
 }
+
+@media (min-width: 1200px) {
+  #ally {
+    max-width: 40%;
   }
-  
-  @media (min-width: 1200px) {
-    #ally {
-      max-width: 40%;
-    }
-  }
+}
