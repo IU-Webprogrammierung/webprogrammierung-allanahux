@@ -54,6 +54,23 @@ html {
   border-radius: 10px; /* runde Ecken */
 }
 
+.uxproject {
+  height: 150px;              
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background-size: cover;  
+  font-size: 1.5rem;
+  text-align: center;
+  border: 8px solid white;
+}
+
+.uxproject h3 {
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
 
 @media (min-width: 768px) {
   #ally {
