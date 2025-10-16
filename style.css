@@ -12,8 +12,20 @@ html { scroll-behavior: smooth; }
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Thin.woff2") format("woff2"),
        url("assets/fonts/Switzer-Thin.woff") format("woff");
+       font-weight: 300; /* Thin */
+       font-style: normal;
+       font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("assets/fonts/Switzer-Regular.woff") format("woff2"),
+       url("assets/fonts/Switzer-Regular.woff") format("woff");
+  font-weight: 400; 
+  font-style: normal;
   font-display: swap;
 }
+
 
 body {
   background-image: url("assets/images/paper3.jpg");
@@ -21,33 +33,38 @@ body {
   background-size: 600px auto;
   color: #111;
 }
+html, body {
+  margin: 0;
+  padding-top: 10px;
+  overflow-x: hidden;  
+}
 
 /* Fixierter Name oben */
 .logo {
-  position: fixed;
-  top: 0;
+  position: fixed;      
+  top: 0;              
   left: 0;
   width: 100%;
-  backdrop-filter: blur(10px); /* Unschärfe-Effekt */
-  -webkit-backdrop-filter: blur(10px); /* Safari-Support */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-align: center;
   font-family: "Pencerio";
   font-size: 1.5rem;
   padding: 0.5rem;
   z-index: 1000;
   margin: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* dezente Linie */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* HEADER + Inhalt */
 header {
   position: relative;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 0; 
 
   & h1 {
     font-family: "Switzer"; 
-    font-weight: lighter;
+    font-weight: 300;
     font-size: 1.5rem;
     line-height: 1.3;
     text-align: center;
@@ -62,7 +79,7 @@ header {
 
   & .h1photo {
     display: block;
-    font-weight: normal;
+    font-weight: 300;
     position: relative;
     top: 30px;
     margin-right: 5%;
@@ -74,6 +91,7 @@ header {
     right: 22%;
     font-family: "Switzer", sans-serif;
     font-size: 6rem;
+    font-weight: 300;
     color: rgba(0,0,0,0.15); /* transparent grau */
     line-height: 1;
   }
@@ -82,8 +100,61 @@ header {
     position: absolute;
     left: 60%;
     margin-top: 10%;
-    font-weight: normal;
+    font-weight: 300;
     color: #000;
+  }
+}
+
+nav {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: "Switzer", sans-serif;
+  font-weight: 300;
+
+  & #navlist {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;  
+    text-align: left;       
+
+    & li {
+      position: relative;
+      margin: 0.4rem 0;
+
+      /* ❀-Symbol als Stichpunkt */
+      &::before {
+        content: "❀";
+        position: absolute;
+        left: -1.5rem;
+        color:#000000
+      }
+
+      & a {
+        text-decoration: none;
+        color: #000;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.2s ease;
+
+        /* ✨ Marker-Effekt */
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0.15em;
+          width: 100%;
+          height: 0.6em;
+          background: rgba(168, 204, 255, 0.8); 
+          border-radius: 0.2em;
+          transform: rotate(-1deg); 
+          z-index: -1; 
+          transition: background 0.3s ease;
+        }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -117,8 +188,8 @@ header {
   }
 
   & img {
-    width: 100%;           /* passt sich an Spalte an */
-    border-radius: 10px;   /* runde Ecken */
+    width: 100%;           
+    border-radius: 10px;  
   }
 }
 
