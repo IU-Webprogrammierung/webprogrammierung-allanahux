@@ -2,6 +2,55 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  position: relative;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+header h1 {
+  font-family: Helvetica;
+  font-weight: lighter;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#ally {
+  width: 60%;
+  border-radius: 20%;
+  height: auto;
+}
+
+.h1photo {
+  display: block;
+  font-weight: normal;
+  position: relative;
+  top: 30px;
+  margin-right: 5%;
+}
+
+.and {
+  position: absolute;
+  top: 5%;
+  right: 22%;
+  font-size: 6rem;
+  color: rgba(0, 0, 0, 0.15);
+  /* transparent grau */
+  line-height: 1;
+}
+
+.h1ux {
+  position: absolute;
+  left: 60%;
+  margin-top: 10%;
+  font-weight: normal;
+  color: #000;
+}
+
+
+
 #navlist {
   list-style: none;
 }
@@ -9,10 +58,6 @@ html {
 #navlist a {
   text-decoration: none;
   color: black;
-}
-
-#ally {
-  max-width: 70%;
 }
 
 .tabs-wrapper {
@@ -32,14 +77,14 @@ html {
   background: #f5f5f5;
 }
 
-.tabs-wrapper input:checked + label {
+.tabs-wrapper input:checked+label {
   background: #686868;
   color: white;
 }
 
-#tab1:checked ~ .tab-images #panel1,
-#tab2:checked ~ .tab-images #panel2,
-#tab3:checked ~ .tab-images #panel3 {
+#tab1:checked~.tab-images #panel1,
+#tab2:checked~.tab-images #panel2,
+#tab3:checked~.tab-images #panel3 {
   display: grid;
 }
 
@@ -50,12 +95,14 @@ html {
 }
 
 .tab-images img {
-  width: 100%;        /* passt sich an Spalte an */
-  border-radius: 10px; /* runde Ecken */
+  width: 100%;
+  /* passt sich an Spalte an */
+  border-radius: 10px;
+  /* runde Ecken */
 }
 
 .uxproject {
-  height: 150px;              
+  height: 150px;
   border-radius: 10px;
   display: grid;
   place-items: center;
@@ -94,7 +141,7 @@ html {
 
 form {
   display: grid;
-  gap: 0.5em; 
+  gap: 0.5em;
 }
 
 input,
@@ -111,7 +158,7 @@ footer {
   padding: 0.5em 1em;
   font-size: 0.9em;
   display: grid;
-  grid-template-columns: 1fr auto; 
+  grid-template-columns: 1fr auto;
   align-items: center;
 }
 
@@ -130,20 +177,42 @@ footer img {
 
 @media (min-width: 768px) {
   #ally {
-    max-width: 10%;
-  }
-  
-  .tab-images section {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  #ally {
     max-width: 40%;
   }
 
-  .tab-images section {
-    grid-template-columns: repeat(4, 1fr);
+  .and {
+    top: 15%;
+    right: 20%;
+    font-size: 5rem;
   }
-}
+
+  .h1ux {
+    top: 42%;
+    right: 24%;
+    font-size: 1.6rem;
+
+    .tab-images section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    #ally {
+      max-width: 40%;
+    }
+
+    .and {
+      top: 12%;
+      right: 25%;
+      font-size: 6rem;
+    }
+
+    .h1ux {
+      top: 40%;
+      right: 28%;
+      font-size: 1.8rem;
+
+      .tab-images section {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
