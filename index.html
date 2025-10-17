@@ -79,74 +79,41 @@
       </section>
     </section>
     
-    <!--Start Photography Portfolio-->
-    <section id="photo">
-      <h2>photography portfolio</h2>
-      <div class="tabs-wrapper">
-        <input type="radio" name="tab" id="tab1" checked />
-        <label
-          for="tab1"
-          id="label1"
-          role="tab"
-          aria-controls="panel1"
-          aria-selected="true"
-        >
-          Small Business
-        </label>
+<!--Start Photography Portfolio-->
+<section id="photo">
+  <h2>photography portfolio</h2>
 
-        <input type="radio" name="tab" id="tab2" />
-        <label
-          for="tab2"
-          id="label2"
-          role="tab"
-          aria-controls="panel2"
-          aria-selected="false"
-        >
-          Architecture
-        </label>
+  <!-- Tabs -->
+  <section class="tabs-wrapper" role="tablist" aria-label="Portfolio Kategorien">
+    <input type="radio" name="tab" id="tab1" checked />
+    <label for="tab1" id="label1" role="tab" aria-controls="panel1" tabindex="0">Small Business</label>
 
-        <input type="radio" name="tab" id="tab3" />
-        <label
-          for="tab3"
-          id="label3"
-          role="tab"
-          aria-controls="panel3"
-          aria-selected="false"
-        >
-          Hospitality
-        </label>
+    <input type="radio" name="tab" id="tab2" />
+    <label for="tab2" id="label2" role="tab" aria-controls="panel2" tabindex="0">Architecture</label>
 
-        <!--pictures that appear when clicking on a tab-->
-        <section class="tab-images">
-          <section id="panel1" role="tabpanel" aria-labelledby="label1">
-            <img
-              src="assets/images/tasse.JPG"
-              alt="Ceramic cup product shoot with a small business named Drip drop ceramics"
-            />
-            <img
-              src="assets/images/tasse2.JPG"
-              alt="Hand holding a ceramic cup in a instagram content shooting environment"
-            />
-          </section>
+    <input type="radio" name="tab" id="tab3" />
+    <label for="tab3" id="label3" role="tab" aria-controls="panel3" tabindex="0">Hospitality</label>
+  </section>
 
-          <section id="panel2" role="tabpanel" aria-labelledby="label2">
-            <img
-              src="assets/images/a1.JPG"
-              alt="Architectural patterns from a museum ceiling in London"
-            />
-            <img
-              src="assets/images/a2.JPG"
-              alt="Dark vibes in a museum in London, reflections from the light and the ceiling which shows a special pattern"
-            />
-          </section>
-
-          <section id="panel3" role="tabpanel" aria-labelledby="label3">
-            <img src="assets/images/cafe1.JPG" alt="Restaurant interior" />
-            <img src="assets/images/cafe2.JPG" alt="Hotel lobby" />
-          </section>
-        </section>
-      </div>
+  <!-- Panels -->
+  <section class="tab-images">
+    <section id="panel1" role="tabpanel" aria-labelledby="label1">
+      <img src="assets/images/tasse.JPG" alt="Ceramic cup product shoot with a small business named Drip drop ceramics" />
+      <img src="assets/images/tasse2.JPG" alt="Hand holding a ceramic cup in a instagram content shooting environment" />
     </section>
+
+    <section id="panel2" role="tabpanel" aria-labelledby="label2">
+      <img src="assets/images/a1.JPG" alt="Architectural patterns from a museum ceiling in London" />
+      <img src="assets/images/a2.JPG" alt="Dark vibes in a museum in London, reflections from the light and the ceiling which shows a special pattern" />
+    </section>
+
+    <section id="panel3" role="tabpanel" aria-labelledby="label3">
+      <img src="assets/images/cafe1.JPG" alt="Restaurant interior" />
+      <img src="assets/images/cafe2.JPG" alt="Hotel lobby" />
+    </section>
+  </section>
+</section>
+
 
     <!--Start UX projects-->
     <section id="ux"><h2>ux projects</h2>
@@ -257,7 +224,4 @@
     <p>&copy; 2025 Allanah Diederichsen</p>
   </footer>
   </body>
-
-  
-  
 </html>
