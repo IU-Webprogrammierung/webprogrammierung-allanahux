@@ -21,18 +21,20 @@
         src="assets/images/ally.png"
         alt="Introductory picture of Allanah a Phototgrapher & UX Designer, waring a vest and carrying her camera and bag. In the background is the Neckar river."
       />
+      <nav aria-label="Main navigation">
+        <ul id="navlist">
+          <li><a href="#about">about me</a></li>
+          <li><a href="#photo">photography portfolio</a></li>
+          <li><a href="#ux">ux projects</a></li>
+          <li><a href="#inspo">inspirations</a></li>
+          <li><a href="#sayhi">say hi</a></li> <!--soll ein Button unter den Menüpunkten werden, mit Blümchen-->
+        </ul>
+      </nav>
     </header>
-    <nav>
-      <ul id="navlist">
-        <li><a href="#about">about me</a></li>
-        <li><a href="#photo">photography portfolio</a></li>
-        <li><a href="#ux">ux projects</a></li>
-        <li><a href="#inspo">inspirations</a></li>
-        <li><a href="#sayhi">say hi</a></li> <!--soll ein Button unter den Menüpunkten werden, mit Blümchen-->
-      </ul>
-    </nav>
+    
+    
     <!--Start About me-->
-    <section id="about">
+    <section id="about" aria-labelledby="about-heading">
       <h2>Hi there!</h2>
       <p>
         I’m Allanah, 26, originally from the north of Germany near Hamburg. In
@@ -48,7 +50,35 @@
         needs. Today, both photography and design shape how I see the world –
         and how I create within it.
       </p>
+
+      <section aria-labelledby="facts-heading">
+        <h3 id="facts-heading">What I like capturing the most</h3>
+        <ul>
+          <li>Cafés</li>
+          <li>Interior design</li>
+          <li>Lifestyle</li>
+          <li>Architecture</li>
+        </ul>
+    
+        <h3>My creative tools</h3>
+        <ul>
+          <li>Figma</li>
+          <li>Lightroom</li>
+          <li>Photoshop</li>
+        </ul>
+    
+        <h3>What fills my heart</h3>
+        <ul>
+          <li>Sunsets</li>
+          <li>Acai bowls</li>
+          <li>Running</li>
+          <li>Cinnamon</li>
+          <li>Exploring new places</li>
+          <li>My dog Tilda</li>
+        </ul>
+      </section>
     </section>
+    
     <!--Start Photography Portfolio-->
     <section id="photo">
       <h2>photography portfolio</h2>

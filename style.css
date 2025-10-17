@@ -1,48 +1,69 @@
-/* Basis */
-html { scroll-behavior: smooth; }
+
 
 /* Schriften */
 @font-face {
   font-family: "Pencerio";
   src: url("assets/fonts/Pencerio-Hairline.woff2") format("woff2"),
-       url("assets/fonts/Pencerio-Hairline.woff") format("woff");
+    url("assets/fonts/Pencerio-Hairline.woff") format("woff");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Thin.woff2") format("woff2"),
-       url("assets/fonts/Switzer-Thin.woff") format("woff");
-       font-weight: 300; /* Thin */
-       font-style: normal;
-       font-display: swap;
+    url("assets/fonts/Switzer-Thin.woff") format("woff");
+  font-weight: 300;
+  /* Thin */
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Regular.woff") format("woff2"),
-       url("assets/fonts/Switzer-Regular.woff") format("woff");
-  font-weight: 400; 
+    url("assets/fonts/Switzer-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Clash Display";
+  src: url("assets/fonts/ClashDisplay-Regular.woff2") format("woff2"),
+    url("assets/fonts/ClashDisplay-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Basis */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  hyphens: auto;
+}
 
 body {
+  margin: 0;
+  padding: 2rem 1.5rem; 
   background-image: url("assets/images/paper3.jpg");
   background-repeat: repeat;
   background-size: 600px auto;
   color: #111;
+  line-height: 1.5;
+  word-break: normal;
 }
-html, body {
-  margin: 0;
-  padding-top: 10px;
-  overflow-x: hidden;  
+
+h2 {
+  font-family: "Clash Display";
+  font-weight: 400;
+  text-align: left;
 }
 
 /* Fixierter Name oben */
 .logo {
-  position: fixed;      
-  top: 0;              
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
   backdrop-filter: blur(10px);
@@ -51,7 +72,7 @@ html, body {
   font-family: "Pencerio";
   font-size: 1.5rem;
   padding: 0.5rem;
-  z-index: 1000;
+  z-index: 9999;
   margin: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -60,11 +81,11 @@ html, body {
 header {
   position: relative;
   text-align: center;
-  margin-top: 0; 
+  margin-top: 0;
+
 
   & h1 {
-    font-family: "Switzer"; 
-    font-weight: 300;
+    font-family: "Clash Display";
     font-size: 1.5rem;
     line-height: 1.3;
     text-align: center;
@@ -91,8 +112,9 @@ header {
     right: 22%;
     font-family: "Switzer", sans-serif;
     font-size: 6rem;
-    font-weight: 300;
-    color: rgba(0,0,0,0.15); /* transparent grau */
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.15);
+    /* transparent grau */
     line-height: 1;
   }
 
@@ -108,15 +130,14 @@ header {
 nav {
   text-align: center;
   margin-top: 1.5rem;
-  font-family: "Switzer", sans-serif;
-  font-weight: 300;
+  font-family: "Clash Display";
 
   & #navlist {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-    display: inline-block;  
-    text-align: left;       
+    display: inline-block;
+    text-align: left;
 
     & li {
       position: relative;
@@ -127,7 +148,7 @@ nav {
         content: "❀";
         position: absolute;
         left: -1.5rem;
-        color:#000000
+        color: #000000
       }
 
       & a {
@@ -145,141 +166,246 @@ nav {
           bottom: 0.15em;
           width: 100%;
           height: 0.6em;
-          background: rgba(168, 204, 255, 0.8); 
+          background: rgba(168, 204, 255, 0.8);
           border-radius: 0.2em;
-          transform: rotate(-1deg); 
-          z-index: -1; 
+          transform: rotate(-1deg);
+          z-index: -1;
           transition: background 0.3s ease;
-        }
-          }
         }
       }
     }
   }
 }
 
-/* TABS */
-.tabs-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  text-align: center;
+#about {
+  font-family: "Switzer", sans-serif;
 
-  & input { display: none; }
-
-  & label {
-    border-radius: 50px;
-    padding: 5px 0;
-    background: #f5f5f5;
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    text-align: justify;
   }
+  section {
+    margin-top: 1rem;
 
-  & input:checked + label {
-    background: #686868;
-    color: #fff;
-  }
-}
+    h3 {
+      font-family: Clash Display;
+      font-size: 1.1rem;
+    }
 
-/* Tab-Panels */
-.tab-images {
-  & section {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0;
 
-  & img {
-    width: 100%;           
-    border-radius: 10px;  
+      li {
+        background-color: rgba(209, 228, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.35);  
+        border-radius: 20px;
+        padding: 0.35rem 0.95rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);   
+    }
   }
 }
 
-/* Sichtbarkeit je Tab */
-#tab1:checked ~ .tab-images #panel1,
-#tab2:checked ~ .tab-images #panel2,
-#tab3:checked ~ .tab-images #panel3 { display: grid; }
+  /* Photography Portfolio TABS */
+  .tabs-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
 
-/* UX-Projekte */
-.uxproject {
-  height: 150px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background-size: cover;
-  background-position: center;
-  font-size: 1.5rem;
-  text-align: center;
-  border: 8px solid #fff;
+    & input {
+      display: none;
+    }
 
-  & h3 {
-    background: #fff;
-    color: #000;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-  }
-}
+    & label {
+      border-radius: 50px;
+      padding: 5px 0;
+      background: #f5f5f5;
+    }
 
-/* Inspiration */
-#inspiration {
-  & ul { list-style: none; }
-  & img { width: 50%; border-radius: 8px; }
-  & figcaption { font-size: 0.9em; }
-}
-
-/* Kontakt */
-#contact {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2em 1em;
-}
-
-form { display: grid; gap: 0.5em; }
-
-input, textarea, button {
-  font-family: inherit;
-  font-size: 1em;
-  width: 100%;
-  padding: 0.5em;
-  box-sizing: border-box;
-}
-
-/* Footer */
-footer {
-  padding: 0.5em 1em;
-  font-size: 0.9em;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-
-  & ul {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex; gap: 1em;
+    & input:checked+label {
+      background: #686868;
+      color: #fff;
+    }
   }
 
-  & img { vertical-align: middle; transition: opacity 0.2s; }
-}
-
-/* Breakpoints */
-@media (min-width: 768px) {
-  header {
-    & #ally { max-width: 40%; }
-    & .and { top: 15%; right: 20%; font-size: 5rem; }
-    & .h1ux { top: 42%; right: 24%; font-size: 1.6rem; }
-  }
-
+  /* Tab-Panels */
   .tab-images {
-    & section { grid-template-columns: repeat(3, 1fr); }
-  }
-}
+    & section {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
 
-@media (min-width: 1200px) {
-  header {
-    & #ally { max-width: 40%; }
-    & .and { top: 12%; right: 25%; font-size: 6rem; }
-    & .h1ux { top: 40%; right: 28%; font-size: 1.8rem; }
+    & img {
+      width: 100%;
+      border-radius: 10px;
+    }
   }
 
-  .tab-images {
-    & section { grid-template-columns: repeat(4, 1, 1fr); } /* 4 Spalten */
+  /* Sichtbarkeit je Tab */
+  #tab1:checked~.tab-images #panel1,
+  #tab2:checked~.tab-images #panel2,
+  #tab3:checked~.tab-images #panel3 {
+    display: grid;
+  }
+
+  /* UX-Projekte */
+  .uxproject {
+    height: 150px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 8px solid #fff;
+
+    & h3 {
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+    }
+  }
+
+  /* Inspiration */
+  #inspiration {
+    & ul {
+      list-style: none;
+    }
+
+    & img {
+      width: 50%;
+      border-radius: 8px;
+    }
+
+    & figcaption {
+      font-size: 0.9em;
+    }
+  }
+
+  /* Kontakt */
+  #contact {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2em 1em;
+  }
+
+  form {
+    display: grid;
+    gap: 0.5em;
+  }
+
+  input,
+  textarea,
+  button {
+    font-family: inherit;
+    font-size: 1em;
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+  }
+
+  /* Footer */
+  footer {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    & ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1em;
+    }
+
+    & img {
+      vertical-align: middle;
+      transition: opacity 0.2s;
+    }
+  }
+
+  /* Breakpoints */
+  @media (min-width: 768px) {
+    main,
+    p,
+    section,
+    header,
+    footer,
+    article,
+    nav {
+      max-width: 70ch;
+    }
+  
+    header {
+      & #ally {
+        max-width: 40%;
+      }
+
+      & .and {
+        top: 15%;
+        right: 20%;
+        font-size: 5rem;
+      }
+
+      & .h1ux {
+        top: 42%;
+        right: 24%;
+        font-size: 1.6rem;
+      }
+    }
+
+    .tab-images {
+      & section {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    main,
+    p,
+    section,
+    header,
+    footer,
+    article,
+    nav {
+      max-width: 80ch; 
+    }
+    
+    header {
+      & #ally {
+        max-width: 40%;
+      }
+
+      & .and {
+        top: 12%;
+        right: 25%;
+        font-size: 6rem;
+      }
+
+      & .h1ux {
+        top: 40%;
+        right: 28%;
+        font-size: 1.8rem;
+      }
+    }
+
+    .tab-images {
+      & section {
+        grid-template-columns: repeat(4, 1, 1fr);
+      }
+
+      /* 4 Spalten */
+    }
   }
 }
