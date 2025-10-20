@@ -42,10 +42,14 @@
   --maxw-lg: 80ch;      /* Desktop */
 }
 
+
+
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+
 }
 
 body {
@@ -176,7 +180,7 @@ nav {
           content: "";
           position: absolute;
           left: 0;
-          bottom: 0.15em;
+          bottom: -0.10em;
           width: 100%;
           height: 0.6em;
           background: rgba(168, 204, 255, 0.8);
@@ -187,8 +191,51 @@ nav {
         }
       }
     }
+
+    & li:last-child {
+      margin-top: 1.2rem;
+      padding-left: 0; 
+      text-align: center; 
+
+      &::before {
+        content: none; 
+      }
+
+      & a {
+        display: inline-block;
+        padding: 0.45rem 1.2rem;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 25px;
+        box-shadow:
+          0 0 12px rgba(168, 204, 255, 0.35),
+          0 0 24px rgba(168, 204, 255, 0.25);
+        font-family: "Clash Dislay", sans-serif;
+        font-size: 0.95rem;
+        color: #000;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      & a::before {
+        content: none; 
+      }
+
+      & a:hover {
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow:
+          0 0 18px rgba(168, 204, 255, 0.5),
+          0 0 35px rgba(168, 204, 255, 0.3);
+        transform: translateY(-1px);
+      }
+    }
   }
 }
+
 
 /* ======================================================
    💬 ABOUT
@@ -513,22 +560,95 @@ nav {
    ⚙️ FOOTER
 ====================================================== */
 footer {
-  padding: 0.5em 1em;
-  font-size: 0.9em;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
+  max-width: 70ch;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 0.95rem;
+  font-family: "Switzer", system-ui, sans-serif;
 
-  & ul {
+  & nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;           
+    text-align: center;
+  }
+
+  & li.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;   
+  }
+
+  & a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    min-height: 44px;
+    border-radius: 0.5rem;
+    text-decoration: underline;
+    color: inherit;
+  }
+  & a:hover { text-decoration-thickness: 0.12em; }
+  & a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    text-decoration: none;
   }
 
   & img {
+    width: 35px; height: 35px;
     vertical-align: middle;
-    transition: opacity 0.2s;
   }
+  & a:hover img { opacity: 0.85; }
 }
+
+/* ======================================================
+   ⬆️ BACK TO TOP BUTTON
+====================================================== */
+#backToTop {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.8rem;
+  height: 2.8rem;
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+
+  transition: opacity 0.25s ease;
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  opacity: 1;
+}
+
+#backToTop:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Icon */
+#backToTop img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+}
+
