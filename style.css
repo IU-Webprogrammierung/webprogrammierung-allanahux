@@ -41,9 +41,6 @@
   --maxw-md: 70ch;      /* Tablet */
   --maxw-lg: 80ch;      /* Desktop */
 }
-
-
-
 html, body {
   margin: 0;
   padding: 0;
@@ -68,6 +65,34 @@ main, header, nav, section, article, footer {
   margin-inline: auto;
 }
 
+/* ==========================================
+   📏 Mobile Typo-Scale
+========================================== */
+:root {
+  --size-sm: 1rem;
+  --size-md: 1.125rem;
+  --size-lg: 1.5rem;
+}
+
+html, body {
+  font-size: var(--size-sm);
+  line-height: 1.6;
+}
+
+/* Groß */
+h1, h2, .logo {
+  font-size: var(--size-lg);
+  line-height: 1.25;
+}
+
+/* Mittel */
+h3,
+nav[aria-label="Main navigation"] #navlist a,
+#photo .tabs-wrapper label[role="tab"],
+button {
+  font-size: var(--size-md);
+}
+
 /* Einheitliche H2s */
 h2 {
   font-family: "Clash Display";
@@ -88,7 +113,6 @@ h2 {
   -webkit-backdrop-filter: blur(10px);
   text-align: center;
   font-family: "Pencerio";
-  font-size: 1.5rem;
   padding: 0.5rem;
   z-index: 9999;
   margin: 0;
@@ -106,7 +130,6 @@ header {
     position: relative; 
     z-index: 3;       
     font-family: "Clash Display";
-    font-size: 1.5rem;
     line-height: 1.3;
     margin-bottom: 1rem;
     color: rgb(70, 70, 86);
@@ -179,7 +202,6 @@ nav {
       & a {
         text-decoration: none;
         color: #000;
-        font-size: 1rem;
         position: relative;
         transition: color 0.2s ease;
 
@@ -220,7 +242,6 @@ nav {
           0 0 12px rgba(168, 204, 255, 0.35),
           0 0 24px rgba(168, 204, 255, 0.25);
         font-family: "Clash Dislay", sans-serif;
-        font-size: 0.95rem;
         color: #000;
         text-decoration: none;
         transition: all 0.25s ease;
@@ -252,7 +273,6 @@ nav {
 
   p {
     font-weight: 400;
-    font-size: 16px;
     text-align: justify;
   }
 
@@ -261,7 +281,6 @@ nav {
 
     h3 {
       font-family: "Clash Display";
-      font-size: 1.1rem;
     }
 
     ul {
@@ -310,7 +329,6 @@ nav {
     label[role="tab"] {
       position: relative;
       cursor: pointer;
-      font-size: 1rem;
       color: #000;
       display: inline-flex;
       align-items: center;
@@ -397,7 +415,6 @@ nav {
     place-items: center;
     background-size: cover;
     background-position: center;
-    font-size: 1.5rem;
     text-align: center;
     border: 8px solid #fff;
     box-shadow:
@@ -409,11 +426,9 @@ nav {
       background: #fff;
       color: #000;
       padding: 10px 20px;
-      font-size: 1.2rem;
     }
   .uxproject h3 {
     font-family: "Clash Display";
-    font-size: 1.1rem;
     font-weight: 400;
     color: #000;
     margin: 0;
@@ -472,7 +487,7 @@ nav {
     text-align: center;
     font-size: 0.85em;
     color: rgba(0,0,0,0.75);
-    padding: 0.5rem;
+    padding: 0.1rem;
   }
 
   & li.horizontal { grid-column: span 2; }
@@ -497,7 +512,6 @@ nav {
 
   & p {
     max-width: 50ch;
-    font-size: 1rem;
   }
 
   & form {
@@ -519,14 +533,12 @@ nav {
 
   & label {
     text-align: left;
-    font-size: 0.95rem;
     font-weight: 500;
   }
 
   & input,
   & textarea {
     font-family: inherit;
-    font-size: 1rem;
     width: 100%;
     box-sizing: border-box;
     padding: 0.5rem 0.9rem;
@@ -544,7 +556,6 @@ nav {
   & button {
     margin-top: 0.8rem;
     padding: 0.8rem 1.2rem;
-    font-size: 1rem;
     font-family: "Clash Display", sans-serif;
     color: #000;
     background: rgba(168,204,255,0.85);
@@ -572,7 +583,6 @@ nav {
 footer {
   max-width: 70ch;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-  font-size: 0.95rem;
   font-family: "Switzer", system-ui, sans-serif;
 
   & nav ul {
@@ -662,3 +672,124 @@ footer {
   opacity: 0.8;
 }
 
+/* ======================================================
+   🖥️ DESKTOP-LAYOUT (<1200px)
+====================================================== */
+@media (min-width: 1200px) {
+  :root { --size-md: 1.25rem; }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+
+    & p,
+    & li,
+    & input,
+    & textarea,
+    & button { font-size: 1rem; }
+
+    & nav[aria-label="Main navigation"],
+    & button { font-size: 1.25rem; }
+
+    & h1,
+    & h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    & h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+  }
+
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(460px, 52vw) 1fr;
+    align-items: center;
+    column-gap: 4rem;
+    min-height: 100svh;
+    max-width: 1200px;
+    margin-inline: auto;
+    text-align: left;
+
+    /* Bild */
+    & #ally {
+      display: block;
+      max-height: 90svh;
+      height: 80vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      border: 8px solid #fff;
+      border-radius: 40px;
+      margin: 0 auto;
+    }
+
+    /* Navigation rechts */
+    & nav[aria-label="Main navigation"] {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      justify-self: start;
+      margin: 0;
+      background: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    /* Liste + "say hi" mittig darunter */
+    & #navlist {
+      display: grid;
+      gap: .6rem;
+      margin: 0;
+      justify-items: start;
+
+      & li { margin: 0; }
+
+      & li:last-child {
+        margin-top: .9rem;
+        justify-self: center;
+        text-align: center;
+
+        & a { display: inline-block; }
+      }
+    }
+
+    /* Überschrift versetzt */
+    & h1 {
+      position: absolute;
+      z-index: 3;
+      left: clamp(60px, 7vw, 110px);
+      top: clamp(30px, 8vh, 120px);
+      margin: 0;
+      line-height: 1.2;
+
+      & .h1photo {
+        display: block;
+        font-weight: 300;
+        position: relative;
+        top: 0.9rem;
+        margin-right: 20%;
+      }
+
+      & .and {
+        position: absolute;
+        top: 0.2rem;
+        right: 20%;
+        font-family: "Switzer", sans-serif;
+        font-weight: 500;
+        color: rgba(148,163,176,0.34);
+        line-height: 1;
+      }
+
+      & .h1ux {
+        position: absolute;
+        left: 190px;
+        margin-top: 78px;
+        font-weight: 300;
+      }
+    }
+  }
+}
