@@ -4,29 +4,32 @@
 @font-face {
   font-family: "Pencerio";
   src: url("assets/fonts/Pencerio-Hairline.woff2") format("woff2"),
-       url("assets/fonts/Pencerio-Hairline.woff") format("woff");
+    url("assets/fonts/Pencerio-Hairline.woff") format("woff");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Thin.woff2") format("woff2"),
-       url("assets/fonts/Switzer-Thin.woff") format("woff");
+    url("assets/fonts/Switzer-Thin.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Regular.woff2") format("woff2"),
-       url("assets/fonts/Switzer-Regular.woff") format("woff");
+    url("assets/fonts/Switzer-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Clash Display";
   src: url("assets/fonts/ClashDisplay-Regular.woff2") format("woff2"),
-       url("assets/fonts/ClashDisplay-Regular.woff") format("woff");
+    url("assets/fonts/ClashDisplay-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -36,12 +39,18 @@
    🌐 BASIS + VARIABLEN
 ====================================================== */
 :root {
-  --space-x: 1.5rem;    /* linker/rechter Seitenrand */
-  --space-y: 2rem;      /* vertikaler Standardabstand */
-  --maxw-md: 70ch;      /* Tablet */
-  --maxw-lg: 80ch;      /* Desktop */
+  --space-x: 1.5rem;
+  /* linker/rechter Seitenrand */
+  --space-y: 2rem;
+  /* vertikaler Standardabstand */
+  --maxw-md: 70ch;
+  /* Tablet */
+  --maxw-lg: 80ch;
+  /* Desktop */
 }
-html, body {
+
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -60,7 +69,12 @@ body {
 }
 
 /* globale Layoutbreite & Seitenränder */
-main, header, nav, section, article, footer {
+main,
+header,
+nav,
+section,
+article,
+footer {
   max-width: var(--maxw-md);
   margin-inline: auto;
 }
@@ -74,13 +88,16 @@ main, header, nav, section, article, footer {
   --size-lg: 1.5rem;
 }
 
-html, body {
+html,
+body {
   font-size: var(--size-sm);
   line-height: 1.6;
 }
 
 /* Groß */
-h1, h2, .logo {
+h1,
+h2,
+.logo {
   font-size: var(--size-lg);
   line-height: 1.25;
 }
@@ -127,8 +144,8 @@ header {
   text-align: center;
 
   & h1 {
-    position: relative; 
-    z-index: 3;       
+    position: relative;
+    z-index: 3;
     font-family: "Clash Display";
     line-height: 1.3;
     margin-bottom: 1rem;
@@ -136,8 +153,8 @@ header {
   }
 
   & #ally {
-    position: relative; 
-    z-index: 1;         
+    position: relative;
+    z-index: 1;
     width: 60%;
     border-radius: 40px;
     height: auto;
@@ -148,7 +165,7 @@ header {
     display: block;
     font-weight: 300;
     position: relative;
-    z-index: 3; 
+    z-index: 3;
     top: 60px;
     margin-right: 20%;
   }
@@ -223,11 +240,11 @@ nav {
 
     & li:last-child {
       margin-top: 1.2rem;
-      padding-left: 0; 
-      text-align: center; 
+      padding-left: 0;
+      text-align: center;
 
       &::before {
-        content: none; 
+        content: none;
       }
 
       & a {
@@ -250,7 +267,7 @@ nav {
       }
 
       & a::before {
-        content: none; 
+        content: none;
       }
 
       & a:hover {
@@ -347,22 +364,27 @@ nav {
         z-index: -1;
         transition: background 0.25s ease, transform 0.2s ease;
       }
-      &:hover::before { background: rgba(255, 255, 255, 0.95); }
+
+      &:hover::before {
+        background: rgba(255, 255, 255, 0.95);
+      }
+
       &:focus-visible {
         outline: 2px solid rgba(168, 204, 255, 0.8);
         outline-offset: 3px;
       }
     }
 
-    #tab1:checked + label::before,
-    #tab2:checked + label::before,
-    #tab3:checked + label::before {
+    #tab1:checked+label::before,
+    #tab2:checked+label::before,
+    #tab3:checked+label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
-    #tab1:checked + label,
-    #tab2:checked + label,
-    #tab3:checked + label {
+
+    #tab1:checked+label,
+    #tab2:checked+label,
+    #tab3:checked+label {
       color: #111;
       font-weight: 500;
     }
@@ -384,7 +406,7 @@ nav {
   &:has(#tab3:checked) .tab-images #panel3 {
     display: grid;
   }
-  
+
 }
 
 /* ======================================================
@@ -392,16 +414,16 @@ nav {
 ====================================================== */
 
 #ux {
-  #ux{
+  #ux {
     width: 100%;
-    max-width: var(--maxw-lg);  
+    max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr;
     box-sizing: border-box;
   }
-  
+
   h2 {
     font-family: "Clash Display";
   }
@@ -422,11 +444,12 @@ nav {
       0 0 15px rgba(168, 204, 255, 0.25);
   }
 
-    & h3 {
-      background: #fff;
-      color: #000;
-      padding: 10px 20px;
-    }
+  & h3 {
+    background: #fff;
+    color: #000;
+    padding: 10px 20px;
+  }
+
   .uxproject h3 {
     font-family: "Clash Display";
     font-weight: 400;
@@ -440,7 +463,9 @@ nav {
   }
 }
 
-#photo .tab-images img.wide { grid-column: 1 / -1; }
+#photo .tab-images img.wide {
+  grid-column: 1 / -1;
+}
 
 /* ======================================================
    🎨 INSPIRATION
@@ -461,9 +486,17 @@ nav {
     padding: 0;
   }
 
-  & li { position: relative; }
-  & li:nth-child(3n) { grid-row: span 2; }
-  & li:nth-child(5n) { grid-column: span 2; }
+  & li {
+    position: relative;
+  }
+
+  & li:nth-child(3n) {
+    grid-row: span 2;
+  }
+
+  & li:nth-child(5n) {
+    grid-column: span 2;
+  }
 
   & figure {
     margin: 0;
@@ -478,20 +511,28 @@ nav {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
-  & img:hover { transform: scale(1.03); }
+
+  & img:hover {
+    transform: scale(1.03);
+  }
 
   & figcaption {
     text-align: center;
     font-size: 0.85em;
-    color: rgba(0,0,0,0.75);
+    color: rgba(0, 0, 0, 0.75);
     padding: 0.1rem;
   }
 
-  & li.horizontal { grid-column: span 2; }
-  & li.tall { grid-row: span 2; }
+  & li.horizontal {
+    grid-column: span 2;
+  }
+
+  & li.tall {
+    grid-row: span 2;
+  }
 
   & li.small img {
     aspect-ratio: 4 / 5;
@@ -521,14 +562,14 @@ nav {
     box-sizing: border-box;
     padding: 1.5rem;
     border-radius: 10px;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 6px solid rgba(255,255,255,0.6);
+    border: 6px solid rgba(255, 255, 255, 0.6);
     box-shadow:
-      0 0 25px rgba(168,204,255,0.35),
-      0 0 45px rgba(168,204,255,0.2),
-      0 8px 18px rgba(0,0,0,0.08);
+      0 0 25px rgba(168, 204, 255, 0.35),
+      0 0 45px rgba(168, 204, 255, 0.2),
+      0 8px 18px rgba(0, 0, 0, 0.08);
   }
 
   & label {
@@ -544,13 +585,13 @@ nav {
     padding: 0.5rem 0.9rem;
     border: none;
     border-radius: 8px;
-    background: rgba(255,255,255,0.9);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
   & input:focus,
   & textarea:focus {
-    outline: 2px solid rgba(168,204,255,0.8);
+    outline: 2px solid rgba(168, 204, 255, 0.8);
   }
 
   & button {
@@ -558,22 +599,22 @@ nav {
     padding: 0.8rem 1.2rem;
     font-family: "Clash Display", sans-serif;
     color: #000;
-    background: rgba(168,204,255,0.85);
+    background: rgba(168, 204, 255, 0.85);
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.25s ease;
     box-shadow:
-      0 0 12px rgba(168,204,255,0.5),
-      0 0 25px rgba(168,204,255,0.3);
+      0 0 12px rgba(168, 204, 255, 0.5),
+      0 0 25px rgba(168, 204, 255, 0.3);
   }
 
   & button:hover {
-    background: rgba(168,204,255,1);
+    background: rgba(168, 204, 255, 1);
     transform: translateY(-2px);
     box-shadow:
-      0 0 20px rgba(168,204,255,0.7),
-      0 0 35px rgba(168,204,255,0.4);
+      0 0 20px rgba(168, 204, 255, 0.7),
+      0 0 35px rgba(168, 204, 255, 0.4);
   }
 }
 
@@ -593,7 +634,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem;           
+    gap: 0.3rem;
     text-align: center;
   }
 
@@ -601,7 +642,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;   
+    gap: 1.5rem;
   }
 
   & a {
@@ -613,7 +654,11 @@ footer {
     text-decoration: underline;
     color: inherit;
   }
-  & a:hover { text-decoration-thickness: 0.12em; }
+
+  & a:hover {
+    text-decoration-thickness: 0.12em;
+  }
+
   & a:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
@@ -621,10 +666,14 @@ footer {
   }
 
   & img {
-    width: 35px; height: 35px;
+    width: 35px;
+    height: 35px;
     vertical-align: middle;
   }
-  & a:hover img { opacity: 0.85; }
+
+  & a:hover img {
+    opacity: 0.85;
+  }
 }
 
 /* ======================================================
@@ -676,7 +725,9 @@ footer {
    🖥️ DESKTOP-LAYOUT (<1200px)
 ====================================================== */
 @media (min-width: 1200px) {
-  :root { --size-md: 1.25rem; }
+  :root {
+    --size-md: 1.25rem;
+  }
 
   body {
     font-size: 1rem;
@@ -686,10 +737,14 @@ footer {
     & li,
     & input,
     & textarea,
-    & button { font-size: 1rem; }
+    & button {
+      font-size: 1rem;
+    }
 
     & nav[aria-label="Main navigation"],
-    & button { font-size: 1.25rem; }
+    & button {
+      font-size: 1.25rem;
+    }
 
     & h1,
     & h2 {
@@ -727,7 +782,6 @@ footer {
       margin: 0 auto;
     }
 
-    /* Navigation rechts */
     & nav[aria-label="Main navigation"] {
       grid-column: 2;
       grid-row: 1;
@@ -739,25 +793,27 @@ footer {
       text-align: left;
     }
 
-    /* Liste + "say hi" mittig darunter */
     & #navlist {
       display: grid;
       gap: .6rem;
       margin: 0;
       justify-items: start;
 
-      & li { margin: 0; }
+      & li {
+        margin: 0;
+      }
 
       & li:last-child {
         margin-top: .9rem;
         justify-self: center;
         text-align: center;
 
-        & a { display: inline-block; }
+        & a {
+          display: inline-block;
+        }
       }
     }
 
-    /* Überschrift versetzt */
     & h1 {
       position: absolute;
       z-index: 3;
@@ -770,25 +826,27 @@ footer {
         display: block;
         font-weight: 300;
         position: relative;
-        top: 0.9rem;
-        margin-right: 20%;
+        top: 2rem;
+        left: 5rem;
       }
 
       & .and {
         position: absolute;
-        top: 0.2rem;
-        right: 20%;
+        top: 1.5rem;
+        left: 16rem;
         font-family: "Switzer", sans-serif;
         font-weight: 500;
-        color: rgba(148,163,176,0.34);
+        font-size: 8rem;
+        color: rgba(148, 163, 176, 0.34);
         line-height: 1;
       }
 
       & .h1ux {
         position: absolute;
-        left: 190px;
-        margin-top: 78px;
+        left: 17rem;
+        top: 2.5rem;
         font-weight: 300;
+        white-space: nowrap;
       }
     }
   }
