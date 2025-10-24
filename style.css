@@ -742,6 +742,38 @@ footer {
     }
   }
 
+  #photo {
+    .tabs-wrapper { max-width: var(--maxw-lg); margin-inline: auto; }
+
+    .tab-images {
+      & section {
+        max-width: none !important;     
+        width: min(96vw, 1600px);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-inline: clamp(1rem, 2.5vw, 3rem);
+        justify-items: stretch;
+        align-items: start;
+        gap: clamp(1.5rem, 2.5vw, 3rem);
+        grid-template-columns: repeat(3, minmax(0, 1fr)); 
+      }
+
+      &:has(#tab1:checked) #panel1,
+      &:has(#tab2:checked) #panel2,
+      &:has(#tab3:checked) #panel3 {
+        display: grid;
+      }
+
+      & img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    }
+  }
+
   #backToTop {
     width: 3.5rem; height: 3.5rem;
     bottom: 2.5rem; right: 2.5rem;
