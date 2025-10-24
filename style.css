@@ -47,11 +47,6 @@
   --size-sm: 1rem;
   --size-md: 1.125rem;
   --size-lg: 1.5rem;
-
-  /* 🖥️ Desktop */
-  @media (min-width: 1200px) {
-    --size-md: 1.25rem;
-  }
 }
 
 html,
@@ -73,7 +68,29 @@ body {
   line-height: 1.5;
   word-break: normal;
 
-  /* 🖥️ Desktop */
+/* Groß */
+h1,
+h2,
+.logo {
+  font-size: var(--size-lg);
+  line-height: 1.25;
+}
+
+h2 {
+  font-family: "Clash Display";
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Mittel */
+h3,
+nav[aria-label="Main navigation"] #navlist a,
+#photo .tabs-wrapper label[role="tab"],
+button {
+  font-size: var(--size-md);
+}
+
+  /* 🖥️ Desktop Font Sizes */
   @media (min-width: 1200px) {
     font-size: 1rem;
     line-height: 1.6;
@@ -104,39 +121,32 @@ body {
   }
 }
 
-/* globale Layoutbreite & Seitenränder */
-main,
-header,
-nav,
+/* Desktop: Korrekte Einrückung (Seitenabstände) */
 section,
 article,
+main,
+header,
 footer {
-  max-width: var(--maxw-md);
-  margin-inline: auto;
+  font-family: "Switzer", sans-serif;
+  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: var(--space-y);
 }
 
-/* Groß */
-h1,
-h2,
-.logo {
-  font-size: var(--size-lg);
-  line-height: 1.25;
-}
-
-/* Mittel */
-h3,
-nav[aria-label="Main navigation"] #navlist a,
-#photo .tabs-wrapper label[role="tab"],
-button {
-  font-size: var(--size-md);
-}
-
-/* Einheitliche H2s */
-h2 {
-  font-family: "Clash Display";
-  font-weight: 400;
-  text-align: left;
-  margin-top: 3rem;
+@media (min-width: 1200px) {
+  body {
+    padding: 0;
+  }
+  main,
+  header,
+  nav,
+  section,
+  article,
+  footer {
+    max-width: var(--maxw-lg);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
 }
 
 /* ======================================================
@@ -439,34 +449,23 @@ nav {
    📸 PHOTOGRAPHY PORTFOLIO
 ====================================================== */
 #photo {
+  
   .tabs-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center;
-    align-items: baseline;
-    margin-block: 1rem 1.5rem;
+    margin-block: 1rem;
     font-family: "Clash Display";
 
     input[type="radio"] {
-      position: absolute !important;
+      position: absolute;
       width: 1px;
       height: 1px;
-      margin: -1px;
-      border: 0;
       clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      overflow: hidden;
-      appearance: none;
     }
 
     label[role="tab"] {
       position: relative;
-      cursor: pointer;
-      color: #000;
-      display: inline-flex;
-      align-items: center;
-      transition: color 0.2s ease;
 
       &::before {
         content: "";
@@ -479,7 +478,6 @@ nav {
         border-radius: 0.2em;
         transform: rotate(-1deg);
         z-index: -1;
-        transition: background 0.25s ease, transform 0.2s ease;
       }
 
       &:hover::before {
@@ -523,7 +521,6 @@ nav {
   &:has(#tab3:checked) .tab-images #panel3 {
     display: grid;
   }
-
 }
 
 /* ======================================================
@@ -531,15 +528,10 @@ nav {
 ====================================================== */
 
 #ux {
-  #ux {
-    width: 100%;
-    max-width: var(--maxw-lg);
-    padding-inline: var(--space-x);
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr;
-    box-sizing: border-box;
-  }
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
 
   h2 {
     font-family: "Clash Display";
@@ -547,6 +539,8 @@ nav {
 
   .uxproject {
     height: 150px;
+    box-sizing: border-box;
+    width: 100%;
     margin-bottom: 1.5rem;
     min-height: 220px;
     border-radius: 10px;
@@ -559,24 +553,18 @@ nav {
     box-shadow:
       0 6px 12px rgba(0, 0, 0, 0.08),
       0 0 15px rgba(168, 204, 255, 0.25);
-  }
 
-  & h3 {
-    background: #fff;
-    color: #000;
-    padding: 10px 20px;
-  }
-
-  .uxproject h3 {
-    font-family: "Clash Display";
-    font-weight: 400;
-    color: #000;
-    margin: 0;
-    padding: 0.5rem 1.2rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    h3 {
+      font-family: "Clash Display";
+      font-weight: 400;
+      color: #000;
+      margin: 0;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
@@ -588,10 +576,6 @@ nav {
    🎨 INSPIRATION
 ====================================================== */
 #inspo {
-  font-family: "Switzer", sans-serif;
-  max-width: 90ch;
-  margin: 0 auto;
-  padding-block: var(--space-y);
 
   & ul {
     list-style: none;
@@ -663,7 +647,6 @@ nav {
 ====================================================== */
 #sayhi {
   font-family: "Switzer", sans-serif;
-  max-width: 600px;
   padding-block: var(--space-y);
   display: flex;
   flex-direction: column;
@@ -732,14 +715,13 @@ nav {
     box-shadow:
       0 0 20px rgba(168, 204, 255, 0.7),
       0 0 35px rgba(168, 204, 255, 0.4);
-  }
+  } 
 }
 
 /* ======================================================
    FOOTER
 ====================================================== */
 footer {
-  max-width: 70ch;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   font-family: "Switzer", system-ui, sans-serif;
 
