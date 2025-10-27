@@ -131,24 +131,48 @@
 </section>
 
 
-    <!--Start UX projects-->
-    <section id="ux"><h2>ux projects</h2>
-      <article class="uxproject" style="background-image: url('assets/images/mockupreforme.png');">
-        <h3>Pilates App Design</h3>
-      </article>
+    <!-------------------------------------------------Start UX projects-->
+    <section id="ux">
+      <h2>ux projects</h2>
+    
+      <!-- Radios müssen Geschwister von .tabs-wrapper UND .tab-images sein -->
+      <input type="radio" name="uxtab" id="uxtab1" checked />
+      <input type="radio" name="uxtab" id="uxtab2" />
+    
+      <!-- Tabs -->
+      <section class="tabs-wrapper" role="tablist" aria-label="UX design categories">
+        <label for="uxtab1" id="uxlabel1" role="tab" tabindex="0" aria-controls="uxpanel1" aria-selected="true">
+          Mobile Design
+        </label>
+        <label for="uxtab2" id="uxlabel2" role="tab" tabindex="0" aria-controls="uxpanel2" aria-selected="false">
+          Web Design
+        </label>
+      </section>
+    
+      <!-- Panels -->
+      <section class="tab-images">
+        <section id="uxpanel1" role="tabpanel" aria-labelledby="uxlabel1">
+          <article class="uxproject" style="background-image: url('assets/images/mockupreforme.png');">
+            <h3>Pilates App Design</h3>
+          </article>
+          <article class="uxproject" style="background-image: url('assets/images/mockupbee.png');">
+            <h3>Gardening App Design</h3>
+          </article>
+          <article class="uxproject" style="background-image: url('assets/images/mockupbike.png');">
+            <h3>Bike Monitoring App Design</h3>
+          </article>
+        </section>
+    
+        <section id="uxpanel2" role="tabpanel" aria-labelledby="uxlabel2">
+          <article class="uxproject" style="background-image: url('assets/images/mockuphotel.png');">
+            <h3>Hotel Web Design</h3>
+          </article>
+        </section>
+      </section>
+    </section>
+    
 
-      <article class="uxproject" style="background-image: url('assets/images/mockuphotel.png');">
-        <h3>Hotel Web Design</h3>
-      </article>
-
-    <article class="uxproject" style="background-image: url('assets/images/mockupbee.png');">
-      <h3>Gardening App Design</h3>
-    </article>
-
-    <article class="uxproject" style="background-image: url('assets/images/mockupbike.png');">
-      <h3>Bike Monitoring App Design</h3>
-    </article>
-  </section>
+      <!-------------------------------------------------Start Inspiration-->
 
   <section id="inspo">
     <h2>Inspirations</h2>

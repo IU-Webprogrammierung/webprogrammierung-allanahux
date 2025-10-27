@@ -4,29 +4,32 @@
 @font-face {
   font-family: "Pencerio";
   src: url("assets/fonts/Pencerio-Hairline.woff2") format("woff2"),
-       url("assets/fonts/Pencerio-Hairline.woff") format("woff");
+    url("assets/fonts/Pencerio-Hairline.woff") format("woff");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Thin.woff2") format("woff2"),
-       url("assets/fonts/Switzer-Thin.woff") format("woff");
+    url("assets/fonts/Switzer-Thin.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Switzer";
   src: url("assets/fonts/Switzer-Regular.woff2") format("woff2"),
-       url("assets/fonts/Switzer-Regular.woff") format("woff");
+    url("assets/fonts/Switzer-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Clash Display";
   src: url("assets/fonts/ClashDisplay-Regular.woff2") format("woff2"),
-       url("assets/fonts/ClashDisplay-Regular.woff") format("woff");
+    url("assets/fonts/ClashDisplay-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -36,16 +39,21 @@
    🌐 BASIS + VARIABLEN
 ====================================================== */
 :root {
-  --space-x: 1.5rem;  /* linker/rechter Seitenrand */
-  --space-y: 2rem;    /* vertikaler Standardabstand */
-  --maxw-md: 70ch;    /* Tablet */
-  --maxw-lg: 80ch;    /* Desktop */
+  --space-x: 1.5rem;
+  /* linker/rechter Seitenrand */
+  --space-y: 2rem;
+  /* vertikaler Standardabstand */
+  --maxw-md: 70ch;
+  /* Tablet */
+  --maxw-lg: 80ch;
+  /* Desktop */
   --size-sm: 1rem;
   --size-md: 1.125rem;
   --size-lg: 1.5rem;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -64,7 +72,9 @@ body {
   word-break: normal;
 
   /* Groß */
-  h1, h2, .logo {
+  h1,
+  h2,
+  .logo {
     font-size: var(--size-lg);
     line-height: 1.25;
   }
@@ -85,7 +95,11 @@ body {
 }
 
 /* Desktop: Korrekte Einrückung (Seitenabstände) */
-section, article, main, header, footer {
+section,
+article,
+main,
+header,
+footer {
   font-family: "Switzer", sans-serif;
   margin: 0 auto;
   padding-top: 0;
@@ -97,7 +111,8 @@ section, article, main, header, footer {
 ====================================================== */
 .logo {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -222,7 +237,9 @@ nav {
         padding-left: 0;
         text-align: center;
 
-        &::before { content: none; }
+        &::before {
+          content: none;
+        }
 
         & a {
           display: inline-block;
@@ -242,7 +259,9 @@ nav {
           position: relative;
           z-index: 1;
 
-          &::before { content: none; }
+          &::before {
+            content: none;
+          }
 
           &:hover {
             background: rgba(255, 255, 255, 0.8);
@@ -327,7 +346,9 @@ nav {
         z-index: -1;
       }
 
-      &:hover::before { background: rgba(255, 255, 255, 0.95); }
+      &:hover::before {
+        background: rgba(255, 255, 255, 0.95);
+      }
 
       &:focus-visible {
         outline: 2px solid rgba(168, 204, 255, 0.8);
@@ -336,15 +357,16 @@ nav {
     }
 
     /* aktive Tabs */
-    & #tab1:checked + label::before,
-    & #tab2:checked + label::before,
-    & #tab3:checked + label::before {
+    & #tab1:checked+label::before,
+    & #tab2:checked+label::before,
+    & #tab3:checked+label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
-    & #tab1:checked + label,
-    & #tab2:checked + label,
-    & #tab3:checked + label {
+
+    & #tab1:checked+label,
+    & #tab2:checked+label,
+    & #tab3:checked+label {
       color: #111;
       font-weight: 500;
     }
@@ -361,7 +383,9 @@ nav {
       width: 100%;
       border-radius: 10px;
 
-      &.wide { grid-column: 1 / -1; }
+      &.wide {
+        grid-column: 1 / -1;
+      }
     }
   }
 
@@ -377,21 +401,67 @@ nav {
    💎 UX-PROJEKTE
 ====================================================== */
 #ux {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
   box-sizing: border-box;
 
   & h2 {
     font-family: "Clash Display";
   }
 
+  & input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  & .tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: baseline;
+    margin-block: 1rem;
+    font-family: "Clash Display";
+
+    & label[role="tab"] {
+      position: relative;
+      cursor: pointer;
+      transition: color .2s ease;
+      color: #111; 
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0.15em;
+        width: 100%;
+        height: 0.6em;
+        background: rgba(209, 208, 208, 0.95);
+        border-radius: 0.2em;
+        transform: rotate(-1deg);
+        z-index: -1;
+        transition: background .2s ease, transform .2s ease;
+      }
+
+      &:hover::before { background: rgba(255, 255, 255, 0.95); }
+      &:focus-visible { outline: 2px solid rgba(168, 204, 255, 0.8); outline-offset: 3px; }
+    }
+  }
+
+  & .tab-images > section {
+    display: none;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+  }
+
+  /* Karten */
   & .uxproject {
     height: 150px;
-    box-sizing: border-box;
+    min-height: 220px;
     width: 100%;
     margin-bottom: 1.5rem;
-    min-height: 220px;
     border-radius: 10px;
     display: grid;
     place-items: center;
@@ -399,9 +469,8 @@ nav {
     background-position: center;
     text-align: center;
     border: 8px solid #fff;
-    box-shadow:
-      0 6px 12px rgba(0, 0, 0, 0.08),
-      0 0 15px rgba(168, 204, 255, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0 6px 12px rgba(0,0,0,.08), 0 0 15px rgba(168,204,255,.25);
 
     & h3 {
       font-family: "Clash Display";
@@ -409,13 +478,34 @@ nav {
       color: #000;
       margin: 0;
       padding: 0.5rem 1.2rem;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255,255,255,.6);
       backdrop-filter: blur(8px);
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,.1);
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
   }
 }
+
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"]::before {
+  background: rgba(168, 204, 255, 0.95);
+  transform: rotate(-1.5deg);
+}
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"] {
+  font-weight: 500; 
+}
+
+#uxtab1:checked ~ .tab-images #uxpanel1,
+#uxtab2:checked ~ .tab-images #uxpanel2 {
+  display: grid;
+}
+
 
 /* ======================================================
    🎨 INSPIRATION
@@ -434,11 +524,21 @@ nav {
   & li {
     position: relative;
 
-    &:nth-child(3n) { grid-row: span 2; }
-    &:nth-child(5n) { grid-column: span 2; }
+    &:nth-child(3n) {
+      grid-row: span 2;
+    }
 
-    &.horizontal { grid-column: span 2; }
-    &.tall { grid-row: span 2; }
+    &:nth-child(5n) {
+      grid-column: span 2;
+    }
+
+    &.horizontal {
+      grid-column: span 2;
+    }
+
+    &.tall {
+      grid-row: span 2;
+    }
 
     & figure {
       margin: 0;
@@ -456,7 +556,9 @@ nav {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
 
-      &:hover { transform: scale(1.03); }
+      &:hover {
+        transform: scale(1.03);
+      }
     }
 
     & figcaption {
@@ -483,7 +585,9 @@ nav {
   display: flex;
   flex-direction: column;
 
-  & p { max-width: 50ch; }
+  & p {
+    max-width: 50ch;
+  }
 
   & form {
     display: grid;
@@ -507,7 +611,8 @@ nav {
     font-weight: 500;
   }
 
-  & input, & textarea {
+  & input,
+  & textarea {
     font-family: inherit;
     width: 100%;
     box-sizing: border-box;
@@ -517,7 +622,9 @@ nav {
     background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
 
-    &:focus { outline: 2px solid rgba(168, 204, 255, 0.8); }
+    &:focus {
+      outline: 2px solid rgba(168, 204, 255, 0.8);
+    }
   }
 
   & button {
@@ -553,7 +660,8 @@ footer {
 
   & nav ul {
     list-style: none;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -578,7 +686,10 @@ footer {
     text-decoration: underline;
     color: inherit;
 
-    &:hover { text-decoration-thickness: 0.12em; }
+    &:hover {
+      text-decoration-thickness: 0.12em;
+    }
+
     &:focus-visible {
       outline: 2px solid currentColor;
       outline-offset: 3px;
@@ -586,11 +697,14 @@ footer {
     }
 
     & img {
-      width: 35px; height: 35px;
+      width: 35px;
+      height: 35px;
       vertical-align: middle;
     }
 
-    &:hover img { opacity: 0.85; }
+    &:hover img {
+      opacity: 0.85;
+    }
   }
 }
 
@@ -599,14 +713,17 @@ footer {
 ====================================================== */
 #backToTop {
   position: fixed;
-  bottom: 1.5rem; right: 1.5rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 2.8rem; height: 2.8rem;
-  border: none; border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: none;
+  border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(10px);
@@ -618,7 +735,9 @@ footer {
   opacity: 0.9;
   z-index: 1000;
 
-  &:hover { opacity: 1; }
+  &:hover {
+    opacity: 1;
+  }
 
   &:focus-visible {
     outline: 2px solid currentColor;
@@ -626,7 +745,8 @@ footer {
   }
 
   & img {
-    width: 22px; height: 22px;
+    width: 22px;
+    height: 22px;
     opacity: 0.8;
   }
 }
@@ -639,16 +759,40 @@ footer {
     font-size: 1rem;
     line-height: 1.6;
 
-    & p, & li, & input, & textarea, & button { font-size: 1rem; }
-    & nav[aria-label="Main navigation"], & button { font-size: 1.25rem; }
-    & h1, & h2 { font-size: 2rem; line-height: 1.2; }
-    & h3 { font-size: 1.25rem; line-height: 1.3; }
+    & p,
+    & li,
+    & input,
+    & textarea,
+    & button {
+      font-size: 1rem;
+    }
+
+    & nav[aria-label="Main navigation"],
+    & button {
+      font-size: 1.25rem;
+    }
+
+    & h1,
+    & h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    & h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
 
     /* Seitenabstände / Max-Breite */
     padding: 0;
   }
 
-  main, header, nav, section, article, footer {
+  main,
+  header,
+  nav,
+  section,
+  article,
+  footer {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
     box-sizing: border-box;
@@ -693,14 +837,18 @@ footer {
         margin: 0;
         justify-items: start;
 
-        & li { margin: 0; }
+        & li {
+          margin: 0;
+        }
 
         & li:last-child {
           margin-top: .9rem;
           justify-self: center;
           text-align: center;
 
-          & a { display: inline-block; }
+          & a {
+            display: inline-block;
+          }
         }
       }
     }
@@ -743,11 +891,18 @@ footer {
   }
 
   #photo {
-    .tabs-wrapper { max-width: var(--maxw-lg); margin-inline: auto; }
+    .tabs-wrapper {
+      max-width: var(--maxw-lg);
+      margin-inline: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+    }
 
     .tab-images {
       & section {
-        max-width: none !important;     
+        max-width: none !important;
         width: min(96vw, 1600px);
         position: relative;
         left: 50%;
@@ -756,7 +911,7 @@ footer {
         justify-items: stretch;
         align-items: start;
         gap: clamp(1.5rem, 2.5vw, 3rem);
-        grid-template-columns: repeat(3, minmax(0, 1fr)); 
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       &:has(#tab1:checked) #panel1,
@@ -775,9 +930,14 @@ footer {
   }
 
   #backToTop {
-    width: 3.5rem; height: 3.5rem;
-    bottom: 2.5rem; right: 2.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
 
-    & img { width: 26px; height: 26px; }
+    & img {
+      width: 26px;
+      height: 26px;
+    }
   }
 }
