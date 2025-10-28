@@ -985,19 +985,91 @@ footer {
     background-position: center;
   }
 }
-
 /* ======================================================
-   🖥️ Back to TOP
+   🖥️ INSPIRATIONS
 ====================================================== */
-  #backToTop {
-    width: 3.5rem;
-    height: 3.5rem;
-    bottom: 2.5rem;
-    right: 2.5rem;
-
-    & img {
-      width: 26px;
-      height: 26px;
-    }
+#inspo {
+  padding-inline: var(--space-x);
+  padding-block: 4rem;
+  box-sizing: border-box;
+  
+  & ul {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); 
+    grid-auto-rows: 220px;                 
+    gap: 3.5rem;                       
+    list-style: none;
+    padding: 0;
   }
+
+  & li {
+    grid-column: auto / span 2; 
+    grid-row: auto / span 2;    
+  }
+
+  & li.small { grid-row: span 1; } 
+  & li.tall  { grid-row: span 3; }
+  & li.wide  { grid-column: span 3; }
+  & li.wider { grid-column: span 4; }
+  
+  & li:nth-of-type(1) { /* colors */
+    grid-column: 2 / span 3;
+    grid-row:    1 / span 3; 
+  }
+
+  & li:nth-of-type(2) { /* motion */
+    grid-column: 7 / span 2;
+    grid-row:    1 / span 2; 
+  }
+
+  & li:nth-of-type(3) { /* light & shadows  */
+    grid-column: 7 / span 4;
+    grid-row:    5 / span 2;
+  }
+
+  & li:nth-of-type(4) { /* light & shadows (train) */
+    grid-column: 5 / span 4;
+    grid-row:    3 / span 2;
+  }
+
+  & li:nth-of-type(5) { /* street photography */
+    grid-column: 6 / span 5;
+    grid-row:    8 / span 3;
+  }
+
+  & li:nth-of-type(6) { /* street architecture */
+    grid-column: 1 / span 3;
+    grid-row:    4 / span 3;
+  }
+
+  & li:nth-of-type(7) { /* reflections */
+    grid-column: 4 / span 2;
+    grid-row:    6 / span 3;
+  }
+
+  & li:nth-of-type(8) { /* sunset reflections */
+    grid-column: 1 / span 2;
+    grid-row:    7 / span 4;
+  }
+
+  & li:nth-of-type(9) { /* sunset reflections */
+    grid-column: 3 / span 2;
+    grid-row:    9 / span 2;
+  }
+
+  & figure { margin: 0; }
+  & img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+    display: block;
+    box-shadow: 0 0 10px rgba(0,0,0,.07);
+  }
+  & figcaption {
+    margin-top: .5rem;
+    font-size: .9rem;
+    text-align: center;
+  }
+  
+}
 }
