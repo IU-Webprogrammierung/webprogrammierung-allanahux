@@ -85,13 +85,12 @@ body {
     letter-spacing: 0.3rem;
   }
 
-  /* Mittel */
   h3,
-  nav[aria-label="Main navigation"] #navlist a,
-  #photo .tabs-wrapper label[role="tab"],
-  button {
-    font-size: var(--size-md);
-  }
+nav[aria-label="Main navigation"] #navlist a,
+.tabs-wrapper label[role="tab"],
+button {
+  font-size: var(--size-md);
+}
 }
 
 /* Desktop: Korrekte Einrückung (Seitenabstände) */
@@ -319,8 +318,9 @@ nav {
   .tabs-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
-    margin-block: 1rem;
+   /* margin-block: 0.5rem;*/
     font-family: "Clash Display";
 
     & input[type="radio"] {
@@ -403,10 +403,6 @@ nav {
 #ux {
   box-sizing: border-box;
 
-  & h2 {
-    font-family: "Clash Display";
-  }
-
   & input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -421,7 +417,7 @@ nav {
     gap: 1rem;
     justify-content: center;
     align-items: baseline;
-    margin-block: 1rem;
+    /*margin-block: 0.5rem;*/
     font-family: "Clash Display";
 
     & label[role="tab"] {
@@ -441,7 +437,7 @@ nav {
         border-radius: 0.2em;
         transform: rotate(-1deg);
         z-index: -1;
-        transition: background .2s ease, transform .2s ease;
+        transition: none;
       }
 
       &:hover::before { background: rgba(255, 255, 255, 0.95); }
@@ -555,10 +551,6 @@ nav {
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.03);
-      }
     }
 
     & figcaption {
@@ -993,6 +985,7 @@ footer {
     background-position: center;
   }
 }
+
 /* ======================================================
    🖥️ Back to TOP
 ====================================================== */
