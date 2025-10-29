@@ -403,6 +403,7 @@ nav {
 #ux {
   box-sizing: border-box;
 
+  /* Tabs */
   & input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -417,7 +418,6 @@ nav {
     gap: 1rem;
     justify-content: center;
     align-items: baseline;
-    /*margin-block: 0.5rem;*/
     font-family: "Clash Display";
 
     & label[role="tab"] {
@@ -437,12 +437,9 @@ nav {
         border-radius: 0.2em;
         transform: rotate(-1deg);
         z-index: -1;
-        transition: none;
       }
 
-      &:hover::before {
-        background: rgba(255, 255, 255, 0.95);
-      }
+      &:hover::before { background: rgba(255, 255, 255, 0.95); }
 
       &:focus-visible {
         outline: 2px solid rgba(168, 204, 255, 0.8);
@@ -451,7 +448,7 @@ nav {
     }
   }
 
-  & .tab-images>section {
+  & .tab-images > section {
     display: none;
     gap: 1rem;
     grid-template-columns: 1fr;
@@ -472,7 +469,30 @@ nav {
     text-align: center;
     border: 8px solid #fff;
     box-sizing: border-box;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .08), 0 0 15px rgba(168, 204, 255, .25);
+    box-shadow:
+      0 6px 12px rgba(0, 0, 0, .08),
+      0 0 15px rgba(168, 204, 255, .25);
+
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, .45);
+      backdrop-filter: blur(6px) saturate(110%);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &:active::after,
+    &:focus::after,
+    &:focus-within::after {
+      opacity: 1;
+    }
 
     & h3 {
       font-family: "Clash Display";
@@ -484,31 +504,56 @@ nav {
       backdrop-filter: blur(8px);
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
-
       display: inline-flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      z-index: 3;
+      transition: opacity .25s ease;
+    }
+
+    & p.descr {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #000;
+      padding: 1rem;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity .3s ease;
+    }
+
+    /* Tap: Titel ausblenden, Text zeigen */
+    &:active,
+    &:focus,
+    &:focus-within {
+      & h3 { opacity: 0; }
+      & p.descr { opacity: 1; }
     }
   }
 }
 
-#uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
-#uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
+/* Tabs aktivieren */
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"]::before {
   background: rgba(168, 204, 255, 0.95);
   transform: rotate(-1.5deg);
 }
 
-#uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
-#uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"] {
   font-weight: 500;
 }
 
-#uxtab1:checked~.tab-images #uxpanel1,
-#uxtab2:checked~.tab-images #uxpanel2 {
+#uxtab1:checked ~ .tab-images #uxpanel1,
+#uxtab2:checked ~ .tab-images #uxpanel2 {
   display: grid;
 }
-
 
 /* ======================================================
    🎨 INSPIRATION
@@ -1165,4 +1210,4 @@ footer {
     align-self: center;
   }
 }
-}
+}}
