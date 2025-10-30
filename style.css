@@ -439,7 +439,9 @@ nav {
         z-index: -1;
       }
 
-      &:hover::before { background: rgba(255, 255, 255, 0.95); }
+      &:hover::before {
+        background: rgba(255, 255, 255, 0.95);
+      }
 
       &:focus-visible {
         outline: 2px solid rgba(168, 204, 255, 0.8);
@@ -448,7 +450,7 @@ nav {
     }
   }
 
-  & .tab-images > section {
+  & .tab-images>section {
     display: none;
     gap: 1rem;
     grid-template-columns: 1fr;
@@ -532,26 +534,31 @@ nav {
     &:active,
     &:focus,
     &:focus-within {
-      & h3 { opacity: 0; }
-      & p.descr { opacity: 1; }
+      & h3 {
+        opacity: 0;
+      }
+
+      & p.descr {
+        opacity: 1;
+      }
     }
   }
 }
 
 /* Tabs aktivieren */
-#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"]::before,
-#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"]::before {
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
   background: rgba(168, 204, 255, 0.95);
   transform: rotate(-1.5deg);
 }
 
-#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"],
-#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"] {
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
   font-weight: 500;
 }
 
-#uxtab1:checked ~ .tab-images #uxpanel1,
-#uxtab2:checked ~ .tab-images #uxpanel2 {
+#uxtab1:checked~.tab-images #uxpanel1,
+#uxtab2:checked~.tab-images #uxpanel2 {
   display: grid;
 }
 
@@ -842,15 +849,15 @@ footer {
     }
   }
 
-    main p,
-    section p,
-    article p {
-      max-width: 70ch;
-      text-wrap: pretty;
-      overflow-wrap: anywhere;
-      hyphens: auto;
-    }
-  
+  main p,
+  section p,
+  article p {
+    max-width: 70ch;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
   main,
   header,
   nav,
@@ -961,6 +968,7 @@ footer {
     padding-inline: var(--space-x);
     box-sizing: border-box;
   }
+
   /* ======================================================
    🖥️ Photography Portolio
 ====================================================== */
@@ -1052,6 +1060,30 @@ footer {
       border-width: 6px;
       background-size: cover;
       background-position: center;
+
+      /* Hover: nur Scale + Glow (wie gehabt) */
+      transition: transform .35s ease, box-shadow .35s ease;
+
+      &:hover {
+        transform: scale(1.03);
+        position: relative;
+        z-index: 5;
+        box-shadow:
+          0 0 15px rgba(168, 204, 255, 0.5),
+          0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      & p.descr {
+        position: absolute;
+        inset: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(36ch, 90%);
+        text-align: center;
+        z-index: 2;
+        /* über dem Blur */
+      }
     }
   }
 
@@ -1168,46 +1200,47 @@ footer {
     }
   }
 
-    /* ======================================================
+  /* ======================================================
    🖥️ Say Hi - Contact
 ====================================================== */
-#sayhi {
-  max-width: var(--maxw-lg);
-  padding-inline: var(--space-x);
-  box-sizing: border-box;
-
-  & p {
-    max-width: 720px;
-
-  & form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    gap: 1rem;
-    margin-inline: auto;
+  #sayhi {
+    max-width: var(--maxw-lg);
+    padding-inline: var(--space-x);
     box-sizing: border-box;
-  }
 
-  & label {
-    font-weight: 500;
-    width: 100%;
-    text-align: left;
-  }
+    & p {
+      max-width: 720px;
 
-  & input,
-  & textarea,
-  & button {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-inline: auto;
+        box-sizing: border-box;
+      }
 
-  & textarea {
-    resize: vertical;
-  }
+      & label {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
 
-  & button {
-    margin-top: 0.8rem;
-    align-self: center;
+      & input,
+      & textarea,
+      & button {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      & textarea {
+        resize: vertical;
+      }
+
+      & button {
+        margin-top: 0.8rem;
+        align-self: center;
+      }
+    }
   }
 }
-}}
