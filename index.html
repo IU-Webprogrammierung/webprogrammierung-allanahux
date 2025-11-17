@@ -8,14 +8,18 @@
       content="Allanah Diederichsen. Photographer and UX Designer. Portfolio, projects and inspirations."
     />
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23a8ccff'>❀</text></svg>">
+    <link rel="stylesheet" href="style.css" />
+    <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns%3D'http://www.w3.org/2000/svg' viewBox%3D'0 0 32 32'%3E%3Ctext x%3D'50%25' y%3D'50%25' text-anchor%3D'middle' dominant-baseline%3D'central' font-size%3D'26' fill%3D'%2380c7ff'%3E%E2%9D%80%3C/text%3E%3C/svg%3E"
+  />
+  
 
     <title>Allanah • Photography & UX Design</title>
-    
   </head>
 
   <body id="top">
+    <!-- Back-to-top -->
     <a href="#top" id="backToTop" aria-label="Nach oben scrollen">
       <img
         src="assets/vectors/up.svg"
@@ -26,6 +30,8 @@
         height="20"
       />
     </a>
+
+    <!-- HEADER -->
     <header>
       <p class="logo">Allanah Diederichsen</p>
 
@@ -34,14 +40,16 @@
         <span class="and" aria-hidden="true">&amp;</span>
         <span class="h1ux">ux designer</span>
       </h1>
+
       <img
         id="ally"
         src="assets/images/ally.webp"
-        alt="Introductory picture of Allanah a Phototgrapher & UX Designer, waring a vest and carrying her camera and bag. In the background is the Neckar river."
+        alt="Introductory picture of Allanah, a photographer & UX designer, wearing a vest and carrying her camera and bag. In the background is the Neckar river."
         width="800"
         height="1000"
         decoding="async"
-        fetchpriority="high">
+        fetchpriority="high"
+      />
 
       <nav aria-label="Main navigation">
         <ul id="navlist">
@@ -50,598 +58,601 @@
           <li><a href="#ux">ux projects</a></li>
           <li><a href="#inspo">inspirations</a></li>
           <li><a href="#sayhi">say hi</a></li>
-          <!--soll ein Button unter den Menüpunkten werden, mit Blümchen-->
         </ul>
       </nav>
     </header>
 
-    <!-----------------------------------------------------About me-->
-    <section id="about" aria-labelledby="about-heading">
-      <h2>Hi there!</h2>
-      <p>
-        I’m Allanah, 26, originally from the north of Germany near Hamburg. In
-        2022 I moved to Mannheim to be with my partner, and over time I
-        discovered a new sense of home in the south. Photography has always been
-        part of my world. My grandfather collected cameras and passed on his
-        love for capturing moments. As a teenager I occasionally experimented
-        with his old analog models, but it wasn’t until 2024 that I truly dared
-        to step into photography myself. Since then, it has become the way I
-        slow down, notice details, and capture the subtle atmosphere of a
-        moment. Design is the other path I’ve chosen. In 2022, I began studying
-        User Experience Design, fascinated by the balance between creativity,
-        psychology, and human needs. Today, both photography and design shape
-        how I see the world – and how I create within it.
-      </p>
+    <main>
+      <!-----------------------------------------------------About me-->
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">Hi there!</h2>
+        <p>
+          I’m Allanah, 26, originally from the north of Germany near Hamburg. In
+          2022 I moved to Mannheim to be with my partner, and over time I
+          discovered a new sense of home in the south. Photography has always
+          been part of my world. My grandfather collected cameras and passed on
+          his love for capturing moments. As a teenager I occasionally
+          experimented with his old analog models, but it wasn’t until 2024 that
+          I truly dared to step into photography myself. Since then, it has
+          become the way I slow down, notice details, and capture the subtle
+          atmosphere of a moment. Design is the other path I’ve chosen. In 2022,
+          I began studying User Experience Design, fascinated by the balance
+          between creativity, psychology, and human needs. Today, both
+          photography and design shape how I see the world – and how I create
+          within it.
+        </p>
 
-      <section aria-labelledby="facts-heading">
-        <h3 id="facts-heading">What I like capturing the most</h3>
-        <ul>
-          <li>Cafés</li>
-          <li>Interior design</li>
-          <li>Lifestyle</li>
-          <li>Architecture</li>
-        </ul>
+        <section aria-labelledby="facts-heading">
+          <h3 id="facts-heading">What I like capturing the most</h3>
+          <ul>
+            <li>Cafés</li>
+            <li>Interior design</li>
+            <li>Lifestyle</li>
+            <li>Architecture</li>
+          </ul>
 
-        <h3>My creative tools</h3>
-        <ul>
-          <li>Figma</li>
-          <li>Lightroom</li>
-          <li>Photoshop</li>
-        </ul>
+          <h3>My creative tools</h3>
+          <ul>
+            <li>Figma</li>
+            <li>Lightroom</li>
+            <li>Photoshop</li>
+          </ul>
 
-        <h3>What fills my heart</h3>
-        <ul>
-          <li>Sunsets</li>
-          <li>Acai bowls</li>
-          <li>Running</li>
-          <li>Cinnamon</li>
-          <li>Exploring new places</li>
-          <li>My dog Tilda</li>
-        </ul>
-      </section>
-    </section>
-
-    <!---------------------------------------------------Photography Portfolio-->
-    <section id="photo">
-      <h2>PHOTOGRAPHY PORTFOLIO</h2>
-
-      <!-- Tabs -->
-      <section
-        class="tabs-wrapper"
-        role="tablist"
-        aria-label="Portfolio Kategorien"
-      >
-        <input type="radio" name="tab" id="tab1" checked />
-        <label
-          for="tab1"
-          id="label1"
-          role="tab"
-          aria-controls="panel1"
-          tabindex="0"
-          >Small Business</label
-        >
-
-        <input type="radio" name="tab" id="tab2" />
-        <label
-          for="tab2"
-          id="label2"
-          role="tab"
-          aria-controls="panel2"
-          tabindex="0"
-          >Architecture</label
-        >
-
-        <input type="radio" name="tab" id="tab3" />
-        <label
-          for="tab3"
-          id="label3"
-          role="tab"
-          aria-controls="panel3"
-          tabindex="0"
-          >Hospitality</label
-        >
-      </section>
-
-      <!-- Panels -->
-      <section class="tab-images">
-        <section id="panel1" role="tabpanel" aria-labelledby="label1">
-          <img
-            src="assets/images/tasse.webp"
-            alt="Ceramic cup product shoot with a small business named Drip drop ceramics"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/tasse2.webp"
-            alt="Hand holding a ceramic cup in a instagram content shooting environment"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/drip.webp"
-            alt="Many ceramic pieces on a shelve"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/drip2.webp"
-            alt="Ceramic cup in a brown sweater"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/drip3.webp"
-            alt="Many ceramic cups in a close up shot"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/drip4.webp"
-            alt="Ceramic lady holding one of her handmade cups in her hand"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-        </section>
-
-        <section id="panel2" role="tabpanel" aria-labelledby="label2">
-          <img
-            src="assets/images/a4.webp"
-            alt="Christuskirche in Mannheim"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/a6.webp"
-            alt="Achitecural above view picture  of the huge lobby of the Marina Bay Sands Hotel in Singapore"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/a5.webp"
-            alt="Red houses architecture of London "
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            class="wide"
-            src="assets/images/a3.webp"
-            alt="View over the old Fachwerkhäuser of Schiltach"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/a1.webp"
-            alt="Architectural patterns from a museum ceiling in London"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/a2.webp"
-            alt="Dark vibes in a museum in London, reflections from the light and the ceiling which shows a special pattern"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-        </section>
-
-        <section id="panel3" role="tabpanel" aria-labelledby="label3">
-          <img
-            src="assets/images/cafe1.webp"
-            alt="Cafe place showing table and chairs in front of a La Marzocca coffee machine"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/cafe2.webp"
-            alt="Cake place in the Allgäu display a variety of cakes"
-            loading="lazy"
-          />
-          <img
-            src="assets/images/cafe3.webp"
-            alt="Terrace of a Cafe/Bar in Mannheim called Dolce Amaro"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/cafe4.webp"
-            alt="Terrace of a Cafe/Bar in Mannheim where people sit and in the background a water fountain"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/cafe5.webp"
-            alt="Chairs and table of a Hotel in London with a Markise"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
-          <img
-            src="assets/images/cafe6.webp"
-            alt="Tapas Place in London where people sit outside enjoying their time"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            width="800"
-            height="600"
-          />
+          <h3>What fills my heart</h3>
+          <ul>
+            <li>Sunsets</li>
+            <li>Acai bowls</li>
+            <li>Running</li>
+            <li>Cinnamon</li>
+            <li>Exploring new places</li>
+            <li>My dog Tilda</li>
+          </ul>
         </section>
       </section>
-    </section>
 
-    <!-------------------------------------------------UX PROJECTS-->
-    <section id="ux">
-      <h2>UX PROJECTS</h2>
+      <!---------------------------------------------------Photography Portfolio-->
+      <section id="photo">
+        <h2>PHOTOGRAPHY PORTFOLIO</h2>
 
-      <input type="radio" name="uxtab" id="uxtab1" checked />
-      <input type="radio" name="uxtab" id="uxtab2" />
-
-      <!-- Tabs -->
-      <section
-        class="tabs-wrapper"
-        role="tablist"
-        aria-label="UX design categories"
-      >
-        <label
-          for="uxtab1"
-          id="uxlabel1"
-          role="tab"
-          tabindex="0"
-          aria-controls="uxpanel1"
-          aria-selected="true"
+        <!-- Tabs -->
+        <section
+          class="tabs-wrapper"
+          role="tablist"
+          aria-label="Portfolio categories"
         >
-          Mobile Design
-        </label>
-        <label
-          for="uxtab2"
-          id="uxlabel2"
-          role="tab"
-          tabindex="0"
-          aria-controls="uxpanel2"
-          aria-selected="false"
-        >
-          Web Design
-        </label>
-      </section>
-
-      <!-- Panels -->
-      <section class="tab-images">
-        <!-- Panel 1: Mobile Design -->
-        <section id="uxpanel1" role="tabpanel" aria-labelledby="uxlabel1">
-          <article
-            class="uxproject"
+          <input type="radio" name="tab" id="tab1" checked />
+          <label
+            for="tab1"
+            id="label1"
+            role="tab"
+            aria-controls="panel1"
             tabindex="0"
-            aria-label="Open project: Pilates App Design"
-            style="background-image: url('assets/images/mockupreforme.webp')"
+            >Small Business</label
           >
-            <h3>Pilates Booking App • Reformé</h3>
-            <p class="descr">
-              This project explores a concept app for the new Pilates studio
-              “Reformé Active” in Mannheim. It promotes movement, balance, and
-              mindful living. The app streamlines class bookings and improves
-              the overall user journey.
-            </p>
-          </article>
 
-          <article
-            class="uxproject"
+          <input type="radio" name="tab" id="tab2" />
+          <label
+            for="tab2"
+            id="label2"
+            role="tab"
+            aria-controls="panel2"
             tabindex="0"
-            aria-label="Open project: Gardening App Design"
-            style="background-image: url('assets/images/mockupbee.webp')"
+            >Architecture</label
           >
-            <h3>Gardening Community • Bee friends</h3>
-            <p class="descr">
-              Bee Friends is a community app that inspires mindful gardening and
-              supports bees. Through small actions and weekly challenges, users
-              grow together and help nature thrive.
-            </p>
-          </article>
 
-          <article
-            class="uxproject"
+          <input type="radio" name="tab" id="tab3" />
+          <label
+            for="tab3"
+            id="label3"
+            role="tab"
+            aria-controls="panel3"
             tabindex="0"
-            aria-label="Open project: Bike Monitoring App Design"
-            style="background-image: url('assets/images/mockupbike.webp')"
+            >Hospitality</label
           >
-            <h3>Bike Monitoring • SpinSafe</h3>
-            <p class="descr">
-              SpinSafe offers a smart solution to improve both comfort and bike
-              safety. Designed for road cyclists, it detects issues early and
-              helps prevent unexpected failures.
-            </p>
-          </article>
         </section>
 
-        <!-- Panel 2: Web Design -->
-        <section id="uxpanel2" role="tabpanel" aria-labelledby="uxlabel2">
-          <article
-            class="uxproject"
-            tabindex="0"
-            aria-label="Open project: Hotel Web Design"
-            style="background-image: url('assets/images/mockuphotel.webp')"
-          >
-            <h3>Hotel • Villa Limoncina</h3>
-            <p class="descr">
-              Villa Limoncina is a serene retreat on a lemon farm in the hills
-              of Tuscany. Surrounded by citrus gardens and soft breezes, guests
-              reconnect with calm and creativity. The website reflects this
-              refreshing atmosphere through light design and a sense of balance.
-            </p>
-          </article>
+        <!-- Panels -->
+        <section class="tab-images">
+          <section id="panel1" role="tabpanel" aria-labelledby="label1">
+            <img
+              src="assets/images/tasse.webp"
+              alt="Ceramic cup product shoot with the small business Drip Drop Ceramics."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/tasse2.webp"
+              alt="Hand holding a ceramic cup in an Instagram content shooting environment."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/drip.webp"
+              alt="Many ceramic pieces on a shelf."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/drip2.webp"
+              alt="Ceramic cup in a brown sweater."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/drip3.webp"
+              alt="Close-up of many ceramic cups."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/drip4.webp"
+              alt="Ceramic artist holding one of her handmade cups."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+          </section>
 
-          <article
-            class="uxproject"
-            tabindex="0"
-            aria-label="Open project: Fleet Management Software Webdesign"
-            style="background-image: url('assets/images/avanext.webp')"
-          >
-            <h3>Fleet Management • avanext</h3>
-            <p class="descr">
-              Villa Limoncina is a serene retreat on a lemon farm in the hills
-              of Tuscany. Surrounded by citrus gardens and soft breezes, guests
-              reconnect with calm and creativity. The website reflects this
-              refreshing atmosphere through light design and a sense of balance.
-            </p>
-          </article>
+          <section id="panel2" role="tabpanel" aria-labelledby="label2">
+            <img
+              src="assets/images/a4.webp"
+              alt="Christuskirche in Mannheim."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/a6.webp"
+              alt="Architectural top-down view of the lobby of Marina Bay Sands Hotel in Singapore."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/a5.webp"
+              alt="Red brick houses and architecture in London."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              class="wide"
+              src="assets/images/a3.webp"
+              alt="View over the old timber-framed houses of Schiltach."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/a1.webp"
+              alt="Architectural patterns from a museum ceiling in London."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/a2.webp"
+              alt="Moody museum interior in London with reflections of patterned light."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+          </section>
+
+          <section id="panel3" role="tabpanel" aria-labelledby="label3">
+            <img
+              src="assets/images/cafe1.webp"
+              alt="Café interior with table and chairs in front of a La Marzocco coffee machine."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/cafe2.webp"
+              alt="Cake display in the Allgäu with a variety of cakes."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/cafe3.webp"
+              alt="Terrace of a café/bar in Mannheim called Dolce Amaro."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/cafe4.webp"
+              alt="Terrace of a café/bar in Mannheim with people sitting and a water fountain in the background."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/cafe5.webp"
+              alt="Chairs and table of a hotel in London with an awning."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+            <img
+              src="assets/images/cafe6.webp"
+              alt="Tapas place in London where people sit outside enjoying their time."
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="800"
+              height="600"
+            />
+          </section>
         </section>
       </section>
-    </section>
 
-    <!-------------------------------------------------INSPIRATION-->
+      <!-------------------------------------------------UX PROJECTS-->
+      <section id="ux">
+        <h2>UX PROJECTS</h2>
 
-    <section id="inspo" aria-labelledby="inspo-title">
-      <h2 id="inspo-title">INSPIRATIONS</h2>
+        <input type="radio" name="uxtab" id="uxtab1" checked />
+        <input type="radio" name="uxtab" id="uxtab2" />
 
-      <p role="note" class="inspo-text">
-        I find inspiration in many small things around me. In the rhythm of
-        everyday life — the pattern of bricks on a wall, the texture of a
-        surface, and most of all, in colors. The soft glow of a sunset, the deep
-        tones of the forest, the vibrant green of a golf course. I’m fascinated
-        by the way light moves — how it slips between objects, lands on walls,
-        and meets the shadows. These moments, often fleeting, make me pause and
-        look closer. They remind me how much beauty lives in the ordinary,
-        waiting to be seen.
-      </p>
+        <!-- Tabs -->
+        <section
+          class="tabs-wrapper"
+          role="tablist"
+          aria-label="UX design categories"
+        >
+          <label
+            for="uxtab1"
+            id="uxlabel1"
+            role="tab"
+            tabindex="0"
+            aria-controls="uxpanel1"
+          >
+            Mobile Design
+          </label>
+          <label
+            for="uxtab2"
+            id="uxlabel2"
+            role="tab"
+            tabindex="0"
+            aria-controls="uxpanel2"
+          >
+            Web Design
+          </label>
+        </section>
 
-      <section class="inspo-gallery">
-        <ul>
-          <li class="tall">
-            <figure>
-              <img
-                src="assets/images/inspo1.webp"
-                alt="Lonely boat in the sea"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>colors</figcaption>
-            </figure>
-          </li>
-          <li class="small">
-            <figure>
-              <img
-                src="assets/images/inspo4_1.webp"
-                alt="Grain meadow flowing in the wind"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>motion</figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="assets/images/light1_1.webp"
-                alt="Interior Design glowing in sunlight"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>light and shadows</figcaption>
-            </figure>
-          </li>
-          <li class="small">
-            <figure>
-              <img
-                src="assets/images/light2.webp"
-                alt="Sun rays peaking through the train window"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>light and shadows</figcaption>
-            </figure>
-          </li>
-          <li class="tall">
-            <figure>
-              <img
-                src="assets/images/light3.webp"
-                alt="Scooter in sunlight"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>street photography</figcaption>
-            </figure>
-          </li>
-          <li class="tall">
-            <figure>
-              <img
-                src="assets/images/street5.webp"
-                alt="Architectural stairs design"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>street architecture</figcaption>
-            </figure>
-          </li>
-          <li class="tall">
-            <figure>
-              <img
-                src="assets/images/street6.webp"
-                alt="Berlin TV Tower reflections"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>reflections</figcaption>
-            </figure>
-          </li>
-          <li class="tall">
-            <figure>
-              <img
-                src="assets/images/sunset.webp"
-                alt="Sunset reflections on the ocean"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>reflections</figcaption>
-            </figure>
-          </li>
-          <li class="small">
-            <figure>
-              <img
-                src="assets/images/red.webp"
-                alt="light on red jalousien"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-              />
-              <figcaption>light & texture</figcaption>
-            </figure>
-          </li>
-        </ul>
+        <!-- Panels -->
+        <section class="tab-images">
+          <!-- Panel 1: Mobile Design -->
+          <section id="uxpanel1" role="tabpanel" aria-labelledby="uxlabel1">
+            <article
+              class="uxproject"
+              tabindex="0"
+              aria-label="Open project: Pilates app design"
+              style="background-image: url('assets/images/mockupreforme.webp')"
+            >
+              <h3>Pilates Booking App • Reformé</h3>
+              <p class="descr">
+                This project explores a concept app for the new Pilates studio
+                “Reformé Active” in Mannheim. It promotes movement, balance, and
+                mindful living. The app streamlines class bookings and improves
+                the overall user journey.
+              </p>
+            </article>
+
+            <article
+              class="uxproject"
+              tabindex="0"
+              aria-label="Open project: Gardening app design"
+              style="background-image: url('assets/images/mockupbee.webp')"
+            >
+              <h3>Gardening Community • Bee Friends</h3>
+              <p class="descr">
+                Bee Friends is a community app that inspires mindful gardening
+                and supports bees. Through small actions and weekly challenges,
+                users grow together and help nature thrive.
+              </p>
+            </article>
+
+            <article
+              class="uxproject"
+              tabindex="0"
+              aria-label="Open project: Bike monitoring app design"
+              style="background-image: url('assets/images/mockupbike.webp')"
+            >
+              <h3>Bike Monitoring • SpinSafe</h3>
+              <p class="descr">
+                SpinSafe offers a smart solution to improve both comfort and
+                bike safety. Designed for road cyclists, it detects issues early
+                and helps prevent unexpected failures.
+              </p>
+            </article>
+          </section>
+
+          <!-- Panel 2: Web Design -->
+          <section id="uxpanel2" role="tabpanel" aria-labelledby="uxlabel2">
+            <article
+              class="uxproject"
+              tabindex="0"
+              aria-label="Open project: Hotel web design"
+              style="background-image: url('assets/images/mockuphotel.webp')"
+            >
+              <h3>Hotel • Villa Limoncina</h3>
+              <p class="descr">
+                Villa Limoncina is a serene retreat on a lemon farm in the hills
+                of Tuscany. Surrounded by citrus gardens and soft breezes,
+                guests reconnect with calm and creativity. The website reflects
+                this refreshing atmosphere through light design and a sense of
+                balance.
+              </p>
+            </article>
+
+            <article
+              class="uxproject"
+              tabindex="0"
+              aria-label="Open project: Fleet management software web design"
+              style="background-image: url('assets/images/avanext.webp')"
+            >
+              <h3>Fleet Management • avanext</h3>
+              <p class="descr">
+                avanext is a concept for modern fleet management software,
+                designed to simplify complex data and support efficient,
+                everyday decision-making for mobility teams.
+              </p>
+            </article>
+          </section>
+        </section>
       </section>
-    </section>
 
-    <!-------------------------------------------------CONTACT-->
+      <!-------------------------------------------------INSPIRATION-->
+      <section id="inspo" aria-labelledby="inspo-title">
+        <h2 id="inspo-title">INSPIRATIONS</h2>
 
-    <section id="sayhi">
-      <h2>Say hi :)</h2>
-      <p>
-        Feel free to reach out — whether it’s just to connect, to talk about a
-        photoshoot, or to discuss a creative project. I’m always happy to hear
-        from you.
-      </p>
-      <form action="#sayhi" method="post" autocomplete="on">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          autocomplete="name"
-        />
-    
-        <label for="email">E-Mail</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autocomplete="email"
-        />
-    
-        <label for="subject">Subject</label>
-        <input
-          type="text"
-          id="subject"
-          name="subject"
-          autocomplete="off"
-        />
-    
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          required
-          autocomplete="off"
-        ></textarea>
-    
-        <span class="sendwrap">
+        <p role="note" class="inspo-text">
+          I find inspiration in many small things around me. In the rhythm of
+          everyday life — the pattern of bricks on a wall, the texture of a
+          surface, and most of all, in colors. The soft glow of a sunset, the
+          deep tones of the forest, the vibrant green of a golf course. I’m
+          fascinated by the way light moves — how it slips between objects,
+          lands on walls, and meets the shadows. These moments, often fleeting,
+          make me pause and look closer. They remind me how much beauty lives in
+          the ordinary, waiting to be seen.
+        </p>
+
+        <section class="inspo-gallery">
+          <ul>
+            <li class="tall">
+              <figure>
+                <img
+                  src="assets/images/inspo1.webp"
+                  alt="Lonely boat in the sea."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>colors</figcaption>
+              </figure>
+            </li>
+            <li class="small">
+              <figure>
+                <img
+                  src="assets/images/inspo4_1.webp"
+                  alt="Grain meadow flowing in the wind."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>motion</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img
+                  src="assets/images/light1_1.webp"
+                  alt="Interior design glowing in sunlight."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>light and shadows</figcaption>
+              </figure>
+            </li>
+            <li class="small">
+              <figure>
+                <img
+                  src="assets/images/light2.webp"
+                  alt="Sun rays peeking through a train window."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>light and shadows</figcaption>
+              </figure>
+            </li>
+            <li class="tall">
+              <figure>
+                <img
+                  src="assets/images/light3.webp"
+                  alt="Scooter in sunlight."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>street photography</figcaption>
+              </figure>
+            </li>
+            <li class="tall">
+              <figure>
+                <img
+                  src="assets/images/street5.webp"
+                  alt="Architectural stair design."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>street architecture</figcaption>
+              </figure>
+            </li>
+            <li class="tall">
+              <figure>
+                <img
+                  src="assets/images/street6.webp"
+                  alt="Berlin TV tower reflections."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>reflections</figcaption>
+              </figure>
+            </li>
+            <li class="tall">
+              <figure>
+                <img
+                  src="assets/images/sunset.webp"
+                  alt="Sunset reflections on the ocean."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>reflections</figcaption>
+              </figure>
+            </li>
+            <li class="small">
+              <figure>
+                <img
+                  src="assets/images/red.webp"
+                  alt="Light falling on red blinds."
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                />
+                <figcaption>light & texture</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+      </section>
+
+      <!-------------------------------------------------CONTACT-->
+      <section id="sayhi">
+        <h2>Say hi :)</h2>
+        <p>
+          Feel free to reach out — whether it’s just to connect, to talk about a
+          photoshoot, or to discuss a creative project. I’m always happy to hear
+          from you.
+        </p>
+        <form action="#sayhi" method="post" autocomplete="on">
+          <label for="name">Name</label>
           <input
-            type="checkbox"
-            id="sentflag"
-            class="sendtoggle"
-            aria-label="Send form"
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
           />
-          <button type="button" aria-live="polite">
-            <span class="default">Send</span>
-            <span class="success">Done ♡</span>
-          </button>
-        </span>
-      </form>
-    </section>
 
+          <label for="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            autocomplete="off"
+          />
+
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            autocomplete="off"
+          ></textarea>
+
+          <span class="sendwrap">
+            <input
+              type="checkbox"
+              id="sentflag"
+              class="sendtoggle"
+              aria-label="Send form"
+            />
+            <button type="button" aria-live="polite">
+              <span class="default">Send</span>
+              <span class="success">Done ♡</span>
+            </button>
+          </span>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
-      <nav aria-label="Footer Navigation">
+      <nav aria-label="Footer navigation">
         <ul>
           <li class="left">
             <a href="legal.html">Legal</a>
@@ -655,12 +666,12 @@
             >
               <img
                 src="assets/vectors/insta.svg"
-                alt="Instagram"
+                alt=""
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
-                width="800"
-                height="600"
+                width="32"
+                height="32"
               />
             </a>
             <a
@@ -671,12 +682,12 @@
             >
               <img
                 src="assets/vectors/linkedin.svg"
-                alt="LinkedIn"
+                alt=""
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
-                width="800"
-                height="600"
+                width="32"
+                height="32"
               />
             </a>
           </li>

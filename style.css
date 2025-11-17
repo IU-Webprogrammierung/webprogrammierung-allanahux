@@ -1,7 +1,6 @@
 /* ======================================================
-   🔤 SCHRIFTEN
+   🔤 FONTS
 ====================================================== */
-/*Logo Font*/
 @font-face {
   font-family: "Pencerio";
   src: url("assets/fonts/Pencerio-Hairline.woff2") format("woff2"),
@@ -37,33 +36,30 @@
 }
 
 /* ======================================================
-   🌐 BASIS + VARIABLEN
+   🌐 BASE / VARIABLES
 ====================================================== */
 :root {
   --space-x: 1.5rem;
-  /* linker/rechter Seitenrand */
   --space-y: 2rem;
-  /* vertikaler Standardabstand */
   --maxw-md: 70ch;
-  /* Tablet */
   --maxw-lg: 80ch;
-  /* Desktop */
   --size-sm: 1rem;
   --size-md: 1.125rem;
   --size-lg: 1.5rem;
 }
 
-html,
-body {
+html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-snap-type: y proximity;  
   scroll-behavior: smooth;
   font-size: var(--size-sm);
   line-height: 1.6;
 }
 
 body {
+  margin: 0;
   padding: var(--space-y) var(--space-x);
   background-image: url("assets/images/paper3.webp");
   background-repeat: repeat;
@@ -93,7 +89,18 @@ body {
   }
 }
 
-/* Desktop: Korrekte Einrückung (Seitenabstände) */
+
+header,
+#about,
+#photo,
+#ux,
+#inspo,
+#sayhi,
+#footer {
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+
 section,
 article,
 main,
@@ -104,18 +111,20 @@ footer {
   padding-top: 0;
   padding-bottom: var(--space-y);
 }
-img { 
+
+img {
   display: block;
   max-width: 100%;
-  height: auto;    
+  height: auto;
 }
 
 /* ======================================================
-   🔝 LOGO Leiste
+   🔝 LOGO BAR
 ====================================================== */
 .logo {
   position: fixed;
-  top: 0; left: 0;
+  inset-inline: 0;
+  top: 0;
   width: 100%;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -128,7 +137,7 @@ img {
 }
 
 /* ======================================================
-   🏷 HEADER (Photographer & UX Designer)
+   🏷 HEADER
 ====================================================== */
 header {
   position: relative;
@@ -149,7 +158,7 @@ header {
     width: 60%;
     border-radius: 40px;
     height: auto;
-    border: 8px solid white;
+    border: 8px solid #fff;
     margin-top: 3rem;
   }
 
@@ -182,7 +191,7 @@ header {
 }
 
 /* ======================================================
-   🧭 NAVIGATION
+   🧭 MAIN NAVIGATION
 ====================================================== */
 nav {
   margin-top: 1.5rem;
@@ -216,7 +225,7 @@ nav {
           content: "";
           position: absolute;
           left: 0;
-          bottom: -0.10em;
+          bottom: -0.1em;
           width: 100%;
           height: 0.6em;
           background: rgba(168, 204, 255, 0.8);
@@ -255,7 +264,7 @@ nav {
           box-shadow:
             0 0 12px rgba(168, 204, 255, 0.35),
             0 0 24px rgba(168, 204, 255, 0.25);
-          font-family: "Clash Dislay", sans-serif;
+          font-family: "Clash Display", sans-serif;
           color: #000;
           text-decoration: none;
           transition: all 0.25s ease;
@@ -283,8 +292,6 @@ nav {
    💬 ABOUT
 ====================================================== */
 #about {
-  font-family: "Switzer", sans-serif;
-
   & p {
     font-weight: 400;
     text-align: justify;
@@ -324,7 +331,6 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    /* margin-block: 0.5rem;*/
     font-family: "Clash Display";
 
     & input[type="radio"] {
@@ -360,17 +366,16 @@ nav {
       }
     }
 
-    /* aktive Tabs */
-    & #tab1:checked+label::before,
-    & #tab2:checked+label::before,
-    & #tab3:checked+label::before {
+    & #tab1:checked + label::before,
+    & #tab2:checked + label::before,
+    & #tab3:checked + label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
 
-    & #tab1:checked+label,
-    & #tab2:checked+label,
-    & #tab3:checked+label {
+    & #tab1:checked + label,
+    & #tab2:checked + label,
+    & #tab3:checked + label {
       color: #111;
       font-weight: 500;
     }
@@ -393,7 +398,6 @@ nav {
     }
   }
 
-  /* Tabs sichtbar machen via :has */
   &:has(#tab1:checked) .tab-images #panel1,
   &:has(#tab2:checked) .tab-images #panel2,
   &:has(#tab3:checked) .tab-images #panel3 {
@@ -402,12 +406,11 @@ nav {
 }
 
 /* ======================================================
-   💎 UX-PROJEKTE
+   💎 UX PROJECTS
 ====================================================== */
 #ux {
   box-sizing: border-box;
 
-  /* Tabs */
   & input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -427,7 +430,7 @@ nav {
     & label[role="tab"] {
       position: relative;
       cursor: pointer;
-      transition: color .2s ease;
+      transition: color 0.2s ease;
       color: #111;
 
       &::before {
@@ -454,14 +457,13 @@ nav {
     }
   }
 
-  & .tab-images>section {
+  & .tab-images > section {
     display: none;
     gap: 1rem;
     grid-template-columns: 1fr;
     box-sizing: border-box;
   }
 
-  /* Karten */
   & .uxproject {
     height: 150px;
     min-height: 220px;
@@ -476,9 +478,8 @@ nav {
     border: 8px solid #fff;
     box-sizing: border-box;
     box-shadow:
-      0 6px 12px rgba(0, 0, 0, .08),
-      0 0 15px rgba(168, 204, 255, .25);
-
+      0 6px 12px rgba(0, 0, 0, 0.08),
+      0 0 15px rgba(168, 204, 255, 0.25);
     position: relative;
     overflow: hidden;
 
@@ -486,10 +487,10 @@ nav {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, .45);
+      background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(6px) saturate(110%);
       opacity: 0;
-      transition: opacity .25s ease;
+      transition: opacity 0.25s ease;
       pointer-events: none;
       z-index: 1;
     }
@@ -506,16 +507,16 @@ nav {
       color: #000;
       margin: 0;
       padding: 0.5rem 1.2rem;
-      background: rgba(255, 255, 255, .6);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(8px);
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: inline-flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       z-index: 3;
-      transition: opacity .25s ease;
+      transition: opacity 0.25s ease;
     }
 
     & p.descr {
@@ -531,7 +532,7 @@ nav {
       padding: 1rem;
       opacity: 0;
       z-index: 2;
-      transition: opacity .3s ease;
+      transition: opacity 0.3s ease;
     }
 
     &:active,
@@ -548,27 +549,26 @@ nav {
   }
 }
 
-#uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
-#uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"]::before {
   background: rgba(168, 204, 255, 0.95);
   transform: rotate(-1.5deg);
 }
 
-#uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
-#uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
+#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"] {
   font-weight: 500;
 }
 
-#uxtab1:checked~.tab-images #uxpanel1,
-#uxtab2:checked~.tab-images #uxpanel2 {
+#uxtab1:checked ~ .tab-images #uxpanel1,
+#uxtab2:checked ~ .tab-images #uxpanel2 {
   display: grid;
 }
 
 /* ======================================================
-   🎨 INSPIRATION
+   🎨 INSPIRATIONS
 ====================================================== */
 #inspo {
-
   & .inspo-text {
     border-radius: 1rem;
     text-wrap: pretty;
@@ -720,9 +720,9 @@ nav {
       0 0 25px rgba(168, 204, 255, 0.3);
     position: relative;
     display: inline-flex;
-align-items: center;
-justify-content: center;
-    min-width: 12rem; 
+    align-items: center;
+    justify-content: center;
+    min-width: 12rem;
     overflow: hidden;
 
     &:hover {
@@ -741,10 +741,12 @@ justify-content: center;
       align-items: center;
       justify-content: center;
       padding: 0 1.2rem;
-      white-space: nowrap; 
+      white-space: nowrap;
     }
 
-    & .success { visibility: hidden; }
+    & .success {
+      visibility: hidden;
+    }
   }
 
   & .sendwrap {
@@ -781,6 +783,7 @@ justify-content: center;
     visibility: visible;
   }
 }
+
 /* ======================================================
    FOOTER
 ====================================================== */
@@ -839,7 +842,7 @@ footer {
 }
 
 /* ======================================================
-   ⬆️ BACK TO TOP BUTTON
+   ⬆️ BACK TO TOP
 ====================================================== */
 #backToTop {
   position: fixed;
@@ -929,9 +932,7 @@ footer {
     box-sizing: border-box;
   }
 
-  /* ======================================================
-   🖥️ Startseite
-====================================================== */
+  /* HEADER LAYOUT */
   header {
     position: relative;
     display: grid;
@@ -960,13 +961,12 @@ footer {
       grid-row: 1;
       align-self: center;
       justify-self: start;
-      background: none;
       text-align: left;
       padding-top: 7rem;
 
       & #navlist {
         display: grid;
-        gap: .6rem;
+        gap: 0.6rem;
         margin: 0;
         justify-items: start;
 
@@ -975,7 +975,7 @@ footer {
         }
 
         & li:last-child {
-          margin-top: .9rem;
+          margin-top: 0.9rem;
           justify-self: center;
           text-align: center;
 
@@ -1022,9 +1022,7 @@ footer {
     }
   }
 
-  /* ======================================================
-   🖥️ About
-====================================================== */
+  /* ABOUT */
   #about {
     max-width: var(--maxw-lg);
     margin-inline: auto;
@@ -1032,10 +1030,7 @@ footer {
     box-sizing: border-box;
   }
 
-  /* ======================================================
-   🖥️ Photography Portolio
-====================================================== */
-
+  /* PHOTO */
   #photo {
     max-width: var(--maxw-lg);
     margin-inline: auto;
@@ -1053,7 +1048,7 @@ footer {
 
     .tab-images {
       & section {
-        max-width: none !important;
+        max-width: none;
         width: min(96vw, 1600px);
         position: relative;
         left: 50%;
@@ -1065,12 +1060,6 @@ footer {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      &:has(#tab1:checked) #panel1,
-      &:has(#tab2:checked) #panel2,
-      &:has(#tab3:checked) #panel3 {
-        display: grid;
-      }
-
       & img {
         width: 100%;
         height: auto;
@@ -1080,9 +1069,7 @@ footer {
     }
   }
 
-  /* ======================================================
-   🖥️ UX Projects
-====================================================== */
+  /* UX */
   #ux {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1098,8 +1085,8 @@ footer {
       gap: 3rem;
     }
 
-    & .tab-images>section {
-      max-width: none !important;
+    & .tab-images > section {
+      max-width: none;
       width: min(96vw, 1600px);
       position: relative;
       left: 50%;
@@ -1111,11 +1098,6 @@ footer {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    & #uxtab1:checked~.tab-images #uxpanel1,
-    & #uxtab2:checked~.tab-images #uxpanel2 {
-      display: grid;
-    }
-
     & .uxproject {
       width: 100%;
       min-height: 360px;
@@ -1123,8 +1105,7 @@ footer {
       border-width: 6px;
       background-size: cover;
       background-position: center;
-
-      transition: transform .35s ease, box-shadow .35s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
 
       &:hover {
         transform: scale(1.03);
@@ -1144,14 +1125,11 @@ footer {
         width: min(36ch, 90%);
         text-align: center;
         z-index: 2;
-        /* über dem Blur */
       }
     }
   }
 
-  /* ======================================================
-   🖥️ INSPIRATIONS
-====================================================== */
+  /* INSPIRATIONS */
   #inspo {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1242,10 +1220,6 @@ footer {
       grid-row: 9 / span 2;
     }
 
-    & .inspo-gallery figure {
-      margin: 0;
-    }
-
     & .inspo-gallery img {
       width: 100%;
       height: 100%;
@@ -1262,9 +1236,7 @@ footer {
     }
   }
 
-  /* ======================================================
-   🖥️ Say Hi - Contact
-====================================================== */
+  /* SAY HI */
   #sayhi {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1272,44 +1244,20 @@ footer {
 
     & p {
       max-width: 720px;
+    }
 
-      & form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-inline: auto;
-        box-sizing: border-box;
-      }
+    & form {
+      max-width: 100%;
+      margin-inline: auto;
+    }
 
-      & label {
-        font-weight: 500;
-        width: 100%;
-        text-align: left;
-      }
-
-      & input,
-      & textarea,
-      & button {
-        max-width: 100%;
-        box-sizing: border-box;
-      }
-
-      & textarea {
-        resize: vertical;
-      }
-
-      & button {
-        margin-top: 0.8rem;
-        align-self: center;
-      }
+    & button {
+      margin-top: 0.8rem;
+      align-self: center;
     }
   }
 
-
-  /* ======================================================
-   🖥️ Back to Top
-====================================================== */
+  /* BACK TO TOP */
   #backToTop {
     width: 4.5rem;
     height: 4.5rem;
