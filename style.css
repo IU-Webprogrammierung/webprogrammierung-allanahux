@@ -52,7 +52,7 @@ html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  scroll-snap-type: y proximity;  
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   font-size: var(--size-sm);
   line-height: 1.6;
@@ -89,17 +89,19 @@ body {
   }
 }
 
-
 header,
 #about,
 #photo,
 #ux,
 #inspo,
 #sayhi,
-#footer {
-  min-height: 100vh;
+footer[role="contentinfo"] {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 3rem;
 }
+
+
 
 section,
 article,
@@ -366,16 +368,16 @@ nav {
       }
     }
 
-    & #tab1:checked + label::before,
-    & #tab2:checked + label::before,
-    & #tab3:checked + label::before {
+    & #tab1:checked+label::before,
+    & #tab2:checked+label::before,
+    & #tab3:checked+label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
 
-    & #tab1:checked + label,
-    & #tab2:checked + label,
-    & #tab3:checked + label {
+    & #tab1:checked+label,
+    & #tab2:checked+label,
+    & #tab3:checked+label {
       color: #111;
       font-weight: 500;
     }
@@ -457,7 +459,7 @@ nav {
     }
   }
 
-  & .tab-images > section {
+  & .tab-images>section {
     display: none;
     gap: 1rem;
     grid-template-columns: 1fr;
@@ -549,19 +551,19 @@ nav {
   }
 }
 
-#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"]::before,
-#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"]::before {
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
   background: rgba(168, 204, 255, 0.95);
   transform: rotate(-1.5deg);
 }
 
-#uxtab1:checked ~ .tabs-wrapper label[for="uxtab1"],
-#uxtab2:checked ~ .tabs-wrapper label[for="uxtab2"] {
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
   font-weight: 500;
 }
 
-#uxtab1:checked ~ .tab-images #uxpanel1,
-#uxtab2:checked ~ .tab-images #uxpanel2 {
+#uxtab1:checked~.tab-images #uxpanel1,
+#uxtab2:checked~.tab-images #uxpanel2 {
   display: grid;
 }
 
@@ -651,7 +653,6 @@ nav {
 ====================================================== */
 #sayhi {
   font-family: "Switzer", sans-serif;
-  padding-block: var(--space-y);
   display: flex;
   flex-direction: column;
 
@@ -679,7 +680,7 @@ nav {
     padding-bottom: 2.25rem;
   }
 
-  & form > * {
+  & form>* {
     grid-column: 1 / -1;
     min-width: 0;
   }
@@ -775,11 +776,11 @@ nav {
     pointer-events: none;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked + button .default {
+  & form:valid .sendwrap .sendtoggle:checked+button .default {
     visibility: hidden;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked + button .success {
+  & form:valid .sendwrap .sendtoggle:checked+button .success {
     visibility: visible;
   }
 }
@@ -932,7 +933,9 @@ footer {
     box-sizing: border-box;
   }
 
-  /* HEADER LAYOUT */
+  /* ======================================================
+   🖥️ Homepage
+====================================================== */
   header {
     position: relative;
     display: grid;
@@ -1022,7 +1025,9 @@ footer {
     }
   }
 
-  /* ABOUT */
+  /* ======================================================
+   🖥️ About
+====================================================== */
   #about {
     max-width: var(--maxw-lg);
     margin-inline: auto;
@@ -1030,7 +1035,9 @@ footer {
     box-sizing: border-box;
   }
 
-  /* PHOTO */
+  /* ======================================================
+   🖥️ Photography Portolio
+====================================================== */
   #photo {
     max-width: var(--maxw-lg);
     margin-inline: auto;
@@ -1069,7 +1076,9 @@ footer {
     }
   }
 
-  /* UX */
+  /* ======================================================
+   🖥️ UX Projects
+====================================================== */
   #ux {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1085,7 +1094,7 @@ footer {
       gap: 3rem;
     }
 
-    & .tab-images > section {
+    & .tab-images>section {
       max-width: none;
       width: min(96vw, 1600px);
       position: relative;
@@ -1129,7 +1138,9 @@ footer {
     }
   }
 
-  /* INSPIRATIONS */
+  /* ======================================================
+   🖥️ INSPIRATIONS
+====================================================== */
   #inspo {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1236,7 +1247,9 @@ footer {
     }
   }
 
-  /* SAY HI */
+  /* ======================================================
+   🖥️ Say Hi - Contact
+====================================================== */
   #sayhi {
     max-width: var(--maxw-lg);
     padding-inline: var(--space-x);
@@ -1244,20 +1257,43 @@ footer {
 
     & p {
       max-width: 720px;
-    }
 
-    & form {
-      max-width: 100%;
-      margin-inline: auto;
-    }
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-inline: auto;
+        box-sizing: border-box;
+      }
 
-    & button {
-      margin-top: 0.8rem;
-      align-self: center;
+      & label {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
+
+      & input,
+      & textarea,
+      & button {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      & textarea {
+        resize: vertical;
+      }
+
+      & button {
+        margin-top: 0.8rem;
+        align-self: center;
+      }
     }
   }
 
-  /* BACK TO TOP */
+  /* ======================================================
+   🖥️ Back to Top
+====================================================== */
   #backToTop {
     width: 4.5rem;
     height: 4.5rem;
