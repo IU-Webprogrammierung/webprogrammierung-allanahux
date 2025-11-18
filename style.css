@@ -54,6 +54,7 @@ html {
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   font-size: var(--size-sm);
   line-height: 1.6;
 }
@@ -98,7 +99,6 @@ header,
 footer[role="contentinfo"] {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  scroll-margin-top: 3rem;
 }
 
 
@@ -139,186 +139,178 @@ img {
 }
 
 /* ======================================================
-   🏷 HEADER
+   🏷 HEADER 
 ====================================================== */
+
 header {
   position: relative;
-  text-align: center;
+  min-height: 100svh;
+  /* about me erst auf „Seite 2“ */
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  row-gap: 0;
+
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  padding-block: clamp(0.25rem, 1.5vh, 0.75rem);
+
+  text-align: left;
 
   & h1 {
-    position: relative;
-    z-index: 3;
-    font-family: "Clash Display";
-    line-height: 1.3;
-    margin-bottom: 1rem;
-    color: rgb(15, 46, 59);
+    font-family: "Clash Display", system-ui, sans-serif;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    column-gap: 0.25em;
+    row-gap: 0.1em;
+    line-height: 1;
+
+    position: absolute;
+    top: 8vh;
+    left: 20vw;
+
+    justify-content: end;
+    z-index: 2;
+    color: rgb(85, 91, 95);
   }
 
   & #ally {
+    width: 100%;
+    max-width: 80%;
+    height: clamp(36vh, 42vh, 46vh);
+    object-fit: cover;
+    border-radius: 5rem;
+    border: 10px solid #fff;
+    margin-block: 3vh 0;
+
+    justify-self: left;
     position: relative;
     z-index: 1;
-    width: 60%;
-    border-radius: 40px;
-    height: auto;
-    border: 8px solid #fff;
-    margin-top: 3rem;
   }
 
   & .h1photo {
-    display: block;
+    grid-column: 1 / 3;
+    grid-row: 1;
     font-weight: 300;
-    position: absolute;
-    z-index: 3;
-    top: 3rem;
-    right: 2.8rem;
+    align-self: end;
   }
 
   & .and {
-    position: absolute;
-    top: 3rem;
-    right: 5rem;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    justify-self: center;
+
     font-family: "Switzer", sans-serif;
-    font-size: 7rem;
     font-weight: 500;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.8;
     color: rgba(207, 211, 209, 0.636);
-    line-height: 1;
   }
 
   & .h1ux {
-    position: absolute;
-    right: 0.2rem;
-    top: 5.8rem;
+    grid-column: 2 / 4;
+    grid-row: 2;
     font-weight: 300;
+    white-space: nowrap;
+    align-self: start;
   }
-}
 
-/* ======================================================
-   🧭 MAIN NAVIGATION
-====================================================== */
-nav {
-  margin-top: 1.5rem;
-  font-family: "Clash Display";
+  & nav {
+    grid-column: 1;
+    justify-self: center;
+    font-family: "Clash Display";
+    margin-top: calc(-25vh + 2.5rem);
 
-  & #navlist {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    display: inline-block;
-    text-align: left;
+    & #navlist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      text-align: left;
 
-    & li {
-      position: relative;
-      margin: 0.4rem 0;
-
-      &::before {
-        content: "❀";
-        position: absolute;
-        left: -1.5rem;
-        color: #000;
-      }
-
-      & a {
-        text-decoration: none;
-        color: #000;
+      & li {
         position: relative;
-        transition: color 0.2s ease;
+        margin: 0.4rem 0;
 
         &::before {
-          content: "";
+          content: "❀";
           position: absolute;
-          left: 0;
-          bottom: -0.1em;
-          width: 100%;
-          height: 0.6em;
-          background: rgba(168, 204, 255, 0.8);
-          border-radius: 0.2em;
-          transform: rotate(-1deg);
-          z-index: -1;
-          transition: background 0.3s ease;
-        }
-
-        &:hover::before {
-          background: rgba(168, 204, 255, 1);
-          box-shadow:
-            0 0 12px rgba(168, 204, 255, 0.6),
-            0 0 25px rgba(168, 204, 255, 0.4);
-          transform: rotate(-1deg) scale(1.05);
-        }
-      }
-
-      &:last-child {
-        margin-top: 1.2rem;
-        padding-left: 0;
-        text-align: center;
-
-        &::before {
-          content: none;
+          left: -1.5rem;
+          color: #000;
         }
 
         & a {
-          display: inline-block;
-          padding: 0.45rem 1.2rem;
-          background: rgba(255, 255, 255, 0.55);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.5);
-          border-radius: 25px;
-          box-shadow:
-            0 0 12px rgba(168, 204, 255, 0.35),
-            0 0 24px rgba(168, 204, 255, 0.25);
-          font-family: "Clash Display", sans-serif;
-          color: #000;
           text-decoration: none;
-          transition: all 0.25s ease;
+          color: #000;
           position: relative;
-          z-index: 1;
+          transition: color 0.2s ease;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.1em;
+            width: 100%;
+            height: 0.6em;
+            background: rgba(168, 204, 255, 0.8);
+            border-radius: 0.2em;
+            transform: rotate(-1deg);
+            z-index: -1;
+            transition: background 0.3s ease;
+          }
+
+          &:hover::before {
+            background: rgba(168, 204, 255, 1);
+            box-shadow:
+              0 0 12px rgba(168, 204, 255, 0.6),
+              0 0 25px rgba(168, 204, 255, 0.4);
+            transform: rotate(-1deg) scale(1.05);
+          }
+        }
+
+        &:last-child {
+          margin-top: 1.2rem;
+          padding-left: 0;
+          text-align: center;
 
           &::before {
             content: none;
           }
 
-          &:hover {
-            background: rgba(255, 255, 255, 0.8);
+          & a {
+            display: inline-block;
+            padding: 0.45rem 1.2rem;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
             box-shadow:
-              0 0 18px rgba(168, 204, 255, 0.5),
-              0 0 35px rgba(168, 204, 255, 0.3);
-            transform: translateY(-1px);
+              0 0 12px rgba(168, 204, 255, 0.35),
+              0 0 24px rgba(168, 204, 255, 0.25);
+            font-family: "Clash Display", sans-serif;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+              content: none;
+            }
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.8);
+              box-shadow:
+                0 0 18px rgba(168, 204, 255, 0.5),
+                0 0 35px rgba(168, 204, 255, 0.3);
+              transform: translateY(-1px);
+            }
           }
         }
-      }
-    }
-  }
-}
-
-/* ======================================================
-   💬 ABOUT
-====================================================== */
-#about {
-  & p {
-    font-weight: 400;
-    text-align: justify;
-  }
-
-  & section {
-    margin-top: 1rem;
-
-    & h3 {
-      font-family: "Clash Display";
-    }
-
-    & ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      padding: 0;
-
-      & li {
-        background-color: rgba(209, 228, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        border-radius: 20px;
-        padding: 0.35rem 0.95rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
       }
     }
   }
@@ -655,6 +647,8 @@ nav {
   font-family: "Switzer", sans-serif;
   display: flex;
   flex-direction: column;
+  scroll-margin-top: -3rem;
+
 
   & p {
     max-width: 50ch;
@@ -700,6 +694,7 @@ nav {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    resize: none;
 
     &:focus {
       outline: 2px solid rgba(168, 204, 255, 0.8);
@@ -884,6 +879,7 @@ footer {
     opacity: 0.8;
   }
 }
+
 
 /* ======================================================
    🖥️ DESKTOP (min-width: 1200px)
@@ -1278,10 +1274,6 @@ footer {
       & button {
         max-width: 100%;
         box-sizing: border-box;
-      }
-
-      & textarea {
-        resize: vertical;
       }
 
       & button {
