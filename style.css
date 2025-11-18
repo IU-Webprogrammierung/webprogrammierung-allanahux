@@ -317,6 +317,42 @@ header {
 }
 
 /* ======================================================
+   💬 ABOUT
+====================================================== */
+#about {
+  font-family: "Switzer", sans-serif;
+
+  & p {
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  & section {
+    margin-top: 1rem;
+
+    & h3 {
+      font-family: "Clash Display";
+    }
+
+    & ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0;
+
+      & li {
+        background-color: rgba(209, 228, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        padding: 0.35rem 0.95rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      }
+    }
+  }
+}
+
+/* ======================================================
    📸 PHOTOGRAPHY PORTFOLIO
 ====================================================== */
 #photo {
@@ -930,18 +966,20 @@ footer {
   }
 
   /* ======================================================
-   🖥️ Homepage
+   🖥️ Homepage / Header
 ====================================================== */
   header {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(460px, 52vw) 1fr;
+    grid-template-columns: minmax(460px, 52vw) 1fr; 
+    grid-template-rows: auto auto;                  
     align-items: center;
-    column-gap: 4rem;
     min-height: 100svh;
-    max-width: 1200px;
-    margin-inline: auto;
-    text-align: left;
+
+    & h1 {
+      top: 18vh;
+      left: 54vw;
+    }
 
     & #ally {
       display: block;
@@ -984,42 +1022,8 @@ footer {
         }
       }
     }
-
-    & h1 {
-      position: absolute;
-      z-index: 3;
-      left: clamp(60px, 7vw, 110px);
-      top: clamp(30px, 8vh, 120px);
-      margin: 0;
-      line-height: 1.2;
-      padding-top: 4rem;
-
-      & .h1photo {
-        display: block;
-        font-weight: 300;
-        position: relative;
-        top: 3rem;
-        left: 37rem;
-      }
-
-      & .and {
-        position: absolute;
-        left: 45rem;
-        top: 2rem;
-        font-family: "Switzer", sans-serif;
-        font-weight: 500;
-        font-size: 15rem;
-      }
-
-      & .h1ux {
-        position: absolute;
-        left: 50rem;
-        top: 3.5rem;
-        font-weight: 300;
-        white-space: nowrap;
-      }
-    }
   }
+
 
   /* ======================================================
    🖥️ About
