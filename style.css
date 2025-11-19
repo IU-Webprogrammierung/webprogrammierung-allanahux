@@ -10,15 +10,6 @@
 
 @font-face {
   font-family: "Switzer";
-  src: url("assets/fonts/Switzer-Thin.woff2") format("woff2"),
-    url("assets/fonts/Switzer-Thin.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Switzer";
   src: url("assets/fonts/Switzer-Regular.woff2") format("woff2"),
     url("assets/fonts/Switzer-Regular.woff") format("woff");
   font-weight: 400;
@@ -100,8 +91,6 @@ footer[role="contentinfo"] {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
-
-
 
 section,
 article,
@@ -677,7 +666,7 @@ header {
 }
 
 /* ======================================================
-   CONTACT
+   CONTACT - Kontaktformular "Say Hi"
 ====================================================== */
 #sayhi {
   font-family: "Switzer", sans-serif;
@@ -916,90 +905,177 @@ footer {
   }
 }
 
-
 /* ======================================================
-   🖥️ DESKTOP (min-width: 1200px)
+   📲 TABLET HOCHKANT (640px – 1023px)
 ====================================================== */
-@media (min-width: 1200px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   body {
-    font-size: 1rem;
+    font-size: 0.95rem;
 
     & p,
     & li,
     & input,
     & textarea,
     & button {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     & nav[aria-label="Main navigation"],
     & button {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
     }
 
     & h1,
     & h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     & h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
   }
 
   main p,
   section p,
   article p {
-    max-width: 70ch;
+    max-width: 65ch;
     text-wrap: pretty;
     overflow-wrap: anywhere;
     hyphens: auto;
   }
 
-  main,
-  header,
-  nav,
-  section,
-  article,
-  footer {
-    box-sizing: border-box;
-  }
-
-  /* ======================================================
-   🖥️ Homepage / Header
-====================================================== */
+  /* ============================================
+     📱 TABLET HOCHKANT Header (640px – 1023px)
+  ============================================ */
   header {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(460px, 52vw) 1fr; 
-    grid-template-rows: auto auto;                  
-    align-items: center;
+    grid-template-columns: minmax(330px, 52vw) 1fr;
+    grid-template-rows: auto auto;
     min-height: 100svh;
 
     & h1 {
-      top: 18vh;
-      left: 54vw;
+      top: 17vh;
+      left: 40vw;
     }
 
     & #ally {
       display: block;
       max-height: 90svh;
-      height: 80vh;
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      border: 8px solid #fff;
-      border-radius: 40px;
+      height: auto;
+      width: 100%;
       margin: 0 auto;
+      margin-top: -5vh;
+      align-self: center;
+    }
+
+    & nav[aria-label="Main navigation"] {
+      grid-column: 2;
+      grid-row: 1;
+      margin-top: 2vh;
+      align-self: center;
+
+      & #navlist {
+        display: grid;
+        gap: 0.6rem;
+        margin: 0;
+
+        & li {
+          margin: 0;
+        }
+
+        & li:last-child {
+          margin-top: 0.9rem;
+          justify-self: center;
+          text-align: center;
+
+          & a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  /* ======================================================
+   🖥️ About me (640px – 1023px)
+====================================================== */
+  #about {
+    max-width: var(--maxw-md);
+    margin-inline: auto;
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
+}
+
+/* ======================================================
+   📲 TABLET/DESKTOP (min-width: 1024)
+====================================================== */
+@media (min-width: 1024px) {
+  body {
+    font-size: 0.95rem;
+
+    & p,
+    & li,
+    & input,
+    & textarea,
+    & button {
+      font-size: 0.95rem;
+    }
+
+    & nav[aria-label="Main navigation"],
+    & button {
+      font-size: 1.15rem;
+    }
+
+    & h1,
+    & h2 {
+      font-size: 1.8rem;
+    }
+
+    & h3 {
+      font-size: 1.2rem;
+    }
+  }
+
+  main p,
+  section p,
+  article p {
+    max-width: 65ch;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  /* ============================================
+     📱 TABLET/DESKTOP Header (min-width: 1024)
+  ============================================ */
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(460px, 52vw) 1fr;
+    grid-template-rows: auto auto;
+    min-height: 100svh;
+
+    & h1 {
+      top: 12vh;
+      left: 60vw;
+    }
+
+    & #ally {
+      display: block;
+      max-height: 90svh;
+      height: auto;
+      width: 100%;
+      margin: 0 auto;
+      align-items: start;
+      margin-top: 1.5vh;
     }
 
     & nav[aria-label="Main navigation"] {
       grid-column: 2;
       grid-row: 1;
       align-self: center;
-      justify-self: start;
-      text-align: left;
-      padding-top: 7rem;
 
       & #navlist {
         display: grid;
@@ -1022,39 +1098,195 @@ footer {
         }
       }
     }
-  }
 
-
-  /* ======================================================
-   🖥️ About
-====================================================== */
-  #about {
-    max-width: var(--maxw-lg);
-    margin-inline: auto;
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
-  }
-
-  /* ======================================================
-   🖥️ Photography Portolio
-====================================================== */
-  #photo {
-    max-width: var(--maxw-lg);
-    margin-inline: auto;
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
-
-    .tabs-wrapper {
-      max-width: var(--maxw-lg);
+    #about {
+      max-width: var(--maxw-md);
       margin-inline: auto;
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 3rem;
+      padding-inline: var(--space-x);
+      box-sizing: border-box;
+    }
+  }
+
+
+
+  /* ======================================================
+   🖥️ DESKTOP (min-width: 1200px)
+====================================================== */
+  @media (min-width: 1200px) {
+    body {
+      font-size: 1rem;
+
+      & p,
+      & li,
+      & input,
+      & textarea,
+      & button {
+        font-size: 1rem;
+      }
+
+      & nav[aria-label="Main navigation"],
+      & button {
+        font-size: 1.25rem;
+      }
+
+      & h1,
+      & h2 {
+        font-size: 2rem;
+      }
+
+      & h3 {
+        font-size: 1.25rem;
+      }
     }
 
-    .tab-images {
-      & section {
+    main p,
+    section p,
+    article p {
+      max-width: 70ch;
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    main,
+    header,
+    nav,
+    section,
+    article,
+    footer {
+      box-sizing: border-box;
+    }
+
+    /* ======================================================
+   🖥️ Homepage / Header
+====================================================== */
+    header {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(460px, 52vw) 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      min-height: 100svh;
+
+      & h1 {
+        top: 18vh;
+        left: 54vw;
+      }
+
+      & #ally {
+        display: block;
+        max-height: 90svh;
+        height: 80vh;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        border: 8px solid #fff;
+        border-radius: 40px;
+        margin: 0 auto;
+      }
+
+      & nav[aria-label="Main navigation"] {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        justify-self: start;
+        text-align: left;
+        padding-top: 7rem;
+
+        & #navlist {
+          display: grid;
+          gap: 0.6rem;
+          margin: 0;
+          justify-items: start;
+
+          & li {
+            margin: 0;
+          }
+
+          & li:last-child {
+            margin-top: 0.9rem;
+            justify-self: center;
+            text-align: center;
+
+            & a {
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+
+
+    /* ======================================================
+   🖥️ About me
+====================================================== */
+    #about {
+      max-width: var(--maxw-lg);
+      margin-inline: auto;
+      padding-inline: var(--space-x);
+      box-sizing: border-box;
+    }
+
+    /* ======================================================
+   🖥️ Photography Portolio
+====================================================== */
+    #photo {
+      max-width: var(--maxw-lg);
+      margin-inline: auto;
+      padding-inline: var(--space-x);
+      box-sizing: border-box;
+
+      .tabs-wrapper {
+        max-width: var(--maxw-lg);
+        margin-inline: auto;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+      .tab-images {
+        & section {
+          max-width: none;
+          width: min(96vw, 1600px);
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          padding-inline: clamp(1rem, 2.5vw, 3rem);
+          justify-items: stretch;
+          align-items: start;
+          gap: clamp(1.5rem, 2.5vw, 3rem);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        & img {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+      }
+    }
+
+    /* ======================================================
+   🖥️ UX Projects
+====================================================== */
+    #ux {
+      max-width: var(--maxw-lg);
+      padding-inline: var(--space-x);
+      box-sizing: border-box;
+
+      & .tabs-wrapper {
+        max-width: var(--maxw-lg);
+        margin-inline: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+      & .tab-images>section {
         max-width: none;
         width: min(96vw, 1600px);
         position: relative;
@@ -1064,239 +1296,200 @@ footer {
         justify-items: stretch;
         align-items: start;
         gap: clamp(1.5rem, 2.5vw, 3rem);
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      & img {
+      & .uxproject {
         width: 100%;
-        height: auto;
+        min-height: 360px;
         border-radius: 12px;
-        object-fit: cover;
+        border-width: 6px;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+        &:hover {
+          transform: scale(1.03);
+          position: relative;
+          z-index: 5;
+          box-shadow:
+            0 0 15px rgba(168, 204, 255, 0.5),
+            0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        & p.descr {
+          position: absolute;
+          inset: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: min(36ch, 90%);
+          text-align: center;
+          z-index: 2;
+        }
       }
     }
-  }
 
-  /* ======================================================
-   🖥️ UX Projects
-====================================================== */
-  #ux {
-    max-width: var(--maxw-lg);
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
-
-    & .tabs-wrapper {
-      max-width: var(--maxw-lg);
-      margin-inline: auto;
-      display: flex;
-      justify-content: flex-start;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 3rem;
-    }
-
-    & .tab-images>section {
-      max-width: none;
-      width: min(96vw, 1600px);
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      padding-inline: clamp(1rem, 2.5vw, 3rem);
-      justify-items: stretch;
-      align-items: start;
-      gap: clamp(1.5rem, 2.5vw, 3rem);
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    & .uxproject {
-      width: 100%;
-      min-height: 360px;
-      border-radius: 12px;
-      border-width: 6px;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-
-      &:hover {
-        transform: scale(1.03);
-        position: relative;
-        z-index: 5;
-        box-shadow:
-          0 0 15px rgba(168, 204, 255, 0.5),
-          0 10px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      & p.descr {
-        position: absolute;
-        inset: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: min(36ch, 90%);
-        text-align: center;
-        z-index: 2;
-      }
-    }
-  }
-
-  /* ======================================================
+    /* ======================================================
    🖥️ INSPIRATIONS
 ====================================================== */
-  #inspo {
-    max-width: var(--maxw-lg);
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
-
-    & .inspo-gallery {
-      width: min(96vw, 1600px);
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0;
-      padding-inline: clamp(1rem, 2.5vw, 3rem);
+    #inspo {
+      max-width: var(--maxw-lg);
+      padding-inline: var(--space-x);
       box-sizing: border-box;
+
+      & .inspo-gallery {
+        width: min(96vw, 1600px);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding-inline: clamp(1rem, 2.5vw, 3rem);
+        box-sizing: border-box;
+      }
+
+      & .inspo-gallery ul {
+        margin: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: 220px;
+        gap: 3.5rem;
+      }
+
+      & .inspo-gallery li {
+        grid-column: auto / span 2;
+        grid-row: auto / span 2;
+      }
+
+      & .inspo-gallery li.small {
+        grid-row: span 1;
+      }
+
+      & .inspo-gallery li.tall {
+        grid-row: span 3;
+      }
+
+      & .inspo-gallery li.wide {
+        grid-column: span 3;
+      }
+
+      & .inspo-gallery li.wider {
+        grid-column: span 4;
+      }
+
+      & .inspo-gallery li:nth-of-type(1) {
+        grid-column: 2 / span 3;
+        grid-row: 1 / span 3;
+      }
+
+      & .inspo-gallery li:nth-of-type(2) {
+        grid-column: 7 / span 2;
+        grid-row: 1 / span 2;
+      }
+
+      & .inspo-gallery li:nth-of-type(3) {
+        grid-column: 7 / span 4;
+        grid-row: 5 / span 2;
+      }
+
+      & .inspo-gallery li:nth-of-type(4) {
+        grid-column: 5 / span 4;
+        grid-row: 3 / span 2;
+      }
+
+      & .inspo-gallery li:nth-of-type(5) {
+        grid-column: 6 / span 5;
+        grid-row: 8 / span 3;
+      }
+
+      & .inspo-gallery li:nth-of-type(6) {
+        grid-column: 1 / span 3;
+        grid-row: 4 / span 3;
+      }
+
+      & .inspo-gallery li:nth-of-type(7) {
+        grid-column: 4 / span 2;
+        grid-row: 6 / span 3;
+      }
+
+      & .inspo-gallery li:nth-of-type(8) {
+        grid-column: 1 / span 2;
+        grid-row: 7 / span 4;
+      }
+
+      & .inspo-gallery li:nth-of-type(9) {
+        grid-column: 3 / span 2;
+        grid-row: 9 / span 2;
+      }
+
+      & .inspo-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.8rem;
+        display: block;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+      }
+
+      & .inspo-gallery figcaption {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+      }
     }
 
-    & .inspo-gallery ul {
-      margin: 0;
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      grid-auto-rows: 220px;
-      gap: 3.5rem;
-    }
-
-    & .inspo-gallery li {
-      grid-column: auto / span 2;
-      grid-row: auto / span 2;
-    }
-
-    & .inspo-gallery li.small {
-      grid-row: span 1;
-    }
-
-    & .inspo-gallery li.tall {
-      grid-row: span 3;
-    }
-
-    & .inspo-gallery li.wide {
-      grid-column: span 3;
-    }
-
-    & .inspo-gallery li.wider {
-      grid-column: span 4;
-    }
-
-    & .inspo-gallery li:nth-of-type(1) {
-      grid-column: 2 / span 3;
-      grid-row: 1 / span 3;
-    }
-
-    & .inspo-gallery li:nth-of-type(2) {
-      grid-column: 7 / span 2;
-      grid-row: 1 / span 2;
-    }
-
-    & .inspo-gallery li:nth-of-type(3) {
-      grid-column: 7 / span 4;
-      grid-row: 5 / span 2;
-    }
-
-    & .inspo-gallery li:nth-of-type(4) {
-      grid-column: 5 / span 4;
-      grid-row: 3 / span 2;
-    }
-
-    & .inspo-gallery li:nth-of-type(5) {
-      grid-column: 6 / span 5;
-      grid-row: 8 / span 3;
-    }
-
-    & .inspo-gallery li:nth-of-type(6) {
-      grid-column: 1 / span 3;
-      grid-row: 4 / span 3;
-    }
-
-    & .inspo-gallery li:nth-of-type(7) {
-      grid-column: 4 / span 2;
-      grid-row: 6 / span 3;
-    }
-
-    & .inspo-gallery li:nth-of-type(8) {
-      grid-column: 1 / span 2;
-      grid-row: 7 / span 4;
-    }
-
-    & .inspo-gallery li:nth-of-type(9) {
-      grid-column: 3 / span 2;
-      grid-row: 9 / span 2;
-    }
-
-    & .inspo-gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0.8rem;
-      display: block;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
-    }
-
-    & .inspo-gallery figcaption {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-  }
-
-  /* ======================================================
+    /* ======================================================
    🖥️ Say Hi - Contact
 ====================================================== */
-  #sayhi {
-    max-width: var(--maxw-lg);
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
+    #sayhi {
+      max-width: var(--maxw-lg);
+      padding-inline: var(--space-x);
+      box-sizing: border-box;
 
-    & p {
-      max-width: 720px;
+      & p {
+        max-width: 720px;
 
-      & form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-inline: auto;
-        box-sizing: border-box;
-      }
+        & form {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+          margin-inline: auto;
+          box-sizing: border-box;
+        }
 
-      & label {
-        font-weight: 500;
-        width: 100%;
-        text-align: left;
-      }
+        & label {
+          font-weight: 500;
+          width: 100%;
+          text-align: left;
+        }
 
-      & input,
-      & textarea,
-      & button {
-        max-width: 100%;
-        box-sizing: border-box;
-      }
+        & input,
+        & textarea,
+        & button {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
 
-      & button {
-        margin-top: 0.8rem;
-        align-self: center;
+        & button {
+          margin-top: 0.8rem;
+          align-self: center;
+        }
       }
     }
-  }
 
-  /* ======================================================
+    /* ======================================================
    🖥️ Back to Top
 ====================================================== */
-  #backToTop {
-    width: 4.5rem;
-    height: 4.5rem;
+    #backToTop {
+      width: 4.5rem;
+      height: 4.5rem;
 
-    & img {
-      width: 32px;
-      height: 32px;
+      & img {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }
