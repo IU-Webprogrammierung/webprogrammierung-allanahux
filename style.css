@@ -1503,7 +1503,46 @@ footer {
     }
   }
 
- 
+  /* ======================================================
+     📱 Say Hi - Contact (min-width: 1024px – 1199px)
+  ====================================================== */
+  #sayhi {
+    max-width: var(--maxw-lg);
+    padding-inline: clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+
+    & p {
+      max-width: 680px;    
+      margin-inline: auto;
+
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;      
+        margin-inline: auto;
+        box-sizing: border-box;
+      }
+
+      & label {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
+
+      & input,
+      & textarea,
+      & button {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      & button {
+        margin-top: 0.7rem; 
+        align-self: center;
+      }
+    }
+  }
 }
 
 /* ======================================================
