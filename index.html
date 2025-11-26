@@ -34,14 +34,18 @@
         <span class="and" aria-hidden="true">&amp;</span>
         <span class="h1ux">ux designer</span>
       </h1>
-      <img
-        id="ally"
-        src="assets/images/ally.webp"
-        alt="Introductory picture of Allanah a Phototgrapher & UX Designer, waring a vest and carrying her camera and bag. In the background is the Neckar river."
-        width="800"
-        height="1000"
-        decoding="async"
-        fetchpriority="high">
+      <picture>
+        <source srcset="assets/images/ally.webp" type="image/webp">
+        <img
+          id="ally"
+          src="assets/images/ally.webp"
+          alt="Introductory picture of Allanah a Phototgrapher & UX Designer, waring a vest and carrying her camera and bag. In the background is the Neckar river."
+          width="800"
+          height="1000"
+          decoding="async"
+          fetchpriority="high"
+        >
+      </picture>
 
       <nav aria-label="Main navigation">
         <ul id="navlist">
@@ -584,21 +588,31 @@
 
     <section id="sayhi">
       <h2>Say hi :)</h2>
+    
       <p>
         Feel free to reach out — whether it’s just to connect, to talk about a
         photoshoot, or to discuss a creative project. I’m always happy to hear
         from you.
       </p>
+    
       <form action="#sayhi" method="post" autocomplete="on">
+    
+        <!-- Name -->
         <label for="name">Name</label>
         <input
           type="text"
           id="name"
           name="name"
           required
+          minlength="2"
           autocomplete="name"
+          aria-required="true"
+          placeholder=" "
+          title="Please enter at least 2 characters."
         />
+        <span class="error-msg">Please enter at least 2 characters.</span>
     
+        <!-- E-Mail -->
         <label for="email">E-Mail</label>
         <input
           type="email"
@@ -606,25 +620,41 @@
           name="email"
           required
           autocomplete="email"
+          aria-required="true"
+          placeholder=" "
+          title="Please enter a valid email address."
         />
+        <span class="error-msg">Please enter a valid email address.</span>
     
+        <!-- Subject (optional) -->
         <label for="subject">Subject</label>
         <input
           type="text"
           id="subject"
           name="subject"
           autocomplete="off"
+          maxlength="120"
+          placeholder=" "
+          title="Optional subject (max. 120 characters)."
         />
+        <span class="error-msg"></span>
     
+        <!-- Message -->
         <label for="message">Message</label>
         <textarea
           id="message"
           name="message"
           rows="5"
           required
+          minlength="10"
           autocomplete="off"
+          aria-required="true"
+          placeholder=" "
+          title="Please enter at least 10 characters."
         ></textarea>
+        <span class="error-msg">Message must be at least 10 characters long.</span>
     
+        <!-- Dein bestehendes Button-Konzept -->
         <span class="sendwrap">
           <input
             type="checkbox"
@@ -637,8 +667,12 @@
             <span class="success">Done ♡</span>
           </button>
         </span>
+    
       </form>
     </section>
+    
+
+        <!-------------------------------------------------FOOTER-->
 
     <footer role="contentinfo">
       <nav aria-label="Footer Navigation">
