@@ -1022,12 +1022,13 @@ body.is-404 {
     
       & a,
       & a:visited {
+        font-family: "Clash Display", system-ui, sans-serif; 
+        font-size: var(--size-md);  
         text-decoration: none;
         color: #000;
         position: relative;
         transition: color 0.2s ease;
         
-        /* der Marker – exakt kopiert */
         &::before {
           content: "";
           position: absolute;
@@ -1042,7 +1043,6 @@ body.is-404 {
           transition: background 0.3s ease;
         }
     
-        /* Hover – exakt wie NAV */
         &:hover::before {
           background: rgba(168, 204, 255, 1);
           box-shadow:
