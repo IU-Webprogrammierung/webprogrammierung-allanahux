@@ -972,6 +972,90 @@ footer {
 }
 
 /* ======================================================
+FOOTER
+====================================================== */
+
+  & footer {
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: 1rem 1.5rem;
+  }
+
+
+/* ======================================================
+   404 PAGE
+====================================================== */
+body.is-404 {
+  display: block;
+  min-height: auto;
+
+  & header {
+    position: static;
+    min-height: auto;
+    height: auto;
+    display: block;
+
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: 1.5rem 0.5rem;
+  }
+
+  & main {
+    margin: 0;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: 1.5rem 2rem;
+    max-width: 40rem;
+    margin-inline: auto;
+
+    & h1 {
+      font-family: "Clash Display", system-ui, sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin: 0 0 1rem;
+    }
+
+    & p {
+      margin: 0 0 0.75rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    & .backhome {
+      margin-top: 2rem;
+    
+      & a,
+      & a:visited {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        transition: color 0.2s ease;
+        
+        /* der Marker – exakt kopiert */
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.1em;
+          width: 100%;
+          height: 0.6em;
+          background: rgba(168, 204, 255, 0.8);
+          border-radius: 0.2em;
+          transform: rotate(-1deg);
+          z-index: -1;
+          transition: background 0.3s ease;
+        }
+    
+        /* Hover – exakt wie NAV */
+        &:hover::before {
+          background: rgba(168, 204, 255, 1);
+          box-shadow:
+            0 0 12px rgba(168, 204, 255, 0.6),
+            0 0 25px rgba(168, 204, 255, 0.4);
+          transform: rotate(-1deg) scale(1.05);
+        }
+      }
+    }
+  }    
+}
+
+/* ======================================================
    📲 TABLET HOCHKANT (640px – 1023px)
 ====================================================== */
 @media (min-width: 640px) and (max-width: 1023px) {
@@ -1015,7 +1099,7 @@ footer {
      📱 TABLET HOCHKANT Header (640px – 1023px)
   ============================================ */
 
-  header {
+header {
     position: relative;
     display: grid;
     grid-template-columns: 1fr;       
