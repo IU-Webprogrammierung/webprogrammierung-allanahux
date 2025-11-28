@@ -2093,3 +2093,66 @@ margin-top: 2rem;
     }
   }
 }
+
+/* ======================================================
+   🖥️ LARGE DESKTOP / TV (min-width: 1600px)
+====================================================== */
+@media (min-width: 1600px) {
+
+  :root {
+    --space-x: 2rem;
+    --space-y: 2.75rem;
+
+    --size-sm: 1.1rem;
+    --size-md: 1.3rem;
+    --size-lg: 2rem;
+
+    --maxw-md: 72ch;
+    --maxw-lg: 86ch;
+  }
+
+  html {
+    font-size: var(--size-sm);
+  }
+
+  body {
+    font-size: var(--size-sm);
+
+    & p,
+    & li,
+    & input,
+    & textarea,
+    & button {
+      font-size: var(--size-sm);
+    }
+
+    & nav[aria-label="Main navigation"],
+    & button {
+      font-size: var(--size-md);
+    }
+
+    & h1,
+    & h2 {
+      font-size: var(--size-lg);
+    }
+
+    & h3 {
+      font-size: 1.4rem;
+    }
+  }
+
+  header #ally {
+    border-width: 10px;
+    border-radius: 48px;
+  }
+
+  #backToTop {
+    width: 5rem;
+    height: 5rem;
+
+    & img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
