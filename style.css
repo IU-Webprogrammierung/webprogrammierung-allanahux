@@ -84,12 +84,6 @@ body {
   }
 }
 
-body::after {
-  content: "";
-  display: block;
-  height: 6rem;
-}
-
 header,
 #about,
 #photo,
@@ -873,7 +867,8 @@ header {
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   font-family: "Switzer", system-ui, sans-serif;
-  padding-bottom: 5rem;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  padding-block: 1rem 1.5rem;  
 
   & nav ul {
     list-style: none;
@@ -967,16 +962,6 @@ footer {
     opacity: 0.8;
   }
 }
-
-/* ======================================================
-FOOTER
-====================================================== */
-
-  & footer {
-    padding-inline: clamp(1.5rem, 5vw, 4rem);
-    padding-block: 1rem 1.5rem;
-  }
-
 
 /* ======================================================
    404 PAGE
@@ -1405,12 +1390,6 @@ margin-top: 2rem;
     & h3 {
       font-size: 1.2rem;
     }
-  }
-
-  body::after {
-    content: "";
-    display: block;
-    height: 35rem;
   }
 
   main p,
