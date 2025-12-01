@@ -8,6 +8,28 @@
       content="Allanah Diederichsen. Photographer and UX Designer. Portfolio, projects and inspirations."
     />
 
+    <link
+    rel="preload"
+    href="assets/fonts/Switzer-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="assets/fonts/ClashDisplay-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="assets/fonts/Pencerio-Hairline.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+
     <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
@@ -112,14 +134,12 @@
 
       <section
         class="tabs-wrapper"
-        role="tablist"
         aria-label="Portfolio Kategorien"
       >
         <input type="radio" name="tab" id="tab1" checked />
         <label
           for="tab1"
           id="label1"
-          role="tab"
           aria-controls="panel1"
           tabindex="0"
           >Small Business</label
@@ -129,7 +149,6 @@
         <label
           for="tab2"
           id="label2"
-          role="tab"
           aria-controls="panel2"
           tabindex="0"
           >Architecture</label
@@ -139,7 +158,6 @@
         <label
           for="tab3"
           id="label3"
-          role="tab"
           aria-controls="panel3"
           tabindex="0"
           >Hospitality</label
@@ -147,7 +165,7 @@
       </section>
 
       <section class="tab-images">
-        <section id="panel1" role="tabpanel" aria-labelledby="label1">
+        <section id="panel1" aria-labelledby="label1">
           <img
             src="assets/images/tasse.webp"
             alt="Ceramic cup product shoot with a small business named Drip drop ceramics"
@@ -204,7 +222,7 @@
           />
         </section>
 
-        <section id="panel2" role="tabpanel" aria-labelledby="label2">
+        <section id="panel2" aria-labelledby="label2">
           <img
             src="assets/images/a4.webp"
             alt="Christuskirche in Mannheim"
@@ -262,7 +280,7 @@
           />
         </section>
 
-        <section id="panel3" role="tabpanel" aria-labelledby="label3">
+        <section id="panel3" aria-labelledby="label3">
           <img
             src="assets/images/cafe1.webp"
             alt="Cafe place showing table and chairs in front of a La Marzocca coffee machine"
