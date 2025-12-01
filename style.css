@@ -31,9 +31,14 @@
   --space-y: 2rem;
   --maxw-md: 70ch;
   --maxw-lg: 80ch;
-  --size-sm: 1rem;
-  --size-md: 1.125rem;
-  --size-lg: 1.5rem;
+
+  /* Basis-Schriftgrößen (werden in den Media Queries angepasst) */
+  --size-sm: 1rem;      /* Body-Text */
+  --size-md: 1.125rem;  /* Navigation / Buttons / Tabs */
+  --size-lg: 1.5rem;    /* H1 / H2 / Logo */
+  --size-h3: 1.125rem;  /* H3 – getrennt, weil ab 640px anderes Verhältnis */
+  --size-caption: 0.85rem; 
+
 
   /* 🌞 LIGHT MODE */
   --color-bg: #f7f5f2;
@@ -50,7 +55,6 @@
   --color-marker: rgba(168, 204, 255, 0.8);
   --color-marker-hover: rgba(168, 204, 255, 1);
 }
-
 
 html,
 body {
@@ -84,6 +88,7 @@ body {
   line-height: 1.5;
   word-break: normal;
 
+  /* Überschriften + UI-Typo über Variablen steuern */
   h1,
   h2,
   .logo {
@@ -97,13 +102,17 @@ body {
     letter-spacing: 0.3rem;
   }
 
-  h3,
+  h3 {
+    font-size: var(--size-h3);
+  }
+
   nav[aria-label="Main navigation"] #navlist a,
   .tabs-wrapper label[role="tab"],
   button {
     font-size: var(--size-md);
   }
 }
+
 
 header,
 #about,
@@ -586,7 +595,7 @@ header {
       justify-content: center;
       align-items: center;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: var(--size-sm);
       line-height: 1.4;
       color: #000;
       padding: 1rem;
@@ -639,7 +648,7 @@ header {
     display: block;
     margin-top: 0.5rem;
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: var(--size-sm);
     letter-spacing: 0.5rem;
     color: rgba(255, 106, 0, 0.548);
     text-align: center;
@@ -666,10 +675,6 @@ header {
       grid-column: span 2;
     }
 
-    &.horizontal {
-      grid-column: span 2;
-    }
-
     &.tall {
       grid-row: span 2;
     }
@@ -693,7 +698,7 @@ header {
 
     & figcaption {
       text-align: center;
-      font-size: 0.85em;
+      font-size: var(--size-caption);
       color: rgba(0, 0, 0, 0.75);
       padding: 0.1rem;
     }
@@ -714,7 +719,6 @@ header {
   display: flex;
   flex-direction: column;
   scroll-margin-top: -3rem;
-
 
   & p {
     max-width: 50ch;
@@ -738,10 +742,9 @@ header {
       0 8px 18px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     background-clip: padding-box;
-
   }
 
-  & form>* {
+  & form > * {
     grid-column: 1 / -1;
     min-width: 0;
   }
@@ -757,14 +760,17 @@ header {
     width: 100%;
     box-sizing: border-box;
     padding: 0.5rem 0.9rem;
-    border: none;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
     resize: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
 
     &:focus {
       outline: 2px solid rgba(168, 204, 255, 0.8);
+      border-color: rgba(168, 204, 255, 0.8);
+      background-color: rgba(255, 255, 255, 1);
     }
   }
 
@@ -838,11 +844,11 @@ header {
     pointer-events: none;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked+button .default {
+  & form:valid .sendwrap .sendtoggle:checked + button .default {
     visibility: hidden;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked+button .success {
+  & form:valid .sendwrap .sendtoggle:checked + button .success {
     visibility: visible;
   }
 
@@ -855,45 +861,24 @@ header {
     transition: opacity 0.25s ease;
   }
 
-  & input:not(:focus):invalid:not(:placeholder-shown)+.error-msg,
-  & textarea:not(:focus):invalid:not(:placeholder-shown)+.error-msg {
+  & input:not(:focus):invalid:not(:placeholder-shown) + .error-msg,
+  & textarea:not(:focus):invalid:not(:placeholder-shown) + .error-msg {
     height: auto;
     opacity: 1;
     margin-top: 0.25rem;
   }
 
-  & input:invalid+.error-msg,
-  & textarea:invalid+.error-msg {
-    visibility: visible;
-  }
-
-  & input,
-  & textarea {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background-color: rgba(255, 255, 255, 0.9);
-    transition: border-color 0.25s ease, background-color 0.25s ease;
-  }
-
-  & input:focus,
-  & textarea:focus {
-    border-color: rgba(168, 204, 255, 0.8);
-    background-color: rgba(255, 255, 255, 1);
-  }
-
-  /* nach Interaktion → rot, wenn ungültig + nichts eingegeben */
   & input:not(:placeholder-shown):invalid,
   & textarea:not(:placeholder-shown):invalid {
     border: 2px solid rgba(255, 90, 90, 0.85) !important;
     background-color: rgba(255, 0, 0, 0.03);
   }
 
-  /* nach Eingabe → grün, wenn gültig */
   & input:not(:placeholder-shown):valid,
   & textarea:not(:placeholder-shown):valid {
     border: 2px solid rgba(90, 200, 130, 0.85) !important;
     background-color: rgba(0, 255, 0, 0.04);
   }
-
 }
 
 /* ======================================================
@@ -1076,31 +1061,11 @@ body.is-404 {
    📲 TABLET HOCHKANT (640px – 1023px)
 ====================================================== */
 @media (min-width: 640px) and (max-width: 1023px) {
-
-  body {
-    font-size: 0.95rem;
-
-    & p,
-    & li,
-    & input,
-    & textarea,
-    & button {
-      font-size: 0.95rem;
-    }
-
-    & nav[aria-label="Main navigation"],
-    & button {
-      font-size: 1.15rem;
-    }
-
-    & h1,
-    & h2 {
-      font-size: 1.8rem;
-    }
-
-    & h3 {
-      font-size: 1.2rem;
-    }
+  :root {
+    --size-sm: 0.95rem;   /* Body-Text */
+    --size-md: 1.15rem;   /* Nav / Buttons / Tabs */
+    --size-lg: 1.8rem;    /* H1 / H2 */
+    --size-h3: 1.2rem;    /* H3 */
   }
 
   main p,
@@ -1271,10 +1236,6 @@ body.is-404 {
       grid-column: span 3;
     }
 
-    & .inspo-gallery li.wider {
-      grid-column: span 4;
-    }
-
     /*boot*/
     & .inspo-gallery li:nth-of-type(1) {
       grid-column: 2 / span 4;
@@ -1348,44 +1309,40 @@ body.is-404 {
   /* ======================================================
    📱 Say Hi - Contact  (640px – 1023px)
 ====================================================== */
-  #sayhi {
-    max-width: var(--maxw-md);
-    padding-inline: var(--space-x);
-    box-sizing: border-box;
-    padding-bottom: 4rem;
+#sayhi {
+  max-width: var(--maxw-md);
+  padding-inline: var(--space-x);
+  box-sizing: border-box;
+  padding-bottom: 4rem;
 
-    & p {
-      max-width: 720px;
-    }
-
-    & form {
-      display: grid;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-inline: auto;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    & label {
-      font-weight: 500;
-      width: 100%;
-      text-align: left;
-    }
-
-    & input,
-    & textarea,
-    & button {
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-
-    & button {
-      margin-top: 0.8rem;
-      align-self: center;
-    }
+  & p {
+    max-width: 720px;
   }
+
+  & form {
+    gap: 1rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  & label {
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+  }
+
+  & input,
+  & textarea,
+  & button {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  & button {
+    margin-top: 0.8rem;
+    align-self: center;
+  }
+}
 
   /* ======================================================
    📱 Footer (640px – 1023px)
@@ -1400,46 +1357,6 @@ body.is-404 {
    📲 TABLET/DESKTOP (min-width: 1024px – 1199px)
 ====================================================== */
 @media (min-width: 1024px) {
-
-  body {
-    font-size: 0.95rem;
-
-    & p,
-    & li,
-    & input,
-    & textarea,
-    & button {
-      font-size: 0.95rem;
-    }
-
-    & nav[aria-label="Main navigation"],
-    & button {
-      font-size: 1.15rem;
-    }
-
-    & h1,
-    & h2 {
-      font-size: 1.8rem;
-    }
-
-    & h3 {
-      font-size: 1.2rem;
-    }
-  }
-
-  main p,
-  section p,
-  article p {
-    max-width: 65ch;
-    text-wrap: pretty;
-    overflow-wrap: anywhere;
-    hyphens: auto;
-  }
-
-  footer[role="contentinfo"] {
-    scroll-snap-align: none;
-    scroll-snap-stop: normal;
-  }
 
   /* ============================================
      📱 Header (min-width: 1024px – 1199px)
@@ -1775,30 +1692,12 @@ body.is-404 {
    🖥️ DESKTOP (min-width: 1200px)
 ====================================================== */
 @media (min-width: 1200px) {
-  body {
-    font-size: 1rem;
-
-    & p,
-    & li,
-    & input,
-    & textarea,
-    & button {
-      font-size: 1rem;
-    }
-
-    & nav[aria-label="Main navigation"],
-    & button {
-      font-size: 1.25rem;
-    }
-
-    & h1,
-    & h2 {
-      font-size: 2rem;
-    }
-
-    & h3 {
-      font-size: 1.25rem;
-    }
+  :root {
+    --size-sm: 1rem;     /* Body-Text */
+    --size-md: 1.25rem;  /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;     /* H1 / H2 */
+    --size-h3: 1.25rem;  /* H3 */
+    --size-caption: 0.9rem;
   }
 
   main p,
@@ -1808,15 +1707,6 @@ body.is-404 {
     text-wrap: pretty;
     overflow-wrap: anywhere;
     hyphens: auto;
-  }
-
-  main,
-  header,
-  nav,
-  section,
-  article,
-  footer {
-    box-sizing: border-box;
   }
 
   /* ======================================================
@@ -2158,47 +2048,17 @@ body.is-404 {
    🖥️ LARGE DESKTOP / TV (min-width: 1600px)
 ====================================================== */
 @media (min-width: 1600px) {
-
   :root {
     --space-x: 2rem;
     --space-y: 2.75rem;
 
-    --size-sm: 1.1rem;
-    --size-md: 1.3rem;
-    --size-lg: 2rem;
+    --size-sm: 1.1rem;   /* Body */
+    --size-md: 1.3rem;   /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;     /* H1 / H2 */
+    --size-h3: 1.4rem;   /* H3 */
 
     --maxw-md: 72ch;
     --maxw-lg: 86ch;
-  }
-
-  html {
-    font-size: var(--size-sm);
-  }
-
-  body {
-    font-size: var(--size-sm);
-
-    & p,
-    & li,
-    & input,
-    & textarea,
-    & button {
-      font-size: var(--size-sm);
-    }
-
-    & nav[aria-label="Main navigation"],
-    & button {
-      font-size: var(--size-md);
-    }
-
-    & h1,
-    & h2 {
-      font-size: var(--size-lg);
-    }
-
-    & h3 {
-      font-size: 1.4rem;
-    }
   }
 
   header #ally {
@@ -2216,7 +2076,6 @@ body.is-404 {
     }
   }
 }
-
 /* ======================================================
    🌚 DARK MODE
 ====================================================== */
