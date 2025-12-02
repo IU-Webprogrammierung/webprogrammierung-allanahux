@@ -1,46 +1,2369 @@
+/* ======================================================
+   🔤 FONTS
+====================================================== */
+@font-face {
+  font-family: "Pencerio";
+  src: url("assets/fonts/Pencerio-Hairline.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("assets/fonts/Switzer-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("assets/fonts/ClashDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ======================================================
+   🌐 BASE / VARIABLES
+====================================================== */
+:root {
+  --space-x: 1.5rem;
+  --space-y: 2rem;
+  --maxw-md: 70ch;
+  --maxw-lg: 80ch;
+
+  /* Basis-Schriftgrößen (werden in den Media Queries angepasst) */
+  --size-sm: 1rem;      /* Body-Text */
+  --size-md: 1.125rem;  /* Navigation / Buttons / Tabs */
+  --size-lg: 1.5rem;    /* H1 / H2 / Logo */
+  --size-h3: 1.125rem;  /* H3 – getrennt, weil ab 640px anderes Verhältnis */
+  --size-caption: 0.85rem; 
+
+
+  /* 🌞 LIGHT MODE */
+  --color-bg: #f7f5f2;
+  --color-text: #111;
+  --color-heading: #000;
+
+  --color-accent: rgba(168, 204, 255, 0.85);
+  --color-card-bg: rgba(255, 255, 255, 0.4);
+  --color-card-border: rgba(255, 255, 255, 0.6);
+
+  --paper-texture: url("assets/images/paper3.webp");
+  --paper-overlay: rgba(255, 255, 255, 0.08);
+
+  --color-marker: rgba(168, 204, 255, 0.8);
+  --color-marker-hover: rgba(168, 204, 255, 1);
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  font-size: var(--size-sm);
+  line-height: 1.6;
 }
 
-#navlist {
-    list-style: none;
-}
+body {
+  margin: 0;
+  padding: var(--space-y) var(--space-x);
 
-#navlist a {
-    text-decoration: none;
-    color: black;
-}
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(var(--paper-overlay), var(--paper-overlay)),
+    var(--paper-texture);
+  background-repeat: repeat;
+  background-size: 600px auto;
 
-#ally {
-    max-width: 70%;
+  color: var(--color-text);
+  line-height: 1.5;
+  word-break: normal;
+
+  /* Überschriften + UI-Typo über Variablen steuern */
+  h1,
+  h2,
+  .logo {
+    font-size: var(--size-lg);
+    line-height: 1.25;
   }
 
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.tabs input {
-  display: none;
-}
-.tabs label {
-  padding: 10px 20px;
-  margin: 0 20px;
-  border-radius: 50px;
-}
-.tabs input:checked + label {
-  background: #686868;
-  color: white;
-}
-  
-  @media (min-width: 768px) {
-#ally {
-    max-width: 10%;
-}
+  h2 {
+    font-family: "Clash Display";
+    font-weight: 400;
+    letter-spacing: 0.3rem;
   }
-  
-  @media (min-width: 1200px) {
-    #ally {
-      max-width: 40%;
+
+  h3 {
+    font-size: var(--size-h3);
+  }
+
+  nav[aria-label="Main navigation"] #navlist a,
+  .tabs-wrapper label[role="tab"],
+  button {
+    font-size: var(--size-md);
+  }
+}
+
+
+header,
+#about,
+#photo,
+#ux,
+#inspo {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+#sayhi,
+footer[role="contentinfo"] {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+section,
+article,
+main,
+header,
+footer {
+  font-family: "Switzer", sans-serif;
+  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: var(--space-y);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ======================================================
+   🔝 LOGO BAR
+====================================================== */
+.logo {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+  font-family: "Pencerio";
+  padding: 0.5rem;
+  z-index: 9999;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ======================================================
+   🏷 HEADER 
+====================================================== */
+
+header {
+  position: relative;
+  min-height: 100svh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  row-gap: 0;
+
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  padding-block: clamp(0.25rem, 1.5vh, 0.75rem);
+
+  text-align: left;
+
+  & h1 {
+    font-family: "Clash Display", system-ui, sans-serif;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    column-gap: 0.25em;
+    row-gap: 0.1em;
+    line-height: 1;
+
+    position: absolute;
+    top: 8vh;
+    left: 20vw;
+
+    justify-content: end;
+    z-index: 2;
+    color: rgb(85, 91, 95);
+  }
+
+  & #ally {
+    width: 100%;
+    max-width: 80%;
+    height: clamp(36vh, 42vh, 46vh);
+    object-fit: cover;
+    border-radius: 5rem;
+    border: 10px solid #fff;
+    margin-block: 3vh 0;
+
+    justify-self: left;
+    position: relative;
+    z-index: 1;
+  }
+
+  & .h1photo {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    font-weight: 300;
+    align-self: end;
+  }
+
+  & .and {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    justify-self: center;
+
+    font-family: "Switzer", sans-serif;
+    font-weight: 500;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.8;
+    color: rgba(207, 211, 209, 0.636);
+  }
+
+  & .h1ux {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    font-weight: 300;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  & nav {
+    grid-column: 1;
+    justify-self: center;
+    font-family: "Clash Display";
+    margin-top: calc(-25vh + 2.5rem);
+
+    & #navlist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      text-align: left;
+
+      & li {
+        position: relative;
+        margin: 0.4rem 0;
+
+        &::before {
+          content: "❀";
+          position: absolute;
+          left: -1.5rem;
+          color: #000;
+        }
+
+        & a {
+          text-decoration: none;
+          color: #000;
+          position: relative;
+          transition: color 0.2s ease;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.1em;
+            width: 100%;
+            height: 0.6em;
+            background: var(--color-marker);
+            border-radius: 0.2em;
+            transform: rotate(-1deg);
+            z-index: -1;
+            transition: background 0.3s ease;
+          }
+
+          &:hover::before {
+            background: var(--color-marker-hover);
+            box-shadow:
+              0 0 12px rgba(168, 204, 255, 0.6),
+              0 0 25px rgba(168, 204, 255, 0.4);
+            transform: rotate(-1deg) scale(1.05);
+          }
+        }
+
+        &:last-child {
+          margin-top: 1.2rem;
+          padding-left: 0;
+          text-align: center;
+
+          &::before {
+            content: none;
+          }
+
+          & a {
+            display: inline-block;
+            padding: 0.45rem 1.2rem;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            box-shadow:
+              0 0 12px rgba(168, 204, 255, 0.35),
+              0 0 24px rgba(168, 204, 255, 0.25);
+            font-family: "Clash Display", sans-serif;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+              content: none;
+            }
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.8);
+              box-shadow:
+                0 0 18px rgba(168, 204, 255, 0.5),
+                0 0 35px rgba(168, 204, 255, 0.3);
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
     }
   }
+}
+
+/* ======================================================
+   💬 ABOUT
+====================================================== */
+#about {
+  font-family: "Switzer", sans-serif;
+
+  & p {
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  & section {
+    margin-top: 1rem;
+
+    & h3 {
+      font-family: "Clash Display";
+    }
+
+    & ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0;
+
+      & li {
+        background-color: rgba(209, 228, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        padding: 0.35rem 0.95rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      }
+    }
+  }
+}
+
+/* ======================================================
+   📸 PHOTOGRAPHY PORTFOLIO
+====================================================== */
+#photo {
+  .tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-family: "Clash Display";
+
+    & input[type="radio"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      clip: rect(0 0 0 0);
+    }
+
+    & label[role="tab"] {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0.15em;
+        width: 100%;
+        height: 0.6em;
+        background: rgba(175, 199, 233, 0.4);
+        border-radius: 0.2em;
+        transform: rotate(-1deg);
+        z-index: -1;
+      }
+
+      &:hover::before {
+        background: var(--color-marker-hover);
+
+        box-shadow:
+          0 0 12px rgba(168, 204, 255, 0.6),
+          0 0 25px rgba(168, 204, 255, 0.4);
+
+        transform: rotate(-1deg) scale(1.05);
+        transition: all 0.25s ease;
+      }
+
+      &:focus-visible {
+        outline: 2px solid rgba(168, 204, 255, 0.8);
+        outline-offset: 3px;
+      }
+    }
+
+    & #tab1:checked+label::before,
+    & #tab2:checked+label::before,
+    & #tab3:checked+label::before {
+      background: rgba(168, 204, 255, 0.95);
+      transform: rotate(-1.5deg);
+    }
+
+    & #tab1:checked+label,
+    & #tab2:checked+label,
+    & #tab3:checked+label {
+      color: #111;
+      font-weight: 500;
+    }
+  }
+
+  .tab-images {
+    & section {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+    }
+
+    & img {
+      width: 100%;
+      border-radius: 10px;
+
+      &.wide {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &:has(#tab1:checked) .tab-images #panel1,
+  &:has(#tab2:checked) .tab-images #panel2,
+  &:has(#tab3:checked) .tab-images #panel3 {
+    display: grid;
+  }
+}
+
+/* ======================================================
+   💎 UX PROJECTS
+====================================================== */
+#ux {
+  box-sizing: border-box;
+
+  & input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  & .tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: baseline;
+    font-family: "Clash Display";
+
+    & label[role="tab"] {
+      position: relative;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      color: #111;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0.15em;
+        width: 100%;
+        height: 0.6em;
+        background: rgba(175, 199, 233, 0.4);
+        border-radius: 0.2em;
+        transform: rotate(-1deg);
+        z-index: -1;
+      }
+
+      &:hover::before {
+        background: var(--color-marker-hover);
+
+        box-shadow:
+          0 0 12px rgba(168, 204, 255, 0.6),
+          0 0 25px rgba(168, 204, 255, 0.4);
+
+        transform: rotate(-1deg) scale(1.05);
+        transition: all 0.25s ease;
+      }
+
+      &:focus-visible {
+        outline: 2px solid rgba(168, 204, 255, 0.8);
+        outline-offset: 3px;
+      }
+    }
+  }
+
+  & .tab-images>section {
+    display: none;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+  }
+
+  & .uxproject {
+    height: 150px;
+    min-height: 220px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    border: 8px solid #fff;
+    box-sizing: border-box;
+    box-shadow:
+      0 6px 12px rgba(0, 0, 0, 0.08),
+      0 0 15px rgba(168, 204, 255, 0.25);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(6px) saturate(110%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &:active::after,
+    &:focus::after,
+    &:focus-within::after {
+      opacity: 1;
+    }
+
+    & h3 {
+      font-family: "Clash Display";
+      font-weight: 400;
+      color: #000;
+      margin: 0;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 3;
+      transition: opacity 0.25s ease;
+    }
+
+    & p.descr {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: var(--size-sm);
+      line-height: 1.4;
+      color: #000;
+      padding: 1rem;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-within {
+      & h3 {
+        opacity: 0;
+      }
+
+      & p.descr {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
+  background: rgba(168, 204, 255, 0.95);
+  transform: rotate(-1.5deg);
+}
+
+#uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
+#uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
+  font-weight: 500;
+}
+
+#uxtab1:checked~.tab-images #uxpanel1,
+#uxtab2:checked~.tab-images #uxpanel2 {
+  display: grid;
+}
+
+/* ======================================================
+   🎨 INSPIRATIONS
+====================================================== */
+#inspo {
+  & .inspo-text {
+    border-radius: 1rem;
+    text-wrap: pretty;
+  }
+
+  & .inspo-text::after {
+    content: "❀ ❀ ❀ ❀ ❀";
+    display: block;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    font-size: var(--size-sm);
+    letter-spacing: 0.5rem;
+    color: rgba(255, 106, 0, 0.548);
+    text-align: center;
+  }
+
+  & ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 180px;
+    gap: 1.2rem;
+    row-gap: 2rem;
+    padding: 0;
+  }
+
+  & li {
+    position: relative;
+
+    &:nth-child(3n) {
+      grid-row: span 2;
+    }
+
+    &:nth-child(5n) {
+      grid-column: span 2;
+    }
+
+    &.tall {
+      grid-row: span 2;
+    }
+
+    & figure {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    & figcaption {
+      text-align: center;
+      font-size: var(--size-caption);
+      color: rgba(0, 0, 0, 0.75);
+      padding: 0.1rem;
+    }
+
+    &.small img {
+      aspect-ratio: 4 / 5;
+      width: 80%;
+      margin-inline: auto;
+    }
+  }
+}
+
+/* ======================================================
+   CONTACT - Kontaktformular "Say Hi"
+====================================================== */
+#sayhi {
+  font-family: "Switzer", sans-serif;
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: -3rem;
+
+  & p {
+    max-width: 50ch;
+    margin-top: -0.5rem;
+  }
+
+  & form {
+    display: grid;
+    gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 6px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 0 25px rgba(168, 204, 255, 0.35),
+      0 0 45px rgba(168, 204, 255, 0.2),
+      0 8px 18px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    background-clip: padding-box;
+  }
+
+  & form > * {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  & label {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  & input,
+  & textarea {
+    font-family: "Switzer";
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    resize: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+
+    &:focus {
+      outline: 2px solid rgba(168, 204, 255, 0.8);
+      border-color: rgba(168, 204, 255, 0.8);
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  & button {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-family: "Clash Display", sans-serif;
+    color: #000;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow:
+      0 0 12px rgba(168, 204, 255, 0.5),
+      0 0 25px rgba(168, 204, 255, 0.3);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 12rem;
+    overflow: hidden;
+
+    &:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px rgba(168, 204, 255, 0.7),
+        0 0 35px rgba(168, 204, 255, 0.4);
+    }
+
+    & .default,
+    & .success {
+      position: absolute;
+      inset: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.2rem;
+      white-space: nowrap;
+    }
+
+    & .success {
+      visibility: hidden;
+    }
+  }
+
+  & .sendwrap {
+    display: grid;
+    grid-column: 1 / -1;
+    justify-self: center;
+    position: relative;
+    width: max-content;
+  }
+
+  & .sendwrap .sendtoggle {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  & form:not(:valid) .sendwrap .sendtoggle {
+    pointer-events: none;
+  }
+
+  & form:valid .sendwrap .sendtoggle:checked + button .default {
+    visibility: hidden;
+  }
+
+  & form:valid .sendwrap .sendtoggle:checked + button .success {
+    visibility: visible;
+  }
+
+  & .error-msg {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  & input:not(:focus):invalid:not(:placeholder-shown) + .error-msg,
+  & textarea:not(:focus):invalid:not(:placeholder-shown) + .error-msg {
+    height: auto;
+    opacity: 1;
+    margin-top: 0.25rem;
+  }
+
+  & input:not(:placeholder-shown):invalid,
+  & textarea:not(:placeholder-shown):invalid {
+    border: 2px solid rgba(255, 90, 90, 0.85) !important;
+    background-color: rgba(255, 0, 0, 0.03);
+  }
+
+  & input:not(:placeholder-shown):valid,
+  & textarea:not(:placeholder-shown):valid {
+    border: 2px solid rgba(90, 200, 130, 0.85) !important;
+    background-color: rgba(0, 255, 0, 0.04);
+  }
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-family: "Switzer", system-ui, sans-serif;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  padding-block: 1rem 1.5rem;
+
+  & nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    text-align: center;
+  }
+
+  & li.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  & a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    min-height: 44px;
+    border-radius: 0.5rem;
+    text-decoration: underline;
+    color: inherit;
+
+    &:hover {
+      text-decoration-thickness: 0.12em;
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+      text-decoration: none;
+    }
+
+    & img {
+      width: 35px;
+      height: 35px;
+      vertical-align: middle;
+    }
+
+    &:hover img {
+      opacity: 0.85;
+    }
+  }
+}
+
+/* ======================================================
+   ⬆️ BACK TO TOP
+====================================================== */
+#backToTop {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.8rem;
+  height: 2.8rem;
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+  opacity: 0.9;
+  z-index: 1000;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  & img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.8;
+  }
+}
+
+/* ======================================================
+   404 PAGE
+====================================================== */
+body.is-404 {
+  display: block;
+  min-height: auto;
+
+  & header {
+    position: static;
+    min-height: auto;
+    height: auto;
+    display: block;
+
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: 1.5rem 0.5rem;
+  }
+
+  & main {
+    margin: 0;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: 1.5rem 2rem;
+    max-width: 40rem;
+    margin-inline: auto;
+
+    & h1 {
+      font-family: "Clash Display", system-ui, sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin: 0 0 1rem;
+    }
+
+    & p {
+      margin: 0 0 0.75rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    & .backhome {
+      margin-top: 2rem;
+
+      & a,
+      & a:visited {
+        font-family: "Clash Display", system-ui, sans-serif;
+        font-size: var(--size-md);
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        transition: color 0.2s ease;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.1em;
+          width: 100%;
+          height: 0.6em;
+          background: rgba(168, 204, 255, 0.8);
+          border-radius: 0.2em;
+          transform: rotate(-1deg);
+          z-index: -1;
+          transition: background 0.3s ease;
+        }
+
+        &:hover::before {
+          background: rgba(168, 204, 255, 1);
+          box-shadow:
+            0 0 12px rgba(168, 204, 255, 0.6),
+            0 0 25px rgba(168, 204, 255, 0.4);
+          transform: rotate(-1deg) scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+/* ======================================================
+   📲 TABLET HOCHKANT (640px – 1023px)
+====================================================== */
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root {
+    --size-sm: 0.95rem;   /* Body-Text */
+    --size-md: 1.15rem;   /* Nav / Buttons / Tabs */
+    --size-lg: 1.8rem;    /* H1 / H2 */
+    --size-h3: 1.2rem;    /* H3 */
+  }
+
+  main p,
+  section p,
+  article p {
+    max-width: 65ch;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  /* ============================================
+     📱 TABLET HOCHKANT Header (640px – 1023px)
+  ============================================ */
+
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    justify-items: center;
+    margin-top: 2rem;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+    text-align: center;
+
+
+    & h1 {
+      top: 16vh;
+      left: 50vw;
+    }
+
+    & #ally {
+      display: block;
+      max-height: 90svh;
+      height: auto;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: -5vh;
+      align-self: center;
+    }
+
+    & nav[aria-label="Main navigation"] {
+      grid-column: 2;
+      grid-row: 1;
+      margin-top: 2vh;
+      align-self: center;
+
+      & #navlist {
+        display: grid;
+        gap: 0.6rem;
+        margin: 0;
+
+        & li {
+          margin: 0;
+        }
+
+        & li:last-child {
+          margin-top: 0.9rem;
+          justify-self: center;
+          text-align: center;
+
+          & a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  /* ======================================================
+   📱 About me (640px – 1023px)
+====================================================== */
+  #about {
+    max-width: var(--maxw-md);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
+
+
+  /* ======================================================
+    📱 PHOTOGRAPHY PORTOLIO (640px – 1023px)
+====================================================== */
+
+  #photo {
+    max-width: var(--maxw-md);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    .tabs-wrapper {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+
+    .tab-images {
+      & section {
+        max-width: 52rem;
+        margin-inline: auto;
+        margin-top: 1.5rem;
+
+        gap: 1.4rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      & img {
+        width: 100%;
+        object-fit: cover;
+
+        &.wide {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+
+  /* ======================================================
+   📱 UX PROJECTS (640px – 1023px)
+====================================================== */
+  #ux {
+    max-width: var(--maxw-md);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
+
+  /* ======================================================
+   📱 INSPIRATIONS (640px – 1023px)
+====================================================== */
+
+  #inspo {
+    max-width: var(--maxw-md);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    & .inspo-gallery {
+      width: min(100vw, 1200px);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      padding-inline: clamp(1rem, 2.5vw, 3rem);
+      box-sizing: border-box;
+    }
+
+    & .inspo-gallery ul {
+      margin: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: 150px;
+      gap: 3.5rem;
+    }
+
+    & .inspo-gallery li {
+      grid-column: auto / span 2;
+      grid-row: auto / span 2;
+    }
+
+    & .inspo-gallery li.small {
+      grid-row: span 1;
+    }
+
+    & .inspo-gallery li.tall {
+      grid-row: span 3;
+    }
+
+    & .inspo-gallery li.wide {
+      grid-column: span 3;
+    }
+
+    /*boot*/
+    & .inspo-gallery li:nth-of-type(1) {
+      grid-column: 2 / span 4;
+      grid-row: 1 / span 3;
+    }
+
+    /*heu*/
+    & .inspo-gallery li:nth-of-type(2) {
+      grid-column: 7 / span 3;
+      grid-row: 1 / span 2;
+    }
+
+    /*tische*/
+    & .inspo-gallery li:nth-of-type(3) {
+      grid-column: 6 / span 4;
+      grid-row: 5 / span 2;
+    }
+
+    /*train*/
+    & .inspo-gallery li:nth-of-type(4) {
+      grid-column: 6 / span 4;
+      grid-row: 3 / span 2;
+    }
+
+    /*roller*/
+    & .inspo-gallery li:nth-of-type(5) {
+      grid-column: 6 / span 6;
+      grid-row: 7 / span 3;
+    }
+
+    /*street architecture*/
+    & .inspo-gallery li:nth-of-type(6) {
+      grid-column: 2 / span 4;
+      grid-row: 4 / span 2;
+    }
+
+    /*turm*/
+    & .inspo-gallery li:nth-of-type(7) {
+      grid-column: 2 / span 4;
+      grid-row: 6 / span 3;
+    }
+
+    /*waves*/
+    & .inspo-gallery li:nth-of-type(8) {
+      grid-column: 2 / span 4;
+      grid-row: 9 / span 2;
+    }
+
+    /*red*/
+    & .inspo-gallery li:nth-of-type(9) {
+      grid-column: 6 / span 5;
+      grid-row: 10 / span 1;
+    }
+
+    & .inspo-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      display: block;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+    }
+
+    & .inspo-gallery figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+
+  /* ======================================================
+   📱 Say Hi - Contact  (640px – 1023px)
+====================================================== */
+#sayhi {
+  max-width: var(--maxw-md);
+  padding-inline: var(--space-x);
+  box-sizing: border-box;
+  padding-bottom: 4rem;
+
+  & p {
+    max-width: 720px;
+  }
+
+  & form {
+    gap: 1rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  & label {
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+  }
+
+  & input,
+  & textarea,
+  & button {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  & button {
+    margin-top: 0.8rem;
+    align-self: center;
+  }
+}
+
+  /* ======================================================
+   📱 Footer (640px – 1023px)
+====================================================== */
+  footer {
+    padding-bottom: 30rem;
+  }
+}
+
+
+/* ======================================================
+   📲 TABLET/DESKTOP (min-width: 1024px – 1199px)
+====================================================== */
+@media (min-width: 1024px) {
+
+  /* ============================================
+     📱 Header (min-width: 1024px – 1199px)
+  ============================================ */
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(460px, 52vw) 1fr;
+    grid-template-rows: auto auto;
+    min-height: 100svh;
+
+    & h1 {
+      top: 12vh;
+      left: 60vw;
+    }
+
+    & #ally {
+      display: block;
+      max-height: 80svh;
+      height: auto;
+      width: 100%;
+      margin: 0 auto;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    & nav[aria-label="Main navigation"] {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+
+      & #navlist {
+        display: grid;
+        gap: 0.6rem;
+        margin: 0;
+        justify-items: start;
+
+        & li {
+          margin: 0;
+        }
+
+        & li:last-child {
+          margin-top: 0.9rem;
+          justify-self: center;
+          text-align: center;
+
+          & a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  /* ======================================================
+     📱 About (min-width: 1024px – 1199px)
+  ====================================================== */
+  #about {
+    max-width: var(--maxw-md);
+    margin-inline: auto;
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
+
+  /* ======================================================
+   📸 PHOTOGRAPHY PORTFOLIO (1024px – 1199px)
+====================================================== */
+  #photo {
+    max-width: var(--maxw-md);
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+
+    .tabs-wrapper {
+      max-width: var(--maxw-md);
+      margin-inline: auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .tab-images {
+
+      & section {
+        max-width: none;
+        width: min(94vw, 1500px);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-inline: clamp(1rem, 2.2vw, 2.5rem);
+        justify-items: stretch;
+        align-items: start;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: clamp(1.5rem, 2.2vw, 2.5rem);
+      }
+
+      & img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  /* ======================================================
+     📱 UX PROJECTS (min-width: 1024px – 1199px)
+  ====================================================== */
+  #ux {
+    max-width: var(--maxw-md);
+    padding-inline: clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+
+    & .tabs-wrapper {
+      max-width: var(--maxw-md);
+      margin-inline: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: baseline;
+      flex-wrap: wrap;
+
+      gap: 2.5rem;
+    }
+
+    & .tab-images>section {
+      max-width: none;
+
+      width: min(94vw, 1500px);
+
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      padding-inline: clamp(1rem, 2vw, 2.5rem);
+      justify-items: stretch;
+      align-items: start;
+
+      gap: clamp(1.25rem, 2vw, 2.5rem);
+
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    & .uxproject {
+      width: 100%;
+      min-height: 340px;
+      border-radius: 12px;
+      border-width: 6px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+      &:hover {
+        transform: scale(1.03);
+        position: relative;
+        z-index: 5;
+        box-shadow:
+          0 0 15px rgba(168, 204, 255, 0.5),
+          0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      & p.descr {
+        position: absolute;
+        inset: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(36ch, 90%);
+        text-align: center;
+        z-index: 2;
+      }
+    }
+  }
+
+  /* ======================================================
+     📱 INSPIRATIONS (min-width: 1024px – 1199px)
+  ====================================================== */
+  #inspo {
+    max-width: var(--maxw-md);
+    padding-inline: clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+
+    & .inspo-gallery {
+      width: min(94vw, 1500px);
+
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+
+      padding-inline: clamp(1rem, 2vw, 2.5rem);
+      box-sizing: border-box;
+    }
+
+    & .inspo-gallery ul {
+      margin: 0;
+      list-style: none;
+      display: grid;
+
+      grid-template-columns: repeat(8, 1fr);
+
+      grid-auto-rows: 200px;
+      /* vorher 220px */
+
+      gap: 2.8rem;
+    }
+
+    & .inspo-gallery li {
+      grid-column: auto / span 2;
+      grid-row: auto / span 2;
+    }
+
+    & .inspo-gallery li.small {
+      grid-row: span 1;
+    }
+
+    & .inspo-gallery li.tall {
+      grid-row: span 3;
+    }
+
+    & .inspo-gallery li.wide {
+      grid-column: span 3;
+    }
+
+    & .inspo-gallery li.wider {
+      grid-column: span 4;
+    }
+
+    & .inspo-gallery li:nth-of-type(1) {
+      grid-column: 2 / span 3;
+      grid-row: 1 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(2) {
+      grid-column: 7 / span 2;
+      grid-row: 1 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(3) {
+      grid-column: 7 / span 4;
+      grid-row: 5 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(4) {
+      grid-column: 5 / span 4;
+      grid-row: 3 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(5) {
+      grid-column: 6 / span 5;
+      grid-row: 8 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(6) {
+      grid-column: 1 / span 3;
+      grid-row: 4 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(7) {
+      grid-column: 4 / span 2;
+      grid-row: 6 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(8) {
+      grid-column: 1 / span 2;
+      grid-row: 7 / span 4;
+    }
+
+    & .inspo-gallery li:nth-of-type(9) {
+      grid-column: 3 / span 2;
+      grid-row: 9 / span 2;
+    }
+
+    & .inspo-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.8rem;
+    }
+
+    & .inspo-gallery figcaption {
+      margin-top: 0.4rem;
+      text-align: center;
+    }
+  }
+
+  /* ======================================================
+     📱 Say Hi - Contact (min-width: 1024px – 1199px)
+  ====================================================== */
+  #sayhi {
+    max-width: var(--maxw-md);
+    padding-inline: clamp(1.5rem, 3vw, 3rem);
+    box-sizing: border-box;
+
+
+    & p {
+      max-width: 680px;
+      margin-inline: auto;
+
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
+        margin-inline: auto;
+        box-sizing: border-box;
+      }
+
+      & label {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
+
+      & input,
+      & textarea,
+      & button {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      & button {
+        margin-top: 0.7rem;
+        align-self: center;
+      }
+    }
+  }
+}
+
+/* ======================================================
+   🖥️ DESKTOP (min-width: 1200px)
+====================================================== */
+@media (min-width: 1200px) {
+  :root {
+    --size-sm: 1rem;     /* Body-Text */
+    --size-md: 1.25rem;  /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;     /* H1 / H2 */
+    --size-h3: 1.25rem;  /* H3 */
+    --size-caption: 0.9rem;
+  }
+
+  main p,
+  section p,
+  article p {
+    max-width: 70ch;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  /* ======================================================
+     🖥️ Homepage / Header
+  ====================================================== */
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(460px, 52vw) 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    min-height: 100svh;
+
+    & h1 {
+      top: 18vh;
+      left: 54vw;
+    }
+
+    & #ally {
+      display: block;
+      max-height: 90svh;
+      height: 80vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      border: 8px solid #fff;
+      border-radius: 40px;
+      margin: 0 auto;
+    }
+
+    & nav[aria-label="Main navigation"] {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      justify-self: start;
+      text-align: left;
+      padding-top: 7rem;
+
+      & #navlist {
+        display: grid;
+        gap: 0.6rem;
+        margin: 0;
+        justify-items: start;
+
+        & li {
+          margin: 0;
+        }
+
+        & li:last-child {
+          margin-top: 0.9rem;
+          justify-self: center;
+          text-align: center;
+
+          & a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  /* ======================================================
+     🖥️ About me
+  ====================================================== */
+  #about {
+    max-width: var(--maxw-lg);
+    margin-inline: auto;
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+  }
+
+  /* ======================================================
+     🖥️ Photography Portfolio
+  ====================================================== */
+  #photo {
+    max-width: var(--maxw-lg);
+    margin-inline: auto;
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    .tabs-wrapper {
+      max-width: var(--maxw-lg);
+      margin-inline: auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+
+    .tab-images {
+      & section {
+        max-width: none;
+        width: min(96vw, 1600px);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-inline: clamp(1rem, 2.5vw, 3rem);
+        justify-items: stretch;
+        align-items: start;
+        gap: clamp(1.5rem, 2.5vw, 3rem);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      & img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  /* ======================================================
+     🖥️ UX Projects
+  ====================================================== */
+  #ux {
+    max-width: var(--maxw-lg);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    & .tabs-wrapper {
+      max-width: var(--maxw-lg);
+      margin-inline: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+
+    & .tab-images>section {
+      max-width: none;
+      width: min(96vw, 1600px);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      padding-inline: clamp(1rem, 2.5vw, 3rem);
+      justify-items: stretch;
+      align-items: start;
+      gap: clamp(1.5rem, 2.5vw, 3rem);
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    & .uxproject {
+      width: 100%;
+      min-height: 360px;
+      border-radius: 12px;
+      border-width: 6px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+      &:hover {
+        transform: scale(1.03);
+        position: relative;
+        z-index: 5;
+        box-shadow:
+          0 0 15px rgba(168, 204, 255, 0.5),
+          0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      & p.descr {
+        position: absolute;
+        inset: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(36ch, 90%);
+        text-align: center;
+        z-index: 2;
+      }
+    }
+  }
+
+  /* ======================================================
+     🖥️ INSPIRATIONS
+  ====================================================== */
+  #inspo {
+    max-width: var(--maxw-lg);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    & .inspo-gallery {
+      width: min(96vw, 1600px);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      padding-inline: clamp(1rem, 2.5vw, 3rem);
+      box-sizing: border-box;
+    }
+
+    & .inspo-gallery ul {
+      margin: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: 220px;
+      gap: 3.5rem;
+    }
+
+    & .inspo-gallery li {
+      grid-column: auto / span 2;
+      grid-row: auto / span 2;
+    }
+
+    & .inspo-gallery li.small {
+      grid-row: span 1;
+    }
+
+    & .inspo-gallery li.tall {
+      grid-row: span 3;
+    }
+
+    & .inspo-gallery li.wide {
+      grid-column: span 3;
+    }
+
+    & .inspo-gallery li.wider {
+      grid-column: span 4;
+    }
+
+    & .inspo-gallery li:nth-of-type(1) {
+      grid-column: 2 / span 3;
+      grid-row: 1 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(2) {
+      grid-column: 7 / span 2;
+      grid-row: 1 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(3) {
+      grid-column: 7 / span 4;
+      grid-row: 5 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(4) {
+      grid-column: 5 / span 4;
+      grid-row: 3 / span 2;
+    }
+
+    & .inspo-gallery li:nth-of-type(5) {
+      grid-column: 6 / span 5;
+      grid-row: 8 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(6) {
+      grid-column: 1 / span 3;
+      grid-row: 4 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(7) {
+      grid-column: 4 / span 2;
+      grid-row: 6 / span 3;
+    }
+
+    & .inspo-gallery li:nth-of-type(8) {
+      grid-column: 1 / span 2;
+      grid-row: 7 / span 4;
+    }
+
+    & .inspo-gallery li:nth-of-type(9) {
+      grid-column: 3 / span 2;
+      grid-row: 9 / span 2;
+    }
+
+    & .inspo-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      display: block;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+    }
+
+    & .inspo-gallery figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+
+  /* ======================================================
+     🖥️ Say Hi - Contact
+  ====================================================== */
+  #sayhi {
+    max-width: var(--maxw-lg);
+    padding-inline: var(--space-x);
+    box-sizing: border-box;
+
+    & p {
+      max-width: 720px;
+
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-inline: auto;
+        box-sizing: border-box;
+      }
+
+      & label {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
+
+      & input,
+      & textarea,
+      & button {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      & button {
+        margin-top: 0.8rem;
+        align-self: center;
+      }
+    }
+  }
+
+  /* ======================================================
+     🖥️ Back to Top
+  ====================================================== */
+  #backToTop {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    & img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+/* ======================================================
+   🖥️ LARGE DESKTOP / TV (min-width: 1600px)
+====================================================== */
+@media (min-width: 1600px) {
+  :root {
+    --space-x: 2rem;
+    --space-y: 2.75rem;
+
+    --size-sm: 1.1rem;   /* Body */
+    --size-md: 1.3rem;   /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;     /* H1 / H2 */
+    --size-h3: 1.4rem;   /* H3 */
+
+    --maxw-md: 72ch;
+    --maxw-lg: 86ch;
+  }
+
+  header #ally {
+    border-width: 10px;
+    border-radius: 48px;
+  }
+
+  #backToTop {
+    width: 5rem;
+    height: 5rem;
+
+    & img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+/* ======================================================
+   🌚 DARK MODE
+====================================================== */
+@media (prefers-color-scheme: dark) {
+
+  /* ======================================================
+   🌐 BASE / VARIABLES
+====================================================== */
+  :root {
+    --color-bg: #111315;
+    --color-text: #ffffffee;
+    --color-heading: #ffffff;
+    --color-accent: rgba(168, 204, 255, 0.9);
+
+    --color-card-bg: rgba(255, 255, 255, 0.08);
+    --color-card-border: rgba(255, 255, 255, 0.15);
+
+    --paper-texture: url("assets/images/paper3.webp");
+    --paper-overlay: rgba(0, 0, 0, 0.89);
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-heading);
+  }
+
+  p,
+  li,
+  label,
+  nav a,
+  footer a {
+    color: var(--color-text);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  img {
+    border: 3px solid #fff;
+    filter: brightness(0.92) contrast(1.08);
+
+  }
+
+  /* ============================================
+    Header 🌚 DARK MODE
+  ============================================ */
+  header {
+
+    & .h1photo,
+    & .h1ux {
+      color: var(--color-heading);
+      position: relative;
+      z-index: 2;
+    }
+
+    & .and {
+      color: rgba(255, 255, 255, 0.455);
+      position: relative;
+      z-index: 1;
+    }
+
+    nav[aria-label="Main navigation"] {
+      & #navlist {
+        & li::before {
+          color: #fff;
+        }
+
+        & li:last-child a {
+          background: var(--color-marker);
+          color: #000;
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          border-radius: 25px;
+          padding: 0.45rem 1.2rem;
+          transition: all 0.25s ease;
+          position: relative;
+          z-index: 1;
+        }
+
+        & li:last-child a:hover {
+          background: var(--color-marker-hover);
+          transform: translateY(-1px);
+          box-shadow:
+            0 0 18px rgba(168, 204, 255, 0.5),
+            0 0 35px rgba(168, 204, 255, 0.3);
+        }
+
+        & a {
+          color: var(--color-heading);
+          position: relative;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.1em;
+            width: 100%;
+            height: 0.6em;
+
+            background: rgba(107, 169, 255, 0.202);
+
+            border-radius: 0.2em;
+            transform: rotate(-1deg);
+            z-index: -1;
+          }
+        }
+
+        & a:hover::before {
+          background: rgba(107, 169, 255, 0.749);
+        }
+      }
+    }
+  }
+
+  /* ============================================
+     ABOUT ME 🌚 DARK MODE
+  ============================================ */
+  #about section ul li {
+    background-color: rgba(107, 169, 255, 0.623);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--color-text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ============================================
+    PHOTOGRAPHY PORTFOLIO 🌚 DARK MODE
+  ============================================ */
+  #photo {
+    & .tabs-wrapper {
+      & label[role="tab"] {
+        color: var(--color-text);
+      }
+
+      & label[role="tab"]::before {
+        background: rgba(107, 169, 255, 0.202);
+      }
+
+      & #tab1:checked+label::before,
+      & #tab2:checked+label::before,
+      & #tab3:checked+label::before {
+        background: rgba(107, 169, 255, 0.749);
+      }
+
+      & #tab1:checked+label,
+      & #tab2:checked+label,
+      & #tab3:checked+label {
+        color: var(--color-heading);
+        font-weight: 500;
+      }
+
+      & label[role="tab"]:hover::before {
+        background: rgba(107, 169, 255, 0.749);
+      }
+    }
+  }
+
+  /* ============================================
+  UX PROJECTS 🌚 DARK MODE
+============================================ */
+  #ux {
+    & .tabs-wrapper {
+      & label[role="tab"] {
+        color: var(--color-text);
+      }
+
+      & label[role="tab"]::before {
+        background: rgba(107, 169, 255, 0.202);
+      }
+
+      & label[role="tab"]:hover::before {
+        background: rgba(107, 169, 255, 0.749);
+      }
+    }
+
+    & #uxtab1:checked~.tabs-wrapper label[for="uxtab1"]::before,
+    & #uxtab2:checked~.tabs-wrapper label[for="uxtab2"]::before {
+      background: rgba(107, 169, 255, 0.749);
+    }
+
+    & #uxtab1:checked~.tabs-wrapper label[for="uxtab1"],
+    & #uxtab2:checked~.tabs-wrapper label[for="uxtab2"] {
+      color: var(--color-heading);
+      font-weight: 500;
+    }
+  }
+
+  /* ============================================
+  INSPIRATION 🌚 DARK MODE
+============================================ */
+  #inspo {
+    & .inspo-text::after {
+      color: rgba(255, 140, 60, 0.8);
+    }
+
+    & li figcaption {
+      color: var(--color-text);
+    }
+  }
+
+  /* ============================================
+  SAY HI - KONTAKTFORMULAR 🌚 DARK MODE
+============================================ */
+  #sayhi {
+
+    & label,
+    & p {
+      color: var(--color-text);
+    }
+
+    & form {
+      background: rgba(30, 35, 40, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow:
+        0 0 18px rgba(168, 204, 255, 0.18),
+        0 0 45px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    & input,
+    & textarea {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--color-text);
+
+      &:focus {
+        border-color: var(--color-marker);
+        background: rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    & button {
+      background: var(--color-marker);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+
+      box-shadow:
+        0 0 12px rgba(168, 204, 255, 0.35),
+        0 0 25px rgba(168, 204, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    & button:hover {
+      background: var(--color-marker-hover);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 18px rgba(168, 204, 255, 0.55),
+        0 0 45px rgba(168, 204, 255, 0.25);
+    }
+  }
+
+  /* ============================================
+  FOOTER 🌚 DARK MODE
+============================================ */
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+
+    & a {
+      color: var(--color-text);
+    }
+
+    & a img {
+      border: none;
+      filter: invert(1) brightness(1.4);
+    }
+  }
+
+  /* ============================================
+  BACK TO TOP 🌚 DARK MODE
+============================================ */
+  #backToTop {
+    background: rgba(255, 255, 255, 0.473);
+    box-shadow:
+      0 0 12px rgba(168, 204, 255, 0.45),
+      0 0 24px rgba(168, 204, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    & img {
+      border: none;
+      filter: invert(1) brightness(1.35);
+      opacity: 0.9;
+    }
+
+    &:hover img {
+      opacity: 1;
+    }
+  }
+}
