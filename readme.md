@@ -18,6 +18,11 @@
 - picture-Element für responsive Bilder (ally.webp)
 - Interne Navigation über Sprungmarken (#about, #photo, #ux, #inspo, #sayhi)
 
+## Entscheidung gegen ein CSS-Framework
+
+- Grund: individuelles, reduziertes Design mit eigener Ästhetik
+- Frameworks würden Gestaltung, Farben, Marker-Stile und Layoutlogik einschränken
+
 ## Layout
 
 - Kombination aus CSS Grid und Flexbox
