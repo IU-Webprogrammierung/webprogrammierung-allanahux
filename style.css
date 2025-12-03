@@ -33,11 +33,15 @@
   --maxw-lg: 80ch;
 
   /* Basis-Schriftgrößen (werden in den Media Queries angepasst) */
-  --size-sm: 1rem;      /* Body-Text */
-  --size-md: 1.125rem;  /* Navigation / Buttons / Tabs */
-  --size-lg: 1.5rem;    /* H1 / H2 / Logo */
-  --size-h3: 1.125rem;  /* H3 – getrennt, weil ab 640px anderes Verhältnis */
-  --size-caption: 0.85rem; 
+  --size-sm: 1rem;
+  /* Body-Text */
+  --size-md: 1.125rem;
+  /* Navigation / Buttons / Tabs */
+  --size-lg: 1.5rem;
+  /* H1 / H2 / Logo */
+  --size-h3: 1.125rem;
+  /* H3 – getrennt, weil ab 640px anderes Verhältnis */
+  --size-caption: 0.85rem;
 
 
   /* 🌞 LIGHT MODE */
@@ -428,9 +432,9 @@ header {
       }
     }
 
-    & #tab1:checked + label::before,
-    & #tab2:checked + label::before,
-    & #tab3:checked + label::before {
+    & #tab1:checked+label::before,
+    & #tab2:checked+label::before,
+    & #tab3:checked+label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
@@ -744,7 +748,7 @@ header {
     background-clip: padding-box;
   }
 
-  & form > * {
+  & form>* {
     grid-column: 1 / -1;
     min-width: 0;
   }
@@ -844,11 +848,11 @@ header {
     pointer-events: none;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked + button .default {
+  & form:valid .sendwrap .sendtoggle:checked+button .default {
     visibility: hidden;
   }
 
-  & form:valid .sendwrap .sendtoggle:checked + button .success {
+  & form:valid .sendwrap .sendtoggle:checked+button .success {
     visibility: visible;
   }
 
@@ -861,8 +865,8 @@ header {
     transition: opacity 0.25s ease;
   }
 
-  & input:not(:focus):invalid:not(:placeholder-shown) + .error-msg,
-  & textarea:not(:focus):invalid:not(:placeholder-shown) + .error-msg {
+  & input:not(:focus):invalid:not(:placeholder-shown)+.error-msg,
+  & textarea:not(:focus):invalid:not(:placeholder-shown)+.error-msg {
     height: auto;
     opacity: 1;
     margin-top: 0.25rem;
@@ -1062,10 +1066,14 @@ body.is-404 {
 ====================================================== */
 @media (min-width: 640px) and (max-width: 1023px) {
   :root {
-    --size-sm: 0.95rem;   /* Body-Text */
-    --size-md: 1.15rem;   /* Nav / Buttons / Tabs */
-    --size-lg: 1.8rem;    /* H1 / H2 */
-    --size-h3: 1.2rem;    /* H3 */
+    --size-sm: 0.95rem;
+    /* Body-Text */
+    --size-md: 1.15rem;
+    /* Nav / Buttons / Tabs */
+    --size-lg: 1.8rem;
+    /* H1 / H2 */
+    --size-h3: 1.2rem;
+    /* H3 */
   }
 
   main p,
@@ -1309,40 +1317,42 @@ body.is-404 {
   /* ======================================================
    📱 Say Hi - Contact  (640px – 1023px)
 ====================================================== */
-#sayhi {
-  max-width: var(--maxw-md);
-  padding-inline: var(--space-x);
-  box-sizing: border-box;
-  padding-bottom: 4rem;
-
-  & p {
-    max-width: 720px;
-  }
-
-  & form {
-    gap: 1rem;
-    margin-inline: auto;
-    width: 100%;
-  }
-
-  & label {
-    font-weight: 500;
-    width: 100%;
-    text-align: left;
-  }
-
-  & input,
-  & textarea,
-  & button {
-    max-width: 100%;
+  #sayhi {
+    max-width: var(--maxw-md);
+    padding-inline: var(--space-x);
     box-sizing: border-box;
-  }
+    padding-bottom: 4rem;
 
-  & button {
-    margin-top: 0.8rem;
-    align-self: center;
+    & p {
+      max-width: 720px;
+    }
+
+    & form {
+      gap: 1rem;
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    & label {
+      font-weight: 500;
+      width: 100%;
+      text-align: left;
+    }
+
+    & input,
+    & textarea,
+    & button {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    & button {
+      margin-top: 0.8rem;
+      align-self: center;
+    }
   }
 }
+
 
 /* ======================================================
    📲 TABLET/DESKTOP (min-width: 1024px – 1199px)
@@ -1686,10 +1696,14 @@ body.is-404 {
 ====================================================== */
 @media (min-width: 1200px) {
   :root {
-    --size-sm: 1rem;     /* Body-Text */
-    --size-md: 1.25rem;  /* Nav / Buttons / Tabs */
-    --size-lg: 2rem;     /* H1 / H2 */
-    --size-h3: 1.25rem;  /* H3 */
+    --size-sm: 1rem;
+    /* Body-Text */
+    --size-md: 1.25rem;
+    /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;
+    /* H1 / H2 */
+    --size-h3: 1.25rem;
+    /* H3 */
     --size-caption: 0.9rem;
   }
 
@@ -2045,10 +2059,14 @@ body.is-404 {
     --space-x: 2rem;
     --space-y: 2.75rem;
 
-    --size-sm: 1.1rem;   /* Body */
-    --size-md: 1.3rem;   /* Nav / Buttons / Tabs */
-    --size-lg: 2rem;     /* H1 / H2 */
-    --size-h3: 1.4rem;   /* H3 */
+    --size-sm: 1.1rem;
+    /* Body */
+    --size-md: 1.3rem;
+    /* Nav / Buttons / Tabs */
+    --size-lg: 2rem;
+    /* H1 / H2 */
+    --size-h3: 1.4rem;
+    /* H3 */
 
     --maxw-md: 72ch;
     --maxw-lg: 86ch;
@@ -2069,6 +2087,7 @@ body.is-404 {
     }
   }
 }
+
 /* ======================================================
    🌚 DARK MODE
 ====================================================== */
