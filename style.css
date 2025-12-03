@@ -107,7 +107,7 @@ body {
   }
 
   nav[aria-label="Main navigation"] #navlist a,
-  .tabs-wrapper label[role="tab"],
+  .tabs-wrapper label,
   button {
     font-size: var(--size-md);
   }
@@ -395,7 +395,7 @@ header {
       clip: rect(0 0 0 0);
     }
 
-    & label[role="tab"] {
+    & label {
       position: relative;
 
       &::before {
@@ -428,9 +428,9 @@ header {
       }
     }
 
-    & #tab1:checked+label::before,
-    & #tab2:checked+label::before,
-    & #tab3:checked+label::before {
+    & #tab1:checked + label::before,
+    & #tab2:checked + label::before,
+    & #tab3:checked + label::before {
       background: rgba(168, 204, 255, 0.95);
       transform: rotate(-1.5deg);
     }
@@ -2207,11 +2207,11 @@ body.is-404 {
   ============================================ */
   #photo {
     & .tabs-wrapper {
-      & label[role="tab"] {
+      & label {
         color: var(--color-text);
       }
 
-      & label[role="tab"]::before {
+      & label::before {
         background: rgba(107, 169, 255, 0.202);
       }
 
@@ -2228,7 +2228,7 @@ body.is-404 {
         font-weight: 500;
       }
 
-      & label[role="tab"]:hover::before {
+      & label:hover::before {
         background: rgba(107, 169, 255, 0.749);
       }
     }

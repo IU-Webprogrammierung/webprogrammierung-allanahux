@@ -7,6 +7,7 @@
   - ruhige Ästhetik
   - hohe Barrierefreiheit nur mit HTML & CSS
   - Responsivität von 360px - 1920px
+  - Chrome DevTools: Responsive Testing, Lighthouse
 
 ---
 
