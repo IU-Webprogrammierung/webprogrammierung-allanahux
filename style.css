@@ -1344,15 +1344,6 @@ body.is-404 {
   }
 }
 
-  /* ======================================================
-   📱 Footer (640px – 1023px)
-====================================================== */
-  footer {
-    padding-bottom: 30rem;
-  }
-}
-
-
 /* ======================================================
    📲 TABLET/DESKTOP (min-width: 1024px – 1199px)
 ====================================================== */
@@ -1369,15 +1360,16 @@ body.is-404 {
     min-height: 100svh;
 
     & h1 {
-      top: 12vh;
-      left: 60vw;
+      top: 16vh;
+      left: 65vw;
     }
 
     & #ally {
       display: block;
       max-height: 80svh;
-      height: auto;
-      width: 100%;
+      height: 80vh;
+      width: auto;
+      max-width: 100%;
       margin: 0 auto;
       align-items: start;
       margin-top: 2rem;
@@ -1387,6 +1379,7 @@ body.is-404 {
       grid-column: 2;
       grid-row: 1;
       align-self: center;
+      padding-top: 7rem;
 
       & #navlist {
         display: grid;
