@@ -1,8 +1,8 @@
-**Portfolio „Photography & UX Design“ – Allanah Diederichsen**
+# Portfolio „Photography & UX Design“ – Allanah Diederichsen
 
 Dieses Projekt ist im Modul Web-Programmierung (DLBUXPWP01) an der IU Internationale Hochschule entstanden. Es handelt sich um einen persönlichen Webauftritt meiner Fotografie- und UX-Projekte. Ziel war die Entwicklung einer ästhetisch reduzierten, barrierearmen Website, die vollständig ohne JavaScript auskommt und ausschließlich mit HTML und CSS umgesetzt wurde.
 
-# Projektüberblick
+## Projektüberblick
 
 - One-Page-Portfolio
 - Schwerpunkte:
@@ -13,35 +13,32 @@ Dieses Projekt ist im Modul Web-Programmierung (DLBUXPWP01) an der IU Internatio
   - Google Chrome
   - getestet auf MacBook Pro 2020
 
-## Navigationsstruktur
+**Navigationsstruktur**
 
 Header
-│
 ├─ About
 ├─ Photography Portfolio
 ├─ UX Projects
 ├─ Inspirations
 ├─ Say Hi (Contact)
-└─ Footer (Legal (404-Seite), Social Media, Copyright)
+└─ Footer (Legal (404-Website), Social Media, Copyright)
 
 ---
 
-**Errungenschaften**
+## Errungenschaften
 
-# Technologien und Methoden
-
-## HTML-Struktur
+**HTML-Struktur**
 
 - Semantische Elemente: header, nav, section, article, footer, figure, figcaption
 - picture-Element für responsive Bilder (ally.webp)
 - Navigation über Sprungmarken (#about, #photo, #ux, #inspo, #sayhi)
 
-## Entscheidung gegen ein CSS-Framework
+**Entscheidung gegen ein CSS-Framework**
 
 - Grund: individuelles, reduziertes Design mit eigener Ästhetik entwickelt
 - Frameworks würden Gestaltung, Farben und Layoutlogik einschränken
 
-## Layout
+**Layout**
 
 - Kombination aus CSS Grid und Flexbox; z.B.:
   - Photography-Galerie: `grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))`
@@ -58,7 +55,7 @@ Header
 - Nutzung von clamp() für Schriftgrößen:
   - z. B.: `font-size: clamp(3.5rem, 9vw, 7rem)` für das „&“-Zeichen
 
-## CSS-Techniken
+**CSS-Techniken**
 
 - CSS Variablen (Custom Properties)
   - Abstände: `--space-x`, `--space-y`
@@ -80,7 +77,7 @@ Header
   - z. B.: `input:not(:placeholder-shown):invalid { border: 2px solid red }`
 - Nutzung von max(), min(), clamp() zur Layoutstabilität
 
-## Responsive Design
+**Responsive Design**
 
 - Schriftgrößen über CSS-Variablen je Breakpoint angepasst:
   - Desktop: `--size-md: 1.25rem`
@@ -94,33 +91,33 @@ Header
 - overflow-x Schutz gegen horizontales Scrollen:
   - `html, body { overflow-x: hidden; }`
 
-## Zusätzliche Seiten
+**Zusätzliche Seiten**
 
 - Eigene 404-Seite (404.html), die über den Footer-Link „Legal“ erreichbar ist
 
 ---
 
-# Barrierefreiheit (Accessibility)
+## Barrierefreiheit (Accessibility)
 
-## Semantik und Landmark-Rollen
+**Semantik und Landmark-Rollen**
 
 - aria-label zur eindeutigen Benennung der Navigationen für Screenreader
 - aria-labelledby zur logischen Zuordnung von Sections zu ihren Überschriften
 - role="note" für ergänzende, beschreibende Texte
 
-## ARIA in interaktiven Komponenten
+**ARIA in interaktiven Komponenten**
 
 - UX-Projects-Tabs nutzen vollständiges Rollenmodell (role="tablist", "tab", "tabpanel")
 - aria-controls und aria-labelledby zur logischen Verknüpfung von Tabs und Panels
 - tabindex="0" stellt Tastaturzugänglichkeit sicher
 
-## Buttons und Icons
+**Buttons und Icons**
 
 - Back-to-top Button mit aria-label zur Funktionsbeschreibung
 - Social Icons (Instagram/LinkedIn) mit eindeutigen aria-labels
 - Formularbutton nutzt aria-live="polite" für den Zustandswechsel („Send“ → „Done“)
 
-## Formular
+**Formular**
 
 - Pflichtfelder über required und aria-required
 - Eingaberegeln über minlength, maxlength und type="email"
@@ -128,18 +125,18 @@ Header
 - CSS-Validierungsfarben über :invalid, :valid
 - Absende-Logik über Checkbox (ohne JavaScript)
 
-## Tastaturbedienung
+**Tastaturbedienung**
 
 - Focus-Stile über :focus-visible
 - Interaktive Elemente (Tabs, Buttons, Links) vollständig per Tastatur erreichbar
 - Wichtige Interaktionen wie Buttons, Back-to-top und Footer-Links halten die empfohlene Mindest-Zielgröße von ca. 44px ein
 
-## Lighthouse Audit
+**Lighthouse Audit**
 
 - Mobile: ≥89 Performance (schwankt leicht), 100 Accessibility, 100 Best Practices, 100 SEO
 - Desktop: 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
 
-## Performanceoptimierungen
+**Performanceoptimierungen**
 
 - WebP-Bilder (< 100 KB)
 - Lazy Loading für alle Inhalte außer Hero-Bild
@@ -151,7 +148,7 @@ Header
 
 ---
 
-# Dark Mode
+## Dark Mode
 
 - Aktiviert über prefers-color-scheme: dark
 - Variablen wechseln automatisch:
@@ -165,7 +162,7 @@ Header
 
 ---
 
-# Git-Workflow
+## Git-Workflow
 
 - Projektstruktur über Phasen-Branches:
   - `Projekt-Phase-1-Konzeptionsphase`
@@ -177,9 +174,9 @@ Header
 
 ---
 
-**Herausforderungen im Projekt**
+## Herausforderungen im Projekt
 
-# Header
+**Header**
 
 - Komplexe Positionierung von Bild, Titel und Navigation über mehrere Breakpoints
 - h1 musste je Breakpoint neu gesetzt werden (z. B. `top: 8vh`, `left: 20vw`, `top: 18vh`, `left: 54vw`)
@@ -188,7 +185,7 @@ Header
 - clamp() genutzt, um Bildhöhen dynamisch zu halten, dennoch unterschiedlich wirkende Proportionen je Gerät
 - Perfekte Ausrichtung auf allen Geräten gleichzeitig schwer zu erzielen
 
-# Responsives Verhalten
+**Responsives Verhalten**
 
 - Probleme bei Bildschirmen die vertikal sehr hoch sind (z. B. Tablet hochkant):
   - Kontaktformular und Footer wurden teilweise abgeschnitten
@@ -198,26 +195,26 @@ Header
   - scroll-snap für Kontaktformular und Footer deaktiviert (`scroll-snap-align: none`)
   - zusätzlicher Abstand unter dem Footer nötig, um abgeschnittene Inhalte zu vermeiden (führt bei manchen Breakpoints zu größerem als gewünschtem Leerraum)
 
-# About Me / Seitenübergang
+**About Me / Seitenübergang**
 
 - Schwierigkeit: Abstand zwischen Header und About me je Breakpoint unterschiedlich groß
 - Besonders auf Tablet-Hochkant entsteht ein zu großer vertikaler Abstand
 - Herausforderung: denselben „Seitenübergang“ auf allen Bildschirmgrößen herzustellen
 
-# Inspirations-Galerie
+**Inspirations-Galerie**
 
 - Asymmetrisches, magazinartiges Layout nur über CSS Grid
 - Unterschiedliche Positionen der Bilder je Breakpoint über viele nth-of-type-Regeln
 - Hoher Aufwand, Layout-Stabilität bei allen Bildschirmgrößen zu halten
 
-# Kontaktformular
+**Kontaktformular**
 
 - Umsetzung des „Send → Done“-Zustands ausschließlich mit CSS (Checkbox-Technik)
 - Herausforderung: „Done“ sollte nur erscheinen, wenn alle Felder gültig sind
 - Schwierigkeit: Validitätsprüfung rein über CSS, ohne JS-Logik
 - Lösung: Kombination aus :valid / :invalid / :placeholder-shown + deaktivierter Checkbox, solange das Formular nicht gültig ist
 
-# Performance
+**Performance**
 
 - Komplette Optimierung der Bilder als WebP, Ziel < 100 KB
 - Bildqualität (alle geschossen mit einer spiegellosen Kamera) leidet durch die Komprimierung
@@ -225,7 +222,7 @@ Header
 
 ---
 
-**Learnings**
+## Learnings
 
 - Umsetzung interaktiver UI-Komponenten ohne JavaScript
 - Vertieftes Verständnis für die Komplexität und Wichtigkeit von Barrierefreiheit im Web
@@ -233,10 +230,12 @@ Header
 - Optimierung großer Bildateien für bessere Performance (WebP, Lazy Loading, Preload)
 - Git-Workflow in Projektphasen mit klar strukturierten Commits
 
-**Fazit**
+---
 
-- das Modul war für mich fachlich wie persönlich bereichernd
-- mit dem finalen Ergebnis und dem erarbeiteten Wissen sehr zufrieden
-- die verpflichtende Barrierefreiheit anfangs herausfordernd, jedoch wertvolle Erkenntnisse gewonnen
-- das Modul war besonders hilfreich, da ich nun ein Portfolio für den realen Einsatz habe
-- insgesamt konnte ich meinen persönlichen Designstil einbringen und gleichzeitig praktische Sicherheit im Umgang mit modernen Webtechniken gewinnen
+## Fazit
+
+- Modul fachlich wie persönlich bereichernd
+- Sehr zufrieden mit finalem Ergebnis und dem erarbeiteten Wissen
+- Die verpflichtende Barrierefreiheit anfangs herausfordernd, jedoch wertvolle Erkenntnisse gewonnen
+- Modul war besonders hilfreich, da Portfolio für den realen Einsatz einsatzbereit
+- Einbringung des persönlichen Designstils und gleichzeitig praktische Sicherheit im Umgang mit modernen Webtechniken gewonnen
