@@ -1,83 +1,94 @@
 **Portfolio „Photography & UX Design“ – Allanah Diederichsen**
 
-## Projektüberblick
+Dieses Projekt ist im Modul Web-Programmierung (DLBUXPWP01) an der IU Internationale Hochschule entstanden. Es handelt sich um einen persönlichen Webauftritt meiner Fotografie- und UX-Projekte. Ziel war die Entwicklung einer ästhetisch reduzierten, barrierearmen Website, die vollständig ohne JavaScript auskommt und ausschließlich mit HTML und CSS umgesetzt wurde.
 
-- One Page Portfolio
-- Fokus auf:
-  - ruhige Ästhetik
+# Projektüberblick
+
+- One-Page-Portfolio
+- Schwerpunkte:
+  - ruhige, klare Gestaltung, die meinen persönlichen Stil transportiert
   - hohe Barrierefreiheit nur mit HTML & CSS
   - Responsivität von 360px - 1920px
-  - Chrome DevTools: Responsive Testing, Lighthouse
+- Entwicklungs- und Testumgebung:
+  - Google Chrome
+  - getestet auf MacBook Pro 2020
+
+## Navigationsstruktur
+
+Header
+│
+├─ About
+├─ Photography Portfolio
+├─ UX Projects
+├─ Inspirations
+├─ Say Hi (Contact)
+└─ Footer (Legal (404-Seite), Social Media, Copyright)
 
 ---
 
-**Technologien und Methoden**
+**Errungenschaften**
+
+# Technologien und Methoden
 
 ## HTML-Struktur
 
 - Semantische Elemente: header, nav, section, article, footer, figure, figcaption
 - picture-Element für responsive Bilder (ally.webp)
-- Interne Navigation über Sprungmarken (#about, #photo, #ux, #inspo, #sayhi)
+- Navigation über Sprungmarken (#about, #photo, #ux, #inspo, #sayhi)
 
 ## Entscheidung gegen ein CSS-Framework
 
-- Grund: individuelles, reduziertes Design mit eigener Ästhetik
-- Frameworks würden Gestaltung, Farben, Marker-Stile und Layoutlogik einschränken
+- Grund: individuelles, reduziertes Design mit eigener Ästhetik entwickelt
+- Frameworks würden Gestaltung, Farben und Layoutlogik einschränken
 
 ## Layout
 
-- Kombination aus CSS Grid und Flexbox
-
-  - Beispiele:
-  - Grid im Header: `grid-template-columns: minmax(460px, 52vw) 1fr`
+- Kombination aus CSS Grid und Flexbox; z.B.:
   - Photography-Galerie: `grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))`
-  - Inspirationsgalerie: komplexe `nth-of-type`-Positionierung
-  - Navigation: flexbox-basiertes Zentrieren
-
+  - UX-Tabs: Flexbox für horizontale Anordnung & Wrap-Verhalten
+  - Inspirationsgalerie: komplexe Grid-Positionierung mit `nth-of-type`
 - Media Queries für mehrere Breakpoints:
-
   - Mobile-First
   - `min-width: 640px` – Tablet hochkant
   - `min-width: 1024px` – Tablet/kleiner Desktop
   - `min-width: 1200px` – Desktop
   - `min-width: 1600px` – Large Desktop / TV
-
 - Nutzung von clamp() für responsive Abstände:
-  - Beispiel: `padding-inline: clamp(1.5rem, 5vw, 4rem)`
+  - z. B.: `padding-inline: clamp(1.5rem, 5vw, 4rem)`
 - Nutzung von clamp() für Schriftgrößen:
-  - Beispiel: `font-size: clamp(3.5rem, 9vw, 7rem)` für das „&“-Zeichen
+  - z. B.: `font-size: clamp(3.5rem, 9vw, 7rem)` für das „&“-Zeichen
 
 ## CSS-Techniken
 
 - CSS Variablen (Custom Properties)
-  - Beispielabstände: `--space-x`, `--space-y`
+  - Abstände: `--space-x`, `--space-y`
   - Schriftgrößen: `--size-sm`, `--size-md`, `--size-lg`
   - Farben: `--color-bg`, `--color-text`, `--color-accent`, `--color-marker`
   - Maximalbreiten: `--maxw-md`, `--maxw-lg`
 - CSS Nesting für bessere Lesbarkeit (z. B. header & h1)
-- Hintergrund:
+- Website-Hintergrund:
   - Papiertextur: `background-image: linear-gradient(...), url(paper3.webp)`
   - Blur-Effekte: `backdrop-filter: blur(12px)`
-- CSS-only Tabs:
-  - Über radio-Buttons (`input[type=radio]`)
-  - Umschalten der Sichtbarkeit mit :has() bei Photography:
+- CSS Tabs (ohne JS):
+  - Über Radio-Buttons realisiert (`input[type=radio]`)
+  - Umschalten der Sichtbarkeit mit :has() bei Photography Portfolio Tabs:
     - `:has(#tab1:checked) .tab-images #panel1 { display: grid }`
-  - UX-Tabs über Geschwister-Selektoren:
+  - UX-Projects Tabs nutzen Geschwister-Selektoren:
     - `#uxtab1:checked ~ .tab-images #uxpanel1 { display: grid }`
 - Fehlerfeedback im Formular:
   - Nutzung von :invalid, :valid, :placeholder-shown
-  - Beispiel: `input:not(:placeholder-shown):invalid { border: 2px solid red }`
+  - z. B.: `input:not(:placeholder-shown):invalid { border: 2px solid red }`
 - Nutzung von max(), min(), clamp() zur Layoutstabilität
 
 ## Responsive Design
 
-- Schriftgrößen über Variablen angepasst:
+- Schriftgrößen über CSS-Variablen je Breakpoint angepasst:
   - Desktop: `--size-md: 1.25rem`
   - Large Desktop: `--size-md: 1.3rem`
 - Layoutwechsel:
-  - Header wechselt von 1-Spalten-Grid zu 2-Spalten-Grid
-  - Inspirationsgalerie erhält komplett neue Struktur je Breakpoint
-  - UX-Projekte wechseln von 1-Spalten zu 2-Spalten Grid
+  - Header wechselt von 1-Spalten-Grid (Mobile/Tablet) zu 2-Spalten-Grid (Desktop)
+  - Inspirationsgalerie nutzt auf kleinen Geräten ein flexibles Auto-Fit-Grid und erhält auf Tablet/Desktop eine komplexere Grid-Struktur mit nth-of-type-Positionierungen
+  - UX-Projekte wechseln von 1-Spalten (Mobile) zu 2-Spalten Grid (Tablet/Desktop)
 - Scroll-Snap für klare Scrollbereiche:
   - `scroll-snap-type: y proximity`
 - overflow-x Schutz gegen horizontales Scrollen:
@@ -87,40 +98,32 @@
 
 - Eigene 404-Seite (404.html), die über den Footer-Link „Legal“ erreichbar ist
 
-**Barrierefreiheit (Accessibility)**
+---
+
+# Barrierefreiheit (Accessibility)
 
 ## Semantik und Landmark-Rollen
 
-- aria-label auf Navigationen
-  - `nav aria-label="Main navigation"`
-  - `nav aria-label="Footer Navigation"`
-- role="contentinfo" auf Footer
-- aria-labelledby für logische Zuordnung:
-  - Beispiel: `section id="inspo" aria-labelledby="inspo-title"`
-- role="note" für erklärende Texte in Inspiration
+- aria-label zur eindeutigen Benennung der Navigationen für Screenreader
+- aria-labelledby zur logischen Zuordnung von Sections zu ihren Überschriften
+- role="note" für ergänzende, beschreibende Texte
 
 ## ARIA in interaktiven Komponenten
 
-- UX-Tabs
-  - role="tablist", role="tab", role="tabpanel"
-  - aria-controls und aria-labelledby
-  - tabindex="0" für Tastaturzugänglichkeit
-- Photography-Tabs
-  - aria-label="Portfolio Kategorien"
-  - aria-controls für Panels
-  - aria-labelledby für Verbindung von Label + Panel
-  - Steuerung ohne Rollen, jedoch über ARIA-Kopplung
+- UX-Projects-Tabs nutzen vollständiges Rollenmodell (role="tablist", "tab", "tabpanel")
+- aria-controls und aria-labelledby zur logischen Verknüpfung von Tabs und Panels
+- tabindex="0" stellt Tastaturzugänglichkeit sicher
 
 ## Buttons und Icons
 
-- Back-to-top: aria-label="Nach oben scrollen"
-- Social Icons: aria-label bei Instagram/LinkedIn
-- Formularbutton: aria-live="polite" für Statuswechsel
+- Back-to-top Button mit aria-label zur Funktionsbeschreibung
+- Social Icons (Instagram/LinkedIn) mit eindeutigen aria-labels
+- Formularbutton nutzt aria-live="polite" für den Zustandswechsel („Send“ → „Done“)
 
 ## Formular
 
-- required + aria-required
-- minlength, maxlength, type="email"
+- Pflichtfelder über required und aria-required
+- Eingaberegeln über minlength, maxlength und type="email"
 - Fehlertexte werden erst nach Interaktion sichtbar
 - CSS-Validierungsfarben über :invalid, :valid
 - Absende-Logik über Checkbox (ohne JavaScript)
@@ -128,22 +131,15 @@
 ## Tastaturbedienung
 
 - Focus-Stile über :focus-visible
-- Alle Tabs, Buttons, Links erreichbar
-- Ausreichende Zielgrößen (mind. 44px)
+- Interaktive Elemente (Tabs, Buttons, Links) vollständig per Tastatur erreichbar
+- Wichtige Interaktionen wie Buttons, Back-to-top und Footer-Links halten die empfohlene Mindest-Zielgröße von ca. 44px ein
 
-**Dark Mode**
+## Lighthouse Audit
 
-- Aktiviert über prefers-color-scheme: dark
-- Variablen wechseln automatisch:
-  - Beispiel: `--color-bg: #111315`, `--color-text: #ffffffee`
-- Anpassung von:
-  - Navigation und Markerfarben
-  - Formularhintergrund
-  - Icons (invertiert über filter)
-  - Bilder (leicht mit brightness/contrast gefiltert)
-- Kein eigenes Toggle nötig
+- Mobile: ≥89 Performance (schwankt leicht), 100 Accessibility, 100 Best Practices, 100 SEO
+- Desktop: 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
 
-**Performanceoptimierungen**
+## Performanceoptimierungen
 
 - WebP-Bilder (< 100 KB)
 - Lazy Loading für alle Inhalte außer Hero-Bild
@@ -153,27 +149,48 @@
 - SVG-Favicon als Data-URL
 - Reduzierung intensiver Box-Shadows zur Verbesserung der Renderingzeit
 
-**Git-Workflow**
+---
 
-- Struktur über Phasen-Branches
-- Klar strukturierte Commits mit Überschriften
+# Dark Mode
+
+- Aktiviert über prefers-color-scheme: dark
+- Variablen wechseln automatisch:
+  - z. B.: `--color-bg: #111315`, `--color-text: #ffffffee`
+- Anpassung von:
+  - Navigation und Markerfarben
+  - Formularhintergrund
+  - Icons (invertiert über filter)
+  - Bilder (leicht mit brightness/contrast gefiltert)
+- Kein eigenes Toggle nötig
+
+---
+
+# Git-Workflow
+
+- Projektstruktur über Phasen-Branches:
+  - `Projekt-Phase-1-Konzeptionsphase`
+  - `Projekt-Phase-2-Erarbeitungsphase`
+  - `Projekt-Phase-3-Finalisierungsphase`
+  - Zusammenführung aller Phasen in den `main-Branch`
+- einheitliche, englische Commit-Messages nach dem Muster  
+   „Bereich: kurze Beschreibung“ z. B. `Say Hi: Optimized form with form validation` oder `404 Page: Added an error page, linked to the Legal page`
 
 ---
 
 **Herausforderungen im Projekt**
 
-## Header
+# Header
 
 - Komplexe Positionierung von Bild, Titel und Navigation über mehrere Breakpoints
 - h1 musste je Breakpoint neu gesetzt werden (z. B. `top: 8vh`, `left: 20vw`, `top: 18vh`, `left: 54vw`)
 - Herausforderung: h1 verschiebt sich je Breakpoint und läuft teilweise in Bildbereiche hinein: Buchstaben verlieren den nötigen Kontrast und sind schlecht lesbar
-- Layout-Drift: Header rutscht auf manchen Bildschirmgrößen zu weit nach rechts
+- Layout: Header rutscht auf manchen Bildschirmgrößen zu weit nach rechts
 - clamp() genutzt, um Bildhöhen dynamisch zu halten, dennoch unterschiedlich wirkende Proportionen je Gerät
 - Perfekte Ausrichtung auf allen Geräten gleichzeitig schwer zu erzielen
 
-## Responsives Verhalten
+# Responsives Verhalten
 
-- Probleme bei Bildschirmen die vertikal sehr hoch sind (z.B. Tablet hochkant):
+- Probleme bei Bildschirmen die vertikal sehr hoch sind (z. B. Tablet hochkant):
   - Kontaktformular und Footer wurden teilweise abgeschnitten
   - Scroll-Snap rastet früher ein, bevor der letzte Bereich komplett im Viewport ist
 - Anpassungen:
@@ -181,26 +198,26 @@
   - scroll-snap für Kontaktformular und Footer deaktiviert (`scroll-snap-align: none`)
   - zusätzlicher Abstand unter dem Footer nötig, um abgeschnittene Inhalte zu vermeiden (führt bei manchen Breakpoints zu größerem als gewünschtem Leerraum)
 
-  ## About Me / Seitenübergang
+# About Me / Seitenübergang
 
 - Schwierigkeit: Abstand zwischen Header und About me je Breakpoint unterschiedlich groß
 - Besonders auf Tablet-Hochkant entsteht ein zu großer vertikaler Abstand
 - Herausforderung: denselben „Seitenübergang“ auf allen Bildschirmgrößen herzustellen
 
-  ## Inspirations-Galerie
+# Inspirations-Galerie
 
 - Asymmetrisches, magazinartiges Layout nur über CSS Grid
 - Unterschiedliche Positionen der Bilder je Breakpoint über viele nth-of-type-Regeln
 - Hoher Aufwand, Layout-Stabilität bei allen Bildschirmgrößen zu halten
 
-## Kontaktformular
+# Kontaktformular
 
 - Umsetzung des „Send → Done“-Zustands ausschließlich mit CSS (Checkbox-Technik)
 - Herausforderung: „Done“ sollte nur erscheinen, wenn alle Felder gültig sind
 - Schwierigkeit: Validitätsprüfung rein über CSS, ohne JS-Logik
 - Lösung: Kombination aus :valid / :invalid / :placeholder-shown + deaktivierter Checkbox, solange das Formular nicht gültig ist
 
-## Performance
+# Performance
 
 - Komplette Optimierung der Bilder als WebP, Ziel < 100 KB
 - Bildqualität (alle geschossen mit einer spiegellosen Kamera) leidet durch die Komprimierung
@@ -210,8 +227,16 @@
 
 **Learnings**
 
-- Git-Workflow in Projektphasen mit klar strukturierten Commits
-- Umsetzung komplexer Interaktionen ohne JavaScript (z.B. interaktiver Komponenten (Tabs, Formularstatus))
-- Größeres Verständnis für die Komplexität und Wichtigkeit von Barrierefreiheit im Web
+- Umsetzung interaktiver UI-Komponenten ohne JavaScript
+- Vertieftes Verständnis für die Komplexität und Wichtigkeit von Barrierefreiheit im Web
 - Erfahrungen mit Multi-Breakpoint-Layouts (360px–1920px) und deren unterschiedlichen Anforderungen
-- Optimierung großer Bildmengen für bessere Performance (WebP, Lazy Loading, Preload)
+- Optimierung großer Bildateien für bessere Performance (WebP, Lazy Loading, Preload)
+- Git-Workflow in Projektphasen mit klar strukturierten Commits
+
+**Fazit**
+
+- das Modul war für mich fachlich wie persönlich bereichernd
+- mit dem finalen Ergebnis und dem erarbeiteten Wissen sehr zufrieden
+- die verpflichtende Barrierefreiheit anfangs herausfordernd, jedoch wertvolle Erkenntnisse gewonnen
+- das Modul war besonders hilfreich, da ich nun ein Portfolio für den realen Einsatz habe
+- insgesamt konnte ich meinen persönlichen Designstil einbringen und gleichzeitig praktische Sicherheit im Umgang mit modernen Webtechniken gewinnen
