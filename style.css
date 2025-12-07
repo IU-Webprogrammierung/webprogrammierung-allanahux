@@ -32,15 +32,15 @@
   --maxw-md: 70ch;
   --maxw-lg: 80ch;
 
-  /* Basis-Schriftgrößen (werden in den Media Queries angepasst) */
+  /* Base font sizes (adjusted in the media queries) */
   --size-sm: 1rem;
-  /* Body-Text */
+  /* Body text */
   --size-md: 1.125rem;
-  /* Navigation / Buttons / Tabs */
+  /* Navigation / buttons / tabs */
   --size-lg: 1.5rem;
-  /* H1 / H2 / Logo */
+  /* H1 / H2 / Logos */
   --size-h3: 1.125rem;
-  /* H3 – getrennt, weil ab 640px anderes Verhältnis */
+  /* H3 – separated because ratio changes from 640px upward */
   --size-caption: 0.85rem;
 
 
@@ -92,7 +92,6 @@ body {
   line-height: 1.5;
   word-break: normal;
 
-  /* Überschriften + UI-Typo über Variablen steuern */
   h1,
   h2,
   .logo {
@@ -392,6 +391,7 @@ header {
     gap: 1rem;
     font-family: "Clash Display";
 
+    /* Visually hide radio inputs*/
     & input[type="radio"] {
       position: absolute;
       width: 1px;
@@ -464,6 +464,7 @@ header {
     }
   }
 
+  /* Show only the panel whose tab is currently checked using :has() on the parent section */
   &:has(#tab1:checked) .tab-images #panel1,
   &:has(#tab2:checked) .tab-images #panel2,
   &:has(#tab3:checked) .tab-images #panel3 {
@@ -608,6 +609,7 @@ header {
       transition: opacity 0.3s ease;
     }
 
+    /* Hide the title and reveal the project description */
     &:active,
     &:focus,
     &:focus-within {
@@ -716,7 +718,7 @@ header {
 }
 
 /* ======================================================
-   CONTACT - Kontaktformular "Say Hi"
+   CONTACT - Form "Say Hi"
 ====================================================== */
 #sayhi {
   font-family: "Switzer", sans-serif;
@@ -830,6 +832,7 @@ header {
     width: max-content;
   }
 
+  /* Invisible toggle layered on top of the button: used to switch between default/success states without JavaScript once the form is valid */
   & .sendwrap .sendtoggle {
     position: absolute;
     inset: 0;
@@ -848,14 +851,17 @@ header {
     pointer-events: none;
   }
 
+  /* When form is valid and toggle is checked,hide the default button label … */
   & form:valid .sendwrap .sendtoggle:checked+button .default {
     visibility: hidden;
   }
 
+  /* Show the success message instead */
   & form:valid .sendwrap .sendtoggle:checked+button .success {
     visibility: visible;
   }
 
+  /* Error message is initially visually hidden and fades in when a field is invalid */
   & .error-msg {
     display: block;
     height: 0;
@@ -872,6 +878,8 @@ header {
     margin-top: 0.25rem;
   }
 
+  /* !important used to reliably override browser validation styles
+   so error/success borders stay consistent and clearly visible */
   & input:not(:placeholder-shown):invalid,
   & textarea:not(:placeholder-shown):invalid {
     border: 2px solid rgba(255, 90, 90, 0.85) !important;
@@ -1062,7 +1070,7 @@ body.is-404 {
 }
 
 /* ======================================================
-   📲 TABLET HOCHKANT (640px – 1023px)
+   📲 TABLET (640px – 1023px)
 ====================================================== */
 @media (min-width: 640px) and (max-width: 1023px) {
   :root {
@@ -1086,7 +1094,7 @@ body.is-404 {
   }
 
   /* ============================================
-     📱 TABLET HOCHKANT Header (640px – 1023px)
+     📱 TABLET Header (640px – 1023px)
   ============================================ */
 
   header {
@@ -1145,7 +1153,7 @@ body.is-404 {
   }
 
   /* ======================================================
-   📱 About me (640px – 1023px)
+   📱 TABLET About me (640px – 1023px)
 ====================================================== */
   #about {
     max-width: var(--maxw-md);
@@ -1155,7 +1163,7 @@ body.is-404 {
 
 
   /* ======================================================
-    📱 PHOTOGRAPHY PORTOLIO (640px – 1023px)
+    📱 TABLET PHOTOGRAPHY PORTOLIO (640px – 1023px)
 ====================================================== */
 
   #photo {
@@ -1191,7 +1199,7 @@ body.is-404 {
   }
 
   /* ======================================================
-   📱 UX PROJECTS (640px – 1023px)
+   📱 TABLET UX PROJECTS (640px – 1023px)
 ====================================================== */
   #ux {
     max-width: var(--maxw-md);
@@ -1200,7 +1208,7 @@ body.is-404 {
   }
 
   /* ======================================================
-   📱 INSPIRATIONS (640px – 1023px)
+   📱 TABLET INSPIRATIONS (640px – 1023px)
 ====================================================== */
 
   #inspo {
@@ -1244,55 +1252,55 @@ body.is-404 {
       grid-column: span 3;
     }
 
-    /*boot*/
+    /* Boat */
     & .inspo-gallery li:nth-of-type(1) {
       grid-column: 2 / span 4;
       grid-row: 1 / span 3;
     }
 
-    /*heu*/
+    /*Straw*/
     & .inspo-gallery li:nth-of-type(2) {
       grid-column: 7 / span 3;
       grid-row: 1 / span 2;
     }
 
-    /*tische*/
+    /* Tables */
     & .inspo-gallery li:nth-of-type(3) {
       grid-column: 6 / span 4;
       grid-row: 5 / span 2;
     }
 
-    /*train*/
+    /* Train */
     & .inspo-gallery li:nth-of-type(4) {
       grid-column: 6 / span 4;
       grid-row: 3 / span 2;
     }
 
-    /*roller*/
+    /* Scooter */
     & .inspo-gallery li:nth-of-type(5) {
       grid-column: 6 / span 6;
       grid-row: 7 / span 3;
     }
 
-    /*street architecture*/
+    /* Street architecture */
     & .inspo-gallery li:nth-of-type(6) {
       grid-column: 2 / span 4;
       grid-row: 4 / span 2;
     }
 
-    /*turm*/
+    /* Tower */
     & .inspo-gallery li:nth-of-type(7) {
       grid-column: 2 / span 4;
       grid-row: 6 / span 3;
     }
 
-    /*waves*/
+    /* Waves */
     & .inspo-gallery li:nth-of-type(8) {
       grid-column: 2 / span 4;
       grid-row: 9 / span 2;
     }
 
-    /*red*/
+    /* Red blinds*/
     & .inspo-gallery li:nth-of-type(9) {
       grid-column: 6 / span 5;
       grid-row: 10 / span 1;
@@ -1315,7 +1323,7 @@ body.is-404 {
   }
 
   /* ======================================================
-   📱 Say Hi - Contact  (640px – 1023px)
+   📱 TABLET Say Hi - Contact  (640px – 1023px)
 ====================================================== */
   #sayhi {
     max-width: var(--maxw-md);
@@ -1360,7 +1368,7 @@ body.is-404 {
 @media (min-width: 1024px) {
 
   /* ============================================
-     📱 Header (min-width: 1024px – 1199px)
+     📱 TABLET/DESKTOP - HEADER (min-width: 1024px – 1199px)
   ============================================ */
   header {
     position: relative;
@@ -1415,7 +1423,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     📱 About (min-width: 1024px – 1199px)
+     📱 TABLET/DESKTOP - ABOUT (min-width: 1024px – 1199px)
   ====================================================== */
   #about {
     max-width: var(--maxw-md);
@@ -1425,7 +1433,7 @@ body.is-404 {
   }
 
   /* ======================================================
-   📸 PHOTOGRAPHY PORTFOLIO (1024px – 1199px)
+   📸 TABLET/DESKTOP - PHOTOGRAPHY PORTFOLIO (1024px – 1199px)
 ====================================================== */
   #photo {
     max-width: var(--maxw-md);
@@ -1469,7 +1477,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     📱 UX PROJECTS (min-width: 1024px – 1199px)
+     📱 TABLET/DESKTOP - UX PROJECTS (min-width: 1024px – 1199px)
   ====================================================== */
   #ux {
     max-width: var(--maxw-md);
@@ -1537,7 +1545,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     📱 INSPIRATIONS (min-width: 1024px – 1199px)
+     📱 TABLET/DESKTOP - INSPIRATIONS (min-width: 1024px – 1199px)
   ====================================================== */
   #inspo {
     max-width: var(--maxw-md);
@@ -1649,7 +1657,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     📱 Say Hi - Contact (min-width: 1024px – 1199px)
+     📱 TABLET/DESKTOP - SAY HI - Contact (min-width: 1024px – 1199px)
   ====================================================== */
   #sayhi {
     max-width: var(--maxw-md);
@@ -1717,7 +1725,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ Homepage / Header
+     🖥️ DESKTOP - HEADER (min-width: 1200px)
   ====================================================== */
   header {
     position: relative;
@@ -1776,7 +1784,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ About me
+     🖥️ DESKTOP - ABOUT (min-width: 1200px)
   ====================================================== */
   #about {
     max-width: var(--maxw-lg);
@@ -1786,7 +1794,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ Photography Portfolio
+     🖥️ DESKTOP - PHOTOGRAPHY PORTFOLIO (min-width: 1200px)
   ====================================================== */
   #photo {
     max-width: var(--maxw-lg);
@@ -1827,7 +1835,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ UX Projects
+     🖥️ DESKTOP - UX PROJECTS (min-width: 1200px)
   ====================================================== */
   #ux {
     max-width: var(--maxw-lg);
@@ -1889,7 +1897,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ INSPIRATIONS
+     🖥️ DESKTOP - INSPIRATIONS (min-width: 1200px)
   ====================================================== */
   #inspo {
     max-width: var(--maxw-lg);
@@ -1998,7 +2006,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ Say Hi - Contact
+     🖥️ DESKTOP - SAY HI - Contact (min-width: 1200px)
   ====================================================== */
   #sayhi {
     max-width: var(--maxw-lg);
@@ -2038,7 +2046,7 @@ body.is-404 {
   }
 
   /* ======================================================
-     🖥️ Back to Top
+     🖥️ DESKTOP - BACK TO TOP (min-width: 1200px)
   ====================================================== */
   #backToTop {
     width: 4.5rem;
@@ -2094,7 +2102,7 @@ body.is-404 {
 @media (prefers-color-scheme: dark) {
 
   /* ======================================================
-   🌐 BASE / VARIABLES
+   🌐 BASE / VARIABLES 🌚 DARK MODE
 ====================================================== */
   :root {
     --color-bg: #111315;
@@ -2146,7 +2154,7 @@ body.is-404 {
       z-index: 2;
       color: rgb(255, 255, 255);
       text-shadow: 0 0 3px rgba(93, 90, 90, 0.812);
-  }
+    }
 
     & .and {
       color: rgba(255, 255, 255, 0.455);
